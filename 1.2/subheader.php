@@ -25,10 +25,10 @@ require_once 'maincore.php';
 	<meta name="author" content="PadsanSystem Corporation">
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/jasny-bootstrap.min.css" rel="stylesheet">
-	<link href="css/sticky-footer-navbar.css" rel="stylesheet">
-	<link href="css/ui-lightness/jquery-ui.css" rel="stylesheet"/>
+	<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
+	<link href="<?php echo CSS.'jasny-bootstrap.min.css'; ?>" rel="stylesheet">
+	<link href="<?php echo CSS.'sticky-footer-navbar.css'; ?>" rel="stylesheet">
+	<link href="<?php echo CSS.'ui-lightness/jquery-ui.css'; ?>" rel="stylesheet"/>
 </head>
 <body>
 <!-- Wrap all page content here -->
