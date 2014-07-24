@@ -25,10 +25,16 @@ if(iMEMBER){
 
 dbquery("INSERT INTO ".DB_PREFIX."attachments_views (attachment_view_user, attachment_view_attachment, attachment_view_ip, attachment_view_time) VALUES ($attachment_view_user, '".$data['attachment_id']."', '".get_ip()."', '".time()."')");
 
+// Set download link
+$link_download='http://';
+$link_download.=$data['server_name'];
+$link_download.='/';
+$link_download.=$data['attachment_address'];
+
 // include httdownload class
 include_once CLASSES."class.httpdownload.php";
 $object = new httpdownload;
-$object->set_byurl($data['server_name']."/".$data['attachment_address']);
+$object->set_byurl($link_download);
 $object->use_resume = true;
 $object->set_mime($mime);
 $object->download();
