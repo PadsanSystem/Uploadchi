@@ -11,7 +11,6 @@
 |Fax   : +98 - 261 2533136		 |
 |--------------------------------|
 */
-require_once "subheader.php";
 
 // Get php version
 $phpver = phpversion();
@@ -41,6 +40,8 @@ define("BASEDIR", $folder_level);
 
 // Establish mySQL database connection
 $link = dbconnect($db_host, $db_user, $db_pass, $db_name);
+
+$settings=dbarray(dbquery("SELECT * FROM ".DB_PREFIX."settings LIMIT 1"));
 
 // Sanitise $_SERVER globals
 $PHP_SELF = cleanurl($_SERVER['PHP_SELF']);
@@ -102,6 +103,16 @@ function dbarray($query) {
 		echo mysql_error();
 		return false;
 	}else{
+		return $result;
+	}
+}
+
+function dbarraynum($query) {
+	$result = @mysql_fetch_row($query);
+	if (!$result) {
+		echo mysql_error();
+		return false;
+	} else {
 		return $result;
 	}
 }

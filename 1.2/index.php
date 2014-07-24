@@ -11,12 +11,10 @@
 |	Fax   : +98 - 26 325 45 701		|
 |-----------------------------------|
 */
-require_once "subheader.php";
-require_once INCLUDES."file_hosting.php";
-
+require_once 'subheader.php';
 ?>
 <div class="container">
-	<img src="images/cloud2.jpg" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive pull-right">
+	<img src="<?php echo IMAGES.'cloud2.jpg'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive pull-right">
 	<h1>
 		Welcome to Uploadchi.com
 		<br>
@@ -119,5 +117,5 @@ require_once INCLUDES."file_hosting.php";
 	</script>
 </div>
 <?php
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>

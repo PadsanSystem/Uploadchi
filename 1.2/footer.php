@@ -17,11 +17,13 @@
 	<p class="text-muted text-center"><small><br>Copyright &copy; 2011-2014 Uploadchi.com. All Rights Reserved</small></p>
 </div>
 <script src="<?php echo JAVASCRIPTS."jquery.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."bootstrap.js"; ?>"></script>
+<script src="<?php echo JAVASCRIPTS."bootstrap.min.js"; ?>"></script>
+<script src="<?php echo JAVASCRIPTS."jasny-bootstrap.min.js"; ?>"></script>
 <script src="<?php echo JAVASCRIPTS."tab.js"; ?>"></script>
 <script src="<?php echo JAVASCRIPTS."modal.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."jasny-bootstrap.min.js"; ?>"></script>
 <script src="<?php echo JAVASCRIPTS."tooltip.js"; ?>"></script>
 <script src="<?php echo JAVASCRIPTS."jquery-ui.js"; ?>"></script>
+<script src="<?php echo JAVASCRIPTS."fileinput.js"; ?>"></script>
+<script src="<?php echo JAVASCRIPTS."inputmask.js"; ?>"></script>
 </body>
 </html>

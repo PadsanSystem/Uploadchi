@@ -15,9 +15,12 @@ require_once "subheader.php";
 if(iMEMBER){
 	require_once FUNCTIONS."function.create_folder.php";
 	require_once FUNCTIONS."function.file_info.php";
+	require_once FUNCTIONS."function.remove.php";
 
 	if(isset($folder_name) && !isnum($folder_name)) redirect($REQUEST_URI);
 	if(isset($action) && ($folder_name!="delete")) redirect($PHP_SELF);
+
+	
 	?>
 
 	<!-- Begin page content -->
