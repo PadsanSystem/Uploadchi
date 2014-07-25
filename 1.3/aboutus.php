@@ -22,7 +22,7 @@ require_once "subheader.php";
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> About Us</div>
 		<div class="panel-body">
-			<div class="form-group col-lg-5">
+			<div class="form-group col-lg-5 text-center">
 				<img src="<?php echo IMAGES."location_corporation.jpg"; ?>" alt="Location of PadsanSystem co" title="Location of PadsanSystem co" class="img-responsive img-thumbnail">
 			</div>
 			<div class="form-group col-lg-5">
