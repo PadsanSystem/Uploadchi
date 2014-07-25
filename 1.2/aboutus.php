@@ -15,6 +15,10 @@ require_once "subheader.php";
 ?>
 <!-- Begin page content -->
 <div class="container">
+	<ol class="breadcrumb">
+		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home">Home</a></li>
+		<li class="active">About Us</li>
+	</ol>
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> About Us</div>
 		<div class="panel-body">

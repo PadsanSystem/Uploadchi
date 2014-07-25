@@ -18,6 +18,10 @@ $users_active=dbcount("(*)", "users", "user_status='Enable'");
 ?>
 <!-- Begin page content -->
 <div class="container">
+	<ol class="breadcrumb">
+		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home">Home</a></li>
+		<li class="active">Statistics</li>
+	</ol>
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Statistics</div>
 		<div class="panel-body">

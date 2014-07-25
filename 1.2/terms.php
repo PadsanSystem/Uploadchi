@@ -3,6 +3,10 @@ require_once "subheader.php";
 ?>
 <!-- Begin page content -->
 <div class="container">
+	<ol class="breadcrumb">
+		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home">Home</a></li>
+		<li class="active">Terms</li>
+	</ol>
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-book"></span> Terms</div>
 		<div class="panel-body">

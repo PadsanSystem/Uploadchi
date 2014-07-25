@@ -38,6 +38,10 @@ if(isset($_POST['submit'])){
 ?>
 <!-- Begin page content -->
 <div class="container">
+	<ol class="breadcrumb">
+		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home">Home</a></li>
+		<li class="active">Contact Us</li>
+	</ol>
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</div>
 		<div class="panel-body">
