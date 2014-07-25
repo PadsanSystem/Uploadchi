@@ -15,7 +15,9 @@ require_once 'subheader.php';
 require_once INCLUDES.'file_hosting.php';
 
 // Check $download_url not empty
-if(!isset($download_url) && !cleanurl($download_url)) redirect(BASEDIR.'index.php');
+if(!isset($download_url) && !isset($error) && !cleanurl($download_url)) redirect(BASEDIR.'index.php');
+
+if(!isset($error)){
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -31,5 +33,17 @@ if(!isset($download_url) && !cleanurl($download_url)) redirect(BASEDIR.'index.ph
 	</div>
 </div>
 <?php
+}else{
+	?>
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="alert alert-warning" role="alert">
+			<p class="text-danger">Error 400</p>
+			<p>We are Sorry,</p><p>The type of upload file is not valid, <a href="<?php echo BASEDIR.'index.php'; ?>" class="alert-link">please try again.</p></a>
+		</div>
+	</div>
+	<?php
+}
+
 require_once BASEDIR.'footer.php';
 ?>
