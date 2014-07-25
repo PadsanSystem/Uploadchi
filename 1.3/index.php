@@ -24,17 +24,23 @@ require_once 'subheader.php';
 		</div>
 		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
 			<div class="well well-lg">
-				<img src="<?php echo IMAGES.'banners.png'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive pull-right">
-				<small>
-					<ul>
-						<li>even more place to store and capture all your life's fleeting moments</li>
-						<li>with SSL data encryption your data will stay protected</li>
-						<li>let your friends instantly download files, which you send them</li>
-						<li>absolutely no interruptions</li>
-						<li>enjoy better performance and speed</li>
-						<li>restore even deleted files</li>
-					</ul>
-				</small>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+						<small>
+							<ul>
+								<li>even more place to store and capture all your life's fleeting moments</li>
+								<li>with SSL data encryption your data will stay protected</li>
+								<li>let your friends instantly download files, which you send them</li>
+								<li>absolutely no interruptions</li>
+								<li>enjoy better performance and speed</li>
+								<li>restore even deleted files</li>
+							</ul>
+						</small>
+					</div>
+					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12" align="center">
+						<img src="<?php echo IMAGES.'banners.png'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
