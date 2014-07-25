@@ -22,6 +22,7 @@ if(isset($_POST['send_file'])){
 	
 	include_once FUNCTIONS.'function.attachments_exts.php';
 	$trust_type=check_validate_exts($type);
+	
 	if($trust_type==true){
 		// Generate name
 		$generate_name=random_text('number');

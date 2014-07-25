@@ -1,4 +1,16 @@
 <?php
+/*
+|-----------------------------------|
+|	PadsanSystem					|
+|-----------------------------------|
+|	Uploadcenter Version			|
+|-----------------------------------|
+|	Web   : www.PadsanSystem.com	|
+|	Email : Info@PadsanSystem.com	|
+|	Tel   : +98 - 26 325 45 700		|
+|	Fax   : +98 - 26 325 45 701		|
+|-----------------------------------|
+*/
 $result=dbarray(dbquery("SELECT attachment_folder_Id FROM
 							attachments_folders
 						WHERE

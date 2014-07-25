@@ -1,4 +1,16 @@
 <?php
+/*
+|-----------------------------------|
+|	PadsanSystem					|
+|-----------------------------------|
+|	Uploadcenter Version			|
+|-----------------------------------|
+|	Web   : www.PadsanSystem.com	|
+|	Email : Info@PadsanSystem.com	|
+|	Tel   : +98 - 26 325 45 700		|
+|	Fax   : +98 - 26 325 45 701		|
+|-----------------------------------|
+*/
 if(isset($_POST['create_folder'])){	
 	$attachment_folder_name=secure_itext($_POST['attachment_folder_name']);
 	dbquery("INSERT INTO ".DB_PREFIX."attachments_folders (attachment_folder_name, attachment_folder_step, attachment_folder_user, attachment_folder_time) VALUES ('$attachment_folder_name', '$folder_name', '".$userdata['user_id']."', '".time()."')");

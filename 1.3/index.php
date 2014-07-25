@@ -14,6 +14,10 @@
 require_once 'subheader.php';
 ?>
 <div class="container">
+<?php
+include_once FUNCTIONS.'function.servers.php';
+get_server();
+?>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
 			<h1>

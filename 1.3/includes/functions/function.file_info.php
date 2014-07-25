@@ -1,3 +1,17 @@
+<?php
+/*
+|-----------------------------------|
+|	PadsanSystem					|
+|-----------------------------------|
+|	Uploadcenter Version			|
+|-----------------------------------|
+|	Web   : www.PadsanSystem.com	|
+|	Email : Info@PadsanSystem.com	|
+|	Tel   : +98 - 26 325 45 700		|
+|	Fax   : +98 - 26 325 45 701		|
+|-----------------------------------|
+*/
+?>
 <!-- Modal -->
 <div class="modal fade" id="file_info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
