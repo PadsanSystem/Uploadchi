@@ -50,6 +50,7 @@ $REQUEST_URI = isset($_SERVER['REQUEST_URI']) ? cleanurl($_SERVER['REQUEST_URI']
 
 // Set defines
 define("IMAGES", BASEDIR."images/");
+define("IMAGES_NEWS", IMAGES."news/");
 define("AVATARS", IMAGES."avatars/");
 define("IMAGES_ADVERTISING", IMAGES."advertising/");
 define("IMAGES_TYPES", IMAGES."types/");
