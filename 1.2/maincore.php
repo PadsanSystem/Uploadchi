@@ -301,6 +301,7 @@ function verify_image($file) {
 	return $image_safe;
 }
 
+// Generate random text
 function random_text($type){
 	if($type=="number"){
 		$text=time();
