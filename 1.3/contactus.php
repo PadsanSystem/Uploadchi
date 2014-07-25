@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</div>
 		<div class="panel-body">
-			<div class="form-group col-lg-5">
+			<div class="form-group col-lg-5 text-center">
 				<img src="<?php echo IMAGES."contact.jpg"; ?>" alt="Contact Us" title="Contact Us" class="img-responsive img-thumbnail">
 			</div>
 			<form class="form-vertical" role="form" method="post" action="contactus.php">
