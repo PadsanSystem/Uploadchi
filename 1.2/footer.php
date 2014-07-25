@@ -12,9 +12,14 @@
 |-----------------------------------|
 */
 ?>
-</div>
 <div id="footer">
-	<p class="text-muted text-center"><small><br>Copyright &copy; 2011-2014 Uploadchi.com. All Rights Reserved</small></p>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<p class="text-muted text-center"><small><br>Copyright &copy; 2011-2014 Uploadchi.com. All Rights Reserved</small></p>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="<?php echo JAVASCRIPTS."jquery.js"; ?>"></script>
 <script src="<?php echo JAVASCRIPTS."jquery-ui.min.js"; ?>"></script>

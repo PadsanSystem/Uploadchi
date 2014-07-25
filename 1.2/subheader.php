@@ -26,15 +26,13 @@ require_once 'maincore.php';
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
 	<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
+	<link href="<?php echo CSS.'styles.min.css'; ?>" rel="stylesheet">
 	<link href="<?php echo CSS.'jasny-bootstrap.min.css'; ?>" rel="stylesheet">
-	<link href="<?php echo CSS.'sticky-footer-navbar.css'; ?>" rel="stylesheet">
 	<link href="<?php echo CSS.'ui-lightness/jquery-ui.css'; ?>" rel="stylesheet"/>
 </head>
 <body>
-<!-- Wrap all page content here -->
-<div id="wrap">
 <!-- Fixed navbar -->
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
