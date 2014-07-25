@@ -1,15 +1,15 @@
 <?php
 /*
-|--------------------------------|
-|		Padsan System CMS		 |
-|--------------------------------|
-|		General Version			 |
-|--------------------------------|
-|Web   : www.PadsanCMS.com		 |
-|Email : Support@PadsanCMS.com	 |
-|Tel   : +98 - 261 2533135		 |
-|Fax   : +98 - 261 2533136		 |
-|--------------------------------|
+|-----------------------------------|
+|	PadsanSystem					|
+|-----------------------------------|
+|	Uploadcenter Version			|
+|-----------------------------------|
+|	Web   : www.PadsanSystem.com	|
+|	Email : Info@PadsanSystem.com	|
+|	Tel   : +98 - 26 325 45 700		|
+|	Fax   : +98 - 26 325 45 701		|
+|-----------------------------------|
 */
 
 // Get php version
@@ -35,7 +35,7 @@ while(!file_exists($folder_level."config.php")){
 	$folder_level .= "../";
 }
 
-require_once $folder_level."config.php";
+require_once $folder_level.'config.php';
 define("BASEDIR", $folder_level);
 
 // Establish mySQL database connection
@@ -51,8 +51,8 @@ $REQUEST_URI = isset($_SERVER['REQUEST_URI']) ? cleanurl($_SERVER['REQUEST_URI']
 // Set defines
 define("IMAGES", BASEDIR."images/");
 define("AVATARS", IMAGES."avatars/");
-define("IMAGES_ADVERTISING", BASEDIR."images/advertising/");
-define("IMAGES_TYPES", BASEDIR."images/types/");
+define("IMAGES_ADVERTISING", IMAGES."advertising/");
+define("IMAGES_TYPES", IMAGES."types/");
 define("INCLUDES", BASEDIR."includes/");
 define("FUNCTIONS", INCLUDES."functions/");
 define("CLASSES", INCLUDES."classes/");
@@ -84,10 +84,10 @@ function dbcount($field, $table, $conditions="") {
 
 function dbresult($query, $row) {
 	$result=@mysql_result($query, $row);
-	if (!$result) {
+	if(!$result){
 		echo mysql_error();
 		return false;
-	} else {
+	}else{
 		return $result;
 	}
 }
@@ -217,7 +217,7 @@ function login($username, $password, $remember=0){
 	}
 }
 
-if(isset($logout) && $logout=="yes"){
+if(isset($logout) && $logout=='yes'){
 	session_destroy();
 	unset($userdata);
 	setcookie("user_id", $data['user_id'], -100);
@@ -324,7 +324,6 @@ function random_text($type){
 
 // Function to get the client ip address
 function get_ip(){
-    $ipaddress='';
 	if (getenv('HTTP_CLIENT_IP'))
 		$ipaddress = getenv('HTTP_CLIENT_IP');
 	else if(getenv('HTTP_X_FORWARDED_FOR'))

@@ -1,14 +1,14 @@
 <?php
 /*
 |-----------------------------------|
-| PadsanCMS							|
+|	PadsanSystem					|
 |-----------------------------------|
-| Uploadcenter Version				|
+|	Uploadcenter Version			|
 |-----------------------------------|
-| Web   : www.PadsanCMS.com			|
-| Email : Info@PadsanCMS.com		|
-| Tel   : +98 - 26 325 45 700		|
-| Fax   : +98 - 26 325 45 701		|
+|	Web   : www.PadsanSystem.com	|
+|	Email : Info@PadsanSystem.com	|
+|	Tel   : +98 - 26 325 45 700		|
+|	Fax   : +98 - 26 325 45 701		|
 |-----------------------------------|
 */
 if(isset($_POST['send_file'])){

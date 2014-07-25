@@ -14,13 +14,18 @@
 require_once 'subheader.php';
 ?>
 <div class="container">
-	<img src="<?php echo IMAGES.'cloud2.jpg'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive pull-right">
-	<h1>
-		Welcome to Uploadchi.com
-		<br>
-		<small class="text-success">Easily store, manage and share files with anyone</small>
-	</h1>
-	<br>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+			<h1>
+				Welcome to Uploadchi.com
+				<br>
+				<small class="text-success">Easily store, manage and share files with anyone</small>
+			</h1>
+		</div>
+		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
+			<img src="<?php echo IMAGES.'cloud2.jpg'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive pull-right">
+		</div>
+	</div>
 	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
 	  <li class="active"><a href="#upload_file" data-toggle="tab">Local Upload</a></li>
 	  <!--<li><a href="#download_link" data-toggle="tab">Download From Links</a></li>-->

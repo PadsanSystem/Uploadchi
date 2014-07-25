@@ -57,7 +57,19 @@ require_once 'maincore.php';
 				if($userdata['user_id']!=NULL){
 				?>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <small>Hi, <?php echo "<b>".$userdata['user_username']."</b>"; ?> </small><b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<?php
+					if($userdata['user_avatar']!='noavatar.png'){
+						?>
+						<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle">
+						<?php
+					}else{
+						?>
+						<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle"> 
+						<?php
+					}
+					?>
+					<small>Hi, <?php echo "<b>".$userdata['user_username']."</b>"; ?> </small><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="<?php echo BASEDIR.'edit_profile.php'; ?>"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Edit Profile</a></li>
 						<li><a href="<?php echo BASEDIR.'filemanager.php'; ?>"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;File Manager</a></li>
