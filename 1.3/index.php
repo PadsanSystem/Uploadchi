@@ -15,8 +15,8 @@ require_once 'subheader.php';
 ?>
 <div class="container">
 <?php
-include_once FUNCTIONS.'function.servers.php';
-get_server();
+// include_once FUNCTIONS.'function.servers.php';
+// get_server();
 ?>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
@@ -31,7 +31,7 @@ get_server();
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
 						<small>
-							<ul>
+							<ul class="no-more-left">
 								<li>even more place to store and capture all your life's fleeting moments</li>
 								<li>with SSL data encryption your data will stay protected</li>
 								<li>let your friends instantly download files, which you send them</li>

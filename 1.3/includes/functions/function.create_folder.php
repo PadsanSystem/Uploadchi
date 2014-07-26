@@ -11,19 +11,10 @@
 |	Fax   : +98 - 26 325 45 701		|
 |-----------------------------------|
 */
-if(isset($_POST['create_folder'])){	
+if(isset($_POST['create_folder'])){
 	$attachment_folder_name=secure_itext($_POST['attachment_folder_name']);
-	dbquery("INSERT INTO ".DB_PREFIX."attachments_folders (attachment_folder_name, attachment_folder_step, attachment_folder_user, attachment_folder_time) VALUES ('$attachment_folder_name', '$folder_name', '".$userdata['user_id']."', '".time()."')");
 	
-	if(isset($folder_name)){
-		redirect($REQUEST_URI);
-	}else{
-		redirect($PHP_SELF);
-	}
-}
-
-if(isset($action) && isset($folder_name) && ($action=="delete")){
-	dbquery("DELETE FROM ".DB_PREFIX."attachments_folders WHERE attachment_folder_id='$folder_name'");
+	dbquery("INSERT INTO ".DB_PREFIX."attachments_folders (attachment_folder_name, attachment_folder_step, attachment_folder_user, attachment_folder_time) VALUES ('$attachment_folder_name', '$folder_name', '".$userdata['user_id']."', '".time()."')");
 }
 ?>
 <!-- Modal / Create Folder -->
