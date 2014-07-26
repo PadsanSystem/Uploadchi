@@ -13,8 +13,12 @@
 */
 if(isset($_POST['create_folder'])){
 	$attachment_folder_name=secure_itext($_POST['attachment_folder_name']);
-	
-	dbquery("INSERT INTO ".DB_PREFIX."attachments_folders (attachment_folder_name, attachment_folder_step, attachment_folder_user, attachment_folder_time) VALUES ('$attachment_folder_name', '$folder_name', '".$userdata['user_id']."', '".time()."')");
+	if($folder_name=="")
+		$query='NULL';
+	else
+		$query='"'.$folder_name.'"';
+		
+	dbquery("INSERT INTO ".DB_PREFIX."attachments_folders (attachment_folder_name, attachment_folder_step, attachment_folder_user, attachment_folder_time) VALUES ('$attachment_folder_name', $query, '".$userdata['user_id']."', '".time()."')");
 }
 ?>
 <!-- Modal / Create Folder -->

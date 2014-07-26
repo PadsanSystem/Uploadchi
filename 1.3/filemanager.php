@@ -16,6 +16,11 @@ if(iMEMBER){
 	require_once FUNCTIONS."function.create_folder.php";
 	require_once FUNCTIONS."function.file_info.php";
 	require_once FUNCTIONS."function.remove.php";
+	
+	
+	if(isset($action) && ($action=='delete')){
+		redirect($_SERVER['PHP_SELF']);
+	}
 	?>
 
 	<!-- Begin page content -->
@@ -43,11 +48,13 @@ if(iMEMBER){
 						<?php
 						if(isset($folder_name)){
 							$result_attachment_folder_step=dbquery("SELECT * FROM ".DB_PREFIX."attachments_folders WHERE attachment_folder_user='".$userdata['user_id']."' AND attachment_folder_id='$folder_name'");
+							
 							$data_attachment_folder_step=dbarray($result_attachment_folder_step);
-							if($data_attachment_folder_step['attachment_folder_step']==0){
-								$up_one_level="";
+							
+							if($data_attachment_folder_step['attachment_folder_step']>0){
+								$up_one_level="?folder_name=".$data_attachment_folder_step['attachment_folder_step'];
 							}else{
-								$up_one_level="?folder_folder_name=".$data_attachment_folder_step['attachment_folder_step'];
+								$up_one_level='';
 							}
 							?>
 							<div class="form-group col-lg-7">

@@ -15,7 +15,7 @@ if(isset($action) && ($action=='delete')){
 	if(isset($folder_name)){
 		dbquery("DELETE FROM ".DB_PREFIX."attachments_folders WHERE attachment_folder_id='$folder_name'");
 	}else if(isset($url)){
-		dbquery("DELETE FROM ".DB_PREFIX."attachments WHERE attachment_id='$attachment_folder_id' || attachment_folder_step='$folder_name'");
+		dbquery("DELETE FROM ".DB_PREFIX."attachments WHERE attachment_uid='$url'");
 	}
 }
 ?>

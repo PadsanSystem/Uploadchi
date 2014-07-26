@@ -38,7 +38,7 @@ require_once "subheader.php";
 				
 				Phone: (+98) 26 325 45 700<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				(+98) 26 325 45 701<br><br>
 				
 				Email: info@uploadchi.com<br>
