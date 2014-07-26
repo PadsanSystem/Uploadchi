@@ -13,9 +13,15 @@
 */
 
 function get_server(){
-	$result=dbquery("SELECT top(server_ram), server_name FROM ".DB_PREFIX."servers WHERE server_status='Enable' GROUP BY server_name");
-	while($data=dbarray($result)){
-		var_dump($data);
+	include_once FUNCTIONS.'function.attachments_exts.php';
+	$types=check_validate_exts('jpg');
+	
+	$result=dbquery("SELECT server.server_ram, server.server_hdd, server.server_cpu, server.server_bandwidth, server.server_connectivity, server.server_name, datacenter.datacenter_status, server_access.server_access_attachment_ext, server_access.server_access_server, server_access.server_access_status FROM ".DB_PREFIX."servers server, ".DB_PREFIX."datacenters datacenter, ".DB_PREFIX."servers_access server_access WHERE datacenter.datacenter_id=server.server_datacenter AND server_access.server_access_attachment_ext=true AND server_access.server_access_server=server.server_id AND server_access.server_access_status='Enable' AND datacenter.datacenter_status='Enable' AND server.server_status='Enable' GROUP BY server.server_name");
+	
+	if(dbrows($result)!=0){
+		
+	}else{
+		$error='We are sorry!';
 	}
 }
 ?>
