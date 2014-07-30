@@ -16,8 +16,19 @@ if(isset($_POST['send_file'])){
 	include_once CLASSES."class.ftp_upload.php";
 	
 	// Get Files
-	$original_name=$_FILES['file_hosting']['name'];
+	$name=get_name($_FILES['file_hosting']['name']);
+	
+	// Get type file
 	$type=get_type($_FILES['file_hosting']['name']);
+	
+	// Set uid file
+	$uid=$name;
+	$uid.='_';
+	$uid.=random_text('number');
+	$uid.='.';
+	$uid.=$type;
+	
+	// Get size file
 	$size=$_FILES['file_hosting']['size'];
 	
 	include_once FUNCTIONS.'function.attachments_exts.php';
@@ -70,9 +81,9 @@ if(isset($_POST['send_file'])){
 		
 		$attachment_folder='NULL';
 
-		dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_status) VALUES ('$original_name', '$size', '$generate_name', '".$data['attachment_ext_id']."', '1', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', 'Enable')");
+		dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '1', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', 'Enable')");
 		
-		$download_url=$settings['setting_siteurl'].'download.php?url='.$original_name;
+		$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 	}else{
 		$error='type';
 	}

@@ -185,12 +185,20 @@ function stripslash($text) {
 	return $text;
 }
 
+// Get file names
+function get_name($url){
+	// Explode name
+	$get_explode=explode(".", $url);
+	$name=$get_explode[0];
+	
+	return $name;
+}
+
 // Get file types
 function get_type($url){
 	// Explode name
 	$get_explode=explode(".", $url);
-	$get_explode_count=count($get_explode);
-	$type=$get_explode[$get_explode_count-1];
+	$type=$get_explode[1];
 	$type=strtolower($type);
 	
 	return $type;
@@ -304,7 +312,7 @@ function verify_image($file) {
 
 // Generate random text
 function random_text($type){
-	if($type=="number"){
+	if($type=='number'){
 		$text=time();
 		$text+=rand(10, 100);
 		$text+=rand(100, 1000);
@@ -315,9 +323,9 @@ function random_text($type){
 		$text+=rand(10000000, 100000000);
 		$text+=rand(100000000, 1000000000);
 		$text+=rand(1000000000, 10000000000);
-	}else if($type=="text"){
+	}else if($type=='text'){
 	
-	}else if($type=="mixed"){
+	}else if($type=='mixed'){
 		
 	}
 	
