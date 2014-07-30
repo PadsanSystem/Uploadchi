@@ -22,11 +22,7 @@ if(isset($_POST['send_file'])){
 	$type=get_type($_FILES['file_hosting']['name']);
 	
 	// Set uid file
-	$uid=$name;
-	$uid.='_';
-	$uid.=random_text('number');
-	$uid.='.';
-	$uid.=$type;
+	$uid=set_uid($name, $type, '_');
 	
 	// Get size file
 	$size=$_FILES['file_hosting']['size'];

@@ -185,6 +185,17 @@ function stripslash($text) {
 	return $text;
 }
 
+// Get uid names
+function set_uid($name, $type, $separator){
+	$uid=$name;
+	$uid.=$separator;
+	$uid.=random_text('number');
+	$uid.='.';
+	$uid.=$type;
+	
+	return $uid;
+}
+
 // Get file names
 function get_name($url){
 	// Explode name
