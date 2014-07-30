@@ -14,10 +14,6 @@
 require_once 'subheader.php';
 ?>
 <div class="container">
-<?php
-// include_once FUNCTIONS.'function.servers.php';
-// get_server();
-?>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
 			<h1>
@@ -50,13 +46,11 @@ require_once 'subheader.php';
 	</div>
 	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
 	  <li class="active"><a href="#upload_file" data-toggle="tab">Local Upload</a></li>
-	  <!--<li><a href="#download_link" data-toggle="tab">Download From Links</a></li>-->
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="upload_file">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					
 					<form class="form-horizontal" role="form" method="post" action="upload.php" enctype="multipart/form-data">
 						<div class="form-group">
 							<div class="col-lg-8 col-lg-offset-2 text-center">
@@ -73,70 +67,9 @@ require_once 'subheader.php';
 							</div>
 						</div>
 					</form>
-					<!--
-					<div class="row">
-						<div class="col-lg-4">
-							<div class="thumbnail">
-								<h3 class="text-center">Basic</h3>
-								<img src="images/pro.png" alt="Buy Basic" class="img-responsive img-rounded">
-								<div class="caption text-center">
-									<br>
-									<h2><span class="text-danger">25$</span></h2>
-									<p><a href="#" class="btn-lg btn-block btn-primary" role="button">Buy Now</a></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="thumbnail">
-								<h3 class="text-center">Pro</h3>
-								<img src="images/pro.png" alt="Buy Pro" class="img-responsive img-rounded">
-								<div class="caption text-center">
-									<br>
-									<h2><span class="text-danger">25$</span></h2>
-									<p><a href="#" class="btn-lg btn-block btn-primary" role="button">Buy Now</a></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="thumbnail">
-								<h3 class="text-center">Basic</h3>
-								<img src="images/business.png" alt="Buy Business" class="img-responsive img-rounded">
-								<div class="caption text-center">
-									<br>
-									<h2><span class="text-danger">25$</span></h2>
-									<p><a href="#" class="btn-lg btn-block btn-primary" role="button">Buy Now</a><p>
-								</div>
-								<ul>
-									<li> 1 TB Space</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					-->
 				</div>
 			</div>
 		</div>
-		<!--
-		<div class="tab-pane" id="download_link">
-			<div class="panel panel-success" style="border-top-left-radius:0">
-				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="index.php">
-						<div class="form-group">
-							<div class="col-lg-12">
-								<input id="link_hosting" name="link_hosting" type="file">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-3">
-								<button id="send_link" name="send_link" type="submit" class="btn btn-danger">Upload Files</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="panel-heading" style="border-top-left-radius:0; border-top-right-radius:0"><span class="glyphicon glyphicon-cloud-download"> DownloadFromLinks</span></div>
-			</div>
-		</div>
-		-->
 	</div>
 	
 			

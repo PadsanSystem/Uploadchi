@@ -16,8 +16,21 @@ require_once INCLUDES.'file_hosting.php';
 
 // Check $download_url not empty
 if(!isset($download_url) && !isset($error) && !cleanurl($download_url)) redirect(BASEDIR.'index.php');
+if (isset($error) && !isnum($error)) { redirect(BASEDIR.'index.php'); }
 
-if(!isset($error)){
+if(isset($error)){
+	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error'");
+	$data=dbarray($result);
+	?>
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="alert alert-warning" role="alert">
+			<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
+			<?php echo $data['error_page_content']; ?>
+		</div>
+	</div>
+	<?php
+}else{
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -33,17 +46,6 @@ if(!isset($error)){
 	</div>
 </div>
 <?php
-}else{
-	?>
-	<!-- Begin page content -->
-	<div class="container">
-		<div class="alert alert-warning" role="alert">
-			<p class="text-danger">Error 400</p>
-			<p>We are Sorry,</p><p>The type of upload file is not valid, <a href="<?php echo BASEDIR.'index.php'; ?>" class="alert-link">please try again.</p></a>
-		</div>
-	</div>
-	<?php
 }
-
 require_once BASEDIR.'footer.php';
 ?>

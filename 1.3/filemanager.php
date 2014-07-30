@@ -11,11 +11,11 @@
 |	Fax   : +98 - 26 325 45 701		|
 |-----------------------------------|
 */
-require_once "subheader.php";
+require_once 'subheader.php';
 if(iMEMBER){
-	require_once FUNCTIONS."function.create_folder.php";
-	require_once FUNCTIONS."function.file_info.php";
-	require_once FUNCTIONS."function.remove.php";
+	require_once FUNCTIONS.'function.create_folder.php';
+	require_once FUNCTIONS.'function.file_info.php';
+	require_once FUNCTIONS.'function.remove.php';
 	
 	
 	if(isset($action) && ($action=='delete')){
@@ -66,21 +66,11 @@ if(iMEMBER){
 						<div class="table-responsive">
 							<table class="table table-bordered col-lg-12">
 								<tr class="active">
-									<td class="text-center col-lg-5">
-										<a href="#">Name</a>
-									</td>
-									<td class="text-center col-lg-1">
-										<a href="#">Date Modified</a>
-									</td>
-									<td class="text-center col-lg-1">
-										<a href="#">Type</a>
-									</td>
-									<td class="text-center col-lg-1">
-										<a href="#">Size</a>
-									</td>
-									<td class="text-center col-lg-1">
-										<a href="#">Operation</a>
-									</td>
+									<td class="text-center col-lg-5"><a href="#">Name</a></td>
+									<td class="text-center col-lg-1"><a href="#">Date Modified</a></td>
+									<td class="text-center col-lg-1"><a href="#">Type</a></td>
+									<td class="text-center col-lg-1"><a href="#">Size</a></td>
+									<td class="text-center col-lg-1"><a href="#">Operation</a></td>
 								</tr>
 								<?php
 								if(isset($folder_name)){
@@ -103,7 +93,7 @@ if(iMEMBER){
 												<small><?php echo date("d/m/Y H:m:s A", $data_attachment_folder['attachment_folder_time']); ?></small>
 											</td>
 											<td class="text-center col-lg-1 text-muted">
-												<small>File Folder</small>
+												<small>File folder</small>
 											</td>
 											<td class="text-center col-lg-1"></td>
 											<td class="text-center col-lg-1">
@@ -171,7 +161,7 @@ if(iMEMBER){
 	</div>
 	<?php
 }else{
-	redirect(BASEDIR."login.php");
+	redirect(BASEDIR.'login.php');
 }
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>
