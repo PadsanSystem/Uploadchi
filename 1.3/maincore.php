@@ -215,6 +215,55 @@ function get_type($url){
 	return $type;
 }
 
+// Making Page Navigation
+function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = "rowstart") {
+	global $locale;
+
+	if ($link == "") { $link = BASEDIR."?"; }
+	if (!preg_match("#[0-9]+#", $count) || $count == 0) return false;
+	
+	$pg_cnt = ceil($total / $count);
+	if ($pg_cnt <= 1) { return ""; }
+
+	$idx_back = $start - $count;
+	$idx_next = $start + $count;
+	$cur_page = ceil(($start + 1) / $count);
+
+	$res = "";
+	if ($idx_back >= 0) {
+		if ($cur_page > ($range + 1)) {
+			$res .= "<li><a href='".$link.$getname."=0'>1</a></li>";
+			if ($cur_page != ($range + 2)) {
+				$res .= "...";
+			}
+		}
+	}
+	$idx_fst = max($cur_page - $range, 1);
+	$idx_lst = min($cur_page + $range, $pg_cnt);
+	if ($range == 0) {
+		$idx_fst = 1;
+		$idx_lst = $pg_cnt;
+	}
+	for ($i = $idx_fst; $i <= $idx_lst; $i++) {
+		$offset_page = ($i - 1) * $count;
+		if ($i == $cur_page) {
+			$res .= "<li class='active'><a href=''>".$i."</a></li>";
+		} else {
+			$res .= "<li><a href='".$link.$getname."=".$offset_page."'>".$i."</a></li>";
+		}
+	}
+	if ($idx_next < $total) {
+		if ($cur_page < ($pg_cnt - $range)) {
+			if ($cur_page != ($pg_cnt - $range - 1)) {
+				$res .= "...";
+			}
+			$res .= "<li><a href='".$link.$getname."=".($pg_cnt - 1) * $count."'>".$pg_cnt."</a></li>\n";
+		}
+	}
+
+	return "<ul class='pagination'>\n".$res."</ul>\n";
+}
+
 function login($username, $password, $remember=0){
 	$username=secure_itext($username);
 	$password=secure_itext(md5(md5($password)));
