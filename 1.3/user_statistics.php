@@ -13,7 +13,9 @@
 */
 require_once 'subheader.php';
 
-if (!isset($rowstart) || !isnum($rowstart)) { $rowstart = 0; }
+if (!isset($rowstart)) { $rowstart = 0; }
+if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.php'); }
+
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -43,11 +45,23 @@ if (!isset($rowstart) || !isnum($rowstart)) { $rowstart = 0; }
 						</td>
 					</tr>
 					<?php
-					$result_attachment_view_count=dbrows(dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."servers s WHERE a.attachment_status='Enable' AND a.attachment_user='".$userdata['user_id']."' AND a.attachment_server=s.server_id"));
+					$result_attachment_count=dbrows(dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."servers s WHERE a.attachment_status='Enable' AND a.attachment_user='".$userdata['user_id']."' AND a.attachment_server=s.server_id"));
 					
 					$limitrow=10;
+					
 					$result_attachment_view=dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."servers s WHERE a.attachment_status='Enable' AND a.attachment_user='".$userdata['user_id']."' AND a.attachment_server=s.server_id ORDER BY a.attachment_time DESC LIMIT $rowstart, $limitrow");
-					if(dbrows($result_attachment_view)!=0){
+					
+					if($rowstart>$result_attachment_count || $rowstart%$limitrow!=0){
+						redirect(BASEDIR.'user_statistics.php');
+					}else if(dbrows($result_attachment_view)==0){
+						?>
+						<tr>
+							<td colspan="6" class="text-center col-lg-1 text-muted">
+								<small>There is no any uploaded files.</small>
+							</td>
+						</tr>
+						<?php
+					}else{
 						while($data_attachment_view=dbarray($result_attachment_view)){
 							$attachment_link="http://www.".$data_attachment_view['server_name']."/download.php?url=".$data_attachment_view['attachment_uid'];
 							?>
@@ -82,26 +96,21 @@ if (!isset($rowstart) || !isnum($rowstart)) { $rowstart = 0; }
 							</tr>
 							<?php
 						}
-					}else{
-						?>
-						<tr>
-							<td colspan="6" class="text-center col-lg-1 text-muted">
-								<small>There is no any uploaded files.</small>
-							</td>
-						</tr>
-						<?php
 					}
 					?>
 				</table>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<?php echo makepagenav($start=$rowstart, $count=$limitrow, $total=$result_attachment_view_count, $range = 1, $link = "", $getname = "rowstart"); ?>
+					<?php
+					if($result_attachment_count>$limitrow)
+						echo makepagenav($start=$rowstart, $count=$limitrow, $total=$result_attachment_count, $range = 1, $link = "", $getname = "rowstart");
+					?>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <?php
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>

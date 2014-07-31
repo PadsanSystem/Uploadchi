@@ -37,7 +37,7 @@ if(isset($_POST['send_file'])){
 	if($trust_type==false){
 		$error=100;
 	}else{
-		if($verify_image==false){
+		if($type==1 && $verify_image==false){
 			$error=101;
 		}else{
 			// Generate name
