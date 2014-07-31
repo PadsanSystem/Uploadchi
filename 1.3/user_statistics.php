@@ -73,7 +73,7 @@ if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.p
 									</a>
 								</td>
 								<td class="text-center col-lg-1 text-muted">
-									<small><?php echo date("d/m/Y H:m:s A", $data_attachment_view['attachment_time']); ?></small>
+									<small><?php echo date("m/d/Y H:m:s A", $data_attachment_view['attachment_time']); ?></small>
 								</td>
 								<td class="text-center col-lg-1 text-muted">
 									<small><?php echo strtoupper(get_type($data_attachment_view['attachment_uid']))." File"; ?></small>

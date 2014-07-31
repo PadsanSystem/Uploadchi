@@ -67,7 +67,7 @@ if(iMEMBER){
 							<table class="table table-bordered col-lg-12">
 								<tr class="active">
 									<td class="text-center col-lg-5"><a href="#">Name</a></td>
-									<td class="text-center col-lg-1"><a href="#">Date Modified</a></td>
+									<td class="text-center col-lg-1"><a href="#">Date</a></td>
 									<td class="text-center col-lg-1"><a href="#">Type</a></td>
 									<td class="text-center col-lg-1"><a href="#">Size</a></td>
 									<td class="text-center col-lg-1"><a href="#">Operation</a></td>
@@ -123,7 +123,7 @@ if(iMEMBER){
 												</a>
 											</td>
 											<td class="text-center col-lg-1 text-muted">
-												<small><?php echo date("d/m/Y H:m:s A", $data_attachment['attachment_time']); ?></small>
+												<small><?php echo date("m/d/Y H:m:s A", $data_attachment['attachment_time']); ?></small>
 											</td>
 											<td class="text-center col-lg-1 text-muted">
 												<small><?php echo strtoupper(get_type($data_attachment['attachment_uid']))." File"; ?></small>
