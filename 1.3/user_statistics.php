@@ -70,7 +70,7 @@ if (!isset($rowstart) || !isnum($rowstart)) { $rowstart = 0; }
 								<td class="text-center col-lg-1 text-muted">
 									<small>
 									<?php
-										$result_attachment_view_count=dbquery("SELECT distinct(attachment_view_ip) FROM ".DB_PREFIX."attachments_views WHERE attachment_view_user='".$userdata['user_id']."' AND attachment_view_attachment='".$data_attachment_view['attachment_id']."'");
+										$result_attachment_view_count=dbquery("SELECT distinct(attachment_view_ip) FROM ".DB_PREFIX."attachments_views WHERE attachment_view_attachment='".$data_attachment_view['attachment_id']."'");
 										echo number_format(dbrows($result_attachment_view_count));
 									?>
 									</small>

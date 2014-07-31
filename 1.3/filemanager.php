@@ -12,9 +12,9 @@
 |-----------------------------------|
 */
 require_once 'subheader.php';
+
 if(iMEMBER){
 	require_once FUNCTIONS.'function.create_folder.php';
-	require_once FUNCTIONS.'function.file_info.php';
 	require_once FUNCTIONS.'function.remove.php';
 	
 	
@@ -39,7 +39,7 @@ if(iMEMBER){
 						</div>
 						<div class="form-group col-lg-5 pull-right">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search filename">
+								<input id="search" type="text" class="form-control" placeholder="Search filename">
 								<span class="input-group-btn">
 									<button class="btn btn-primary" type="button">Search</button>
 								</span>
@@ -134,7 +134,6 @@ if(iMEMBER){
 											<td class="text-center col-lg-1">
 												<a href="<?php echo BASEDIR."filemanager.php?url=".$data_attachment['attachment_uid']."&action=delete"; ?>"><span class="glyphicon glyphicon-floppy-remove"></span></a>
 												<a href="<?php echo BASEDIR."download.php?url=".$data_attachment['attachment_uid']; ?>" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span></a>
-												<a href="#" data-toggle="modal" data-target="#file_info"><span class="glyphicon glyphicon-info-sign"></span></a>
 											</td>
 										</tr>
 									<?php

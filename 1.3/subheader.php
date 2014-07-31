@@ -28,7 +28,7 @@ require_once 'maincore.php';
 	<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
 	<link href="<?php echo CSS.'styles.min.css'; ?>" rel="stylesheet">
 	<link href="<?php echo CSS.'jasny-bootstrap.min.css'; ?>" rel="stylesheet">
-	<link href="<?php echo CSS.'ui-lightness/jquery-ui.css'; ?>" rel="stylesheet"/>
+	<link href="<?php echo CSS.'ui-lightness/jquery-ui.min.css'; ?>" rel="stylesheet"/>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
