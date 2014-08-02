@@ -42,7 +42,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/dataTables.bootstrap.css'; ?>" rel="stylesheet">
 		
 		<!-- Custom CSS -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'sb-admin-2.css'; ?>" rel="stylesheet">
+		<link href="<?php echo CSS.'sb-admin-2.css'; ?>" rel="stylesheet">
 
 		<!-- Morris Charts CSS -->
 		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/morris.css'; ?>" rel="stylesheet">
