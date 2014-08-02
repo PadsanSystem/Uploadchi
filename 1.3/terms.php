@@ -1,17 +1,17 @@
 <?php
 /*
-|-----------------------------------|
-|	PadsanSystem					|
-|-----------------------------------|
-|	Uploadcenter Version			|
-|-----------------------------------|
-|	Web   : www.PadsanSystem.com	|
-|	Email : Info@PadsanSystem.com	|
-|	Tel   : +98 - 26 325 45 700		|
-|	Fax   : +98 - 26 325 45 701		|
-|-----------------------------------|
+|-------------------------------|
+| PadsanSystem Corporation		|
+|-------------------------------|
+| Upload Center Version			|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
 */
-require_once "subheader.php";
+require_once 'subheader.php';
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -44,5 +44,5 @@ require_once "subheader.php";
 	</div>
 </div>
 <?php
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>

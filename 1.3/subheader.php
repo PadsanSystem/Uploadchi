@@ -1,15 +1,15 @@
 <?php
 /*
-|-----------------------------------|
-|	PadsanSystem					|
-|-----------------------------------|
-|	Uploadcenter Version			|
-|-----------------------------------|
-|	Web   : www.PadsanSystem.com	|
-|	Email : Info@PadsanSystem.com	|
-|	Tel   : +98 - 26 325 45 700		|
-|	Fax   : +98 - 26 325 45 701		|
-|-----------------------------------|
+|-------------------------------|
+| PadsanSystem Corporation		|
+|-------------------------------|
+| Upload Center Version			|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
 */
 session_start();
 require_once 'maincore.php';
@@ -77,7 +77,14 @@ require_once 'maincore.php';
 					<ul class="dropdown-menu">
 						<li><a href="<?php echo BASEDIR.'edit_profile.php'; ?>"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Edit Profile</a></li>
 						<li><a href="<?php echo BASEDIR.'filemanager.php'; ?>"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;File Manager</a></li>
-						<li><a href="<?php echo BASEDIR.'user_statistics.php'; ?>"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;View Statistics</a></li>
+						<?php
+						if (iADMIN){
+							?>
+							<li><a href="<?php echo BASEDIR.'user_statistics.php'; ?>"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;View Statistics</a></li>
+							<?php
+						}
+						?>
+						<li><a href="<?php echo ADMINISTRATION.'index.php'; ?>"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Control Panel</a></li>
 						<!--<li><a href=""><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;Buy Premium</a></li>!-->
 						<li class="divider"></li>
 						<li><a href="<?php echo BASEDIR."index.php?logout=yes"; ?>"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>

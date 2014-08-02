@@ -1,15 +1,15 @@
 <?php
 /*
-|-----------------------------------|
-|	PadsanSystem					|
-|-----------------------------------|
-|	Uploadcenter Version			|
-|-----------------------------------|
-|	Web   : www.PadsanSystem.com	|
-|	Email : Info@PadsanSystem.com	|
-|	Tel   : +98 - 26 325 45 700		|
-|	Fax   : +98 - 26 325 45 701		|
-|-----------------------------------|
+|-------------------------------|
+| PadsanSystem Corporation		|
+|-------------------------------|
+| Upload Center Version			|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
 */
 
 // Get php version
@@ -49,6 +49,7 @@ $QUERY_STRING = isset($_SERVER['QUERY_STRING']) ? cleanurl($_SERVER['QUERY_STRIN
 $REQUEST_URI = isset($_SERVER['REQUEST_URI']) ? cleanurl($_SERVER['REQUEST_URI']) : "";
 
 // Set defines
+define("ADMINISTRATION", BASEDIR."administration/");
 define("IMAGES", BASEDIR."images/");
 define("IMAGES_NEWS", IMAGES."news/");
 define("AVATARS", IMAGES."avatars/");
@@ -267,7 +268,7 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 function login($username, $password, $remember=0){
 	$username=secure_itext($username);
 	$password=secure_itext(md5(md5($password)));
-	$result=dbquery("SELECT * FROM ".DB_PREFIX."users WHERE user_username='$username' AND user_password='$password' AND user_status='Enable' LIMIT 1");
+	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
 	if(dbrows($result)!=0){
 		$data=dbarray($result);
 		$expired=time()+86400;
@@ -293,10 +294,6 @@ if(isset($logout) && $logout=='yes'){
 	setcookie("user_username", $data['user_username'], -100);
 	setcookie("user_password", $data['user_password'], -100);
 	redirect($PHP_SELF);
-}
-
-if(!iMEMBER){
-	$userdata['user_id']='NULL';
 }
 
 if(isset($_COOKIE)){
@@ -412,5 +409,10 @@ function get_ip(){
     return $ipaddress;
 }
 
+if(!iMEMBER){
+	$userdata['user_id']='NULL';
+}
+
 define("iMEMBER", $userdata['user_id'] >= 1 ? 1 : 0);
+define("iADMIN", $userdata['user_id'] >= 1 ? 1 : 0);
 ?>
