@@ -268,7 +268,10 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 function login($username, $password, $remember=0){
 	$username=secure_itext($username);
 	$password=secure_itext(md5(md5($password)));
+	
 	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
+	
+	
 	if(dbrows($result)!=0){
 		$data=dbarray($result);
 		$expired=time()+86400;
@@ -276,10 +279,12 @@ function login($username, $password, $remember=0){
 			setcookie("user_id", $data['user_id'], $expired);
 			setcookie("user_username", $data['user_username'], $expired);
 			setcookie("user_password", $data['user_password'], $expired);
+			setcookie("user_group", $data['user_group_access'], $expired);
 		}else{
 			$_SESSION['user_id']=$data['user_id'];
 			$_SESSION['user_username']=$data['user_username'];
 			$_SESSION['user_password']=$data['user_password'];
+			$_SESSION['user_group']=$data['user_group_access'];
 		}
 		redirect($PHP_SELF);
 	}else{
@@ -293,6 +298,7 @@ if(isset($logout) && $logout=='yes'){
 	setcookie("user_id", $data['user_id'], -100);
 	setcookie("user_username", $data['user_username'], -100);
 	setcookie("user_password", $data['user_password'], -100);
+	setcookie("user_group", $data['user_group_access'], -100);
 	redirect($PHP_SELF);
 }
 
@@ -409,10 +415,13 @@ function get_ip(){
     return $ipaddress;
 }
 
-if(!iMEMBER){
-	$userdata['user_id']='NULL';
+if (iADMIN) {
+	define("iAUTH", substr(md5($userdata['user_password']), 16, 16));
+	$aidlink = "?aid=".iAUTH;
 }
 
-define("iMEMBER", $userdata['user_id'] >= 1 ? 1 : 0);
-define("iADMIN", $userdata['user_id'] >= 1 ? 1 : 0);
+// User level, Admin Rights & User Group definitions
+// define("iGUEST", $userdata['user_group'] == 0 ? 1 : 0);
+define("iMEMBER", $userdata['user_group'] >= 100 ? 1 : 0);
+define("iADMIN", $userdata['user_group'] == 200 ? 1 : 0);
 ?>

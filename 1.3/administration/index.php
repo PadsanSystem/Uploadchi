@@ -1,5 +1,6 @@
 <?php
 require_once 'subheader.php';
+if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('../index.php'); }
 ?>
 <div id="page-wrapper">
 	<div class="row">
@@ -548,5 +549,5 @@ require_once 'subheader.php';
 	<!-- /.row -->
 </div>
 <?php
-require_once ADMINISTRAION.'footer.php';
+require_once ADMINISTRATION.'footer.php';
 ?>

@@ -13,11 +13,12 @@
 */
 require_once 'subheader.php';
 
-if(iMEMBER) { redirect(BASEDIR.'index.php'); }
+if(iADMIN) { redirect(BASEDIR.'index.php'); }
 
 if(isset($_POST['submit'])){
 	login($username=$_POST['username'], $password=$_POST['password'], $remember=$_POST['remember']);
 }
+echo $userdata['user_group'];
 ?>
 <!-- Begin page content -->
 <div class="container col-lg-offset-4 col-lg-4">
