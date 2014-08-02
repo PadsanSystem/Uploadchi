@@ -38,6 +38,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/timeline.css'; ?>" rel="stylesheet">
 		
 		<!-- DataTables CSS -->
+		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/dataTables.css'; ?>" rel="stylesheet">
 		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/dataTables.bootstrap.css'; ?>" rel="stylesheet">
 		
 		<!-- Custom CSS -->
