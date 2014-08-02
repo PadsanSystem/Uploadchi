@@ -11,7 +11,9 @@
 |	Fax   : +98 - 26 325 45 701		|
 |-----------------------------------|
 */
-require_once "subheader.php";
+require_once 'subheader.php';
+
+if(iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 if(isset($_POST['submit'])){
 	$user_username=secure_itext(strtolower($_POST['username']));
@@ -83,5 +85,5 @@ if(isset($_POST['submit'])){
 	</div>
 </div>
 <?php
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>

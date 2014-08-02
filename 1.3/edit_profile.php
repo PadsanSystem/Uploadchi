@@ -13,6 +13,8 @@
 */
 require_once 'subheader.php';
 
+if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
+
 if(isset($_POST['submit'])){
 	$user_username=secure_itext($_POST['username']);
 	$user_password=md5(md5(secure_itext($_POST['password'])));

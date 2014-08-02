@@ -13,6 +13,7 @@
 */
 require_once 'subheader.php';
 
+if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 if (!isset($rowstart)) { $rowstart = 0; }
 if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.php'); }
 
