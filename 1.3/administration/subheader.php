@@ -268,7 +268,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 							<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-user">
-							<li><a href="#"><i class="fa fa-gear fa-fw"></i> View website</a></li>
+							<li><a href="<?php echo BASEDIR.'index.php'; ?>"><i class="fa fa-gear fa-fw"></i> View website</a></li>
 							<li class="divider"></li>
 							<li><a href="<?php echo ADMINISTRATION.'index.php?logout=yes'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 							</li>
@@ -294,7 +294,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 								<!-- /input-group -->
 							</li>
 							<li>
-								<a class="active" href="<?php echo ADMINISTRATION.'index.php'; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+								<a class="active" href="<?php echo ADMINISTRATION.'index.php'.$aidlink; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Management<span class="fa arrow"></span></a>

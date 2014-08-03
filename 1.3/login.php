@@ -11,7 +11,7 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
-require_once 'subheader_uniq.php';
+require_once 'subheader.php';
 
 if(iMEMBER) { redirect(BASEDIR.'index.php'); }
 
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 					<div class="panel-body">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autocomplete="off" autofocus required>
+								<input class="form-control" placeholder="Username" name="username" type="text" autocomplete="off" required autofocus>
 							</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" required>

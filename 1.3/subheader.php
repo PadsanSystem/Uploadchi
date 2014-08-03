@@ -15,7 +15,7 @@ session_start();
 require_once 'maincore.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,17 @@ require_once 'maincore.php';
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
 	<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
-	<link href="<?php echo CSS.'styles.min.css'; ?>" rel="stylesheet">
+	<?php
+	if(iADMIN && isset($_GET['aidlink']) || preg_match('/login.php/i', $_SERVER['SCRIPT_FILENAME'])){
+		?>
+		<link href="<?php echo CSS.'sb-admin-2.css'; ?>" rel="stylesheet">
+		<?php
+	}else{
+		?>
+		<link href="<?php echo CSS.'styles.min.css'; ?>" rel="stylesheet">
+		<?php
+	}
+	?>
 	<link href="<?php echo CSS.'jasny-bootstrap.min.css'; ?>" rel="stylesheet">
 	<link href="<?php echo CSS.'ui-lightness/jquery-ui.min.css'; ?>" rel="stylesheet"/>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,73 +47,78 @@ require_once 'maincore.php';
     <![endif]-->
 </head>
 <body>
-<!-- Fixed navbar -->
-<div class="navbar navbar-default">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="<?php echo BASEDIR.'index.php'; ?>" title="Uploadchi"><?php echo $settings['setting_title']; ?></a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="<?php echo BASEDIR.'terms.php'; ?>" title="Terms"><span class="glyphicon glyphicon-book"></span> Terms</a></li>
-				<li><a href="<?php echo BASEDIR.'statistics.php'; ?>" title="Statistics"><span class="glyphicon glyphicon-stats"></span> Statistics</a></li>
-				<li><a href="<?php echo BASEDIR.'aboutus.php'; ?>" title="About Us"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
-				<li><a href="<?php echo BASEDIR.'contactus.php'; ?>" title="Contact Us"><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<?php
-				if($userdata['user_id']!=NULL){
-				?>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<?php
+if(!isset($_GET['aidlink']) && !preg_match('/login.php/i', $_SERVER['SCRIPT_FILENAME'])){
+	?>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<?php echo BASEDIR.'index.php'; ?>" title="Uploadchi"><?php echo $settings['setting_title']; ?></a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="<?php echo BASEDIR.'terms.php'; ?>" title="Terms"><span class="glyphicon glyphicon-book"></span> Terms</a></li>
+					<li><a href="<?php echo BASEDIR.'statistics.php'; ?>" title="Statistics"><span class="glyphicon glyphicon-stats"></span> Statistics</a></li>
+					<li><a href="<?php echo BASEDIR.'aboutus.php'; ?>" title="About Us"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+					<li><a href="<?php echo BASEDIR.'contactus.php'; ?>" title="Contact Us"><span class="glyphicon glyphicon-phone-alt"></span> Contact Us</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
 					<?php
-					if($userdata['user_avatar']!='noavatar.png'){
-						?>
-						<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle">
-						<?php
-					}else{
-						?>
-						<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle"> 
-						<?php
-					}
+					if($userdata['user_id']!=NULL){
 					?>
-					<small>Hi, <?php echo "<b>".$userdata['user_username']."</b>"; ?> </small><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo BASEDIR.'edit_profile.php'; ?>"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Edit Profile</a></li>
-						<li><a href="<?php echo BASEDIR.'filemanager.php'; ?>"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;File Manager</a></li>
-						<li><a href="<?php echo BASEDIR.'user_statistics.php'; ?>"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;View Statistics</a></li>
-						<!--<li><a href=""><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;Buy Premium</a></li>!-->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<?php
-						if (iADMIN){
+						if($userdata['user_avatar']!='noavatar.png'){
 							?>
-							<li><a href="<?php echo ADMINISTRATION.'index.php'.$aidlink; ?>"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Control Panel</a></li>
+							<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle">
+							<?php
+						}else{
+							?>
+							<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle"> 
 							<?php
 						}
 						?>
-						<li class="divider"></li>
-						<li><a href="<?php echo BASEDIR."index.php?logout=yes"; ?>"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
-					</ul>
-				</li>
-				<?php
-				}else{
-				?>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle"> <small>Hello Guest</small> <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo BASEDIR.'login.php'; ?>" title="Login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-						<li><a href="<?php echo BASEDIR.'register.php'; ?>" title="Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
-					</ul>
-				</li>
-				<?php
-				}
-				?>
-			</ul>
+						<small>Hi, <?php echo "<b>".$userdata['user_username']."</b>"; ?> </small><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo BASEDIR.'edit_profile.php'; ?>"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Edit Profile</a></li>
+							<li><a href="<?php echo BASEDIR.'filemanager.php'; ?>"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;File Manager</a></li>
+							<li><a href="<?php echo BASEDIR.'user_statistics.php'; ?>"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;View Statistics</a></li>
+							<!--<li><a href=""><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp;Buy Premium</a></li>!-->
+							<?php
+							if (iADMIN){
+								?>
+								<li><a href="<?php echo ADMINISTRATION.'index.php'.$aidlink; ?>"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Control Panel</a></li>
+								<?php
+							}
+							?>
+							<li class="divider"></li>
+							<li><a href="<?php echo BASEDIR."index.php?logout=yes"; ?>"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
+						</ul>
+					</li>
+					<?php
+					}else{
+					?>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle"> <small>Hello Guest</small> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?php echo BASEDIR.'login.php'; ?>" title="Login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+							<li><a href="<?php echo BASEDIR.'register.php'; ?>" title="Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+						</ul>
+					</li>
+					<?php
+					}
+					?>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
+<?php
+}

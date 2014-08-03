@@ -73,7 +73,7 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 						</div>
 					</div>
 				</div>
-				<a href="#">
+				<a href="<?php echo ADMINISTRATION.'users.php'.$aidlink; ?>">
 					<div class="panel-footer">
 						<span class="pull-left">View Users</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

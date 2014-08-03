@@ -44,9 +44,15 @@ $link = dbconnect($db_host, $db_user, $db_pass, $db_name);
 $settings=dbarray(dbquery("SELECT * FROM ".DB_PREFIX."settings LIMIT 1"));
 
 // Sanitise $_SERVER globals
+$_SERVER['PHP_SELF'] = cleanurl($_SERVER['PHP_SELF']);
+$_SERVER['QUERY_STRING'] = isset($_SERVER['QUERY_STRING']) ? cleanurl($_SERVER['QUERY_STRING']) : "";
+$_SERVER['REQUEST_URI'] = isset($_SERVER['REQUEST_URI']) ? cleanurl($_SERVER['REQUEST_URI']) : "";
 $PHP_SELF = cleanurl($_SERVER['PHP_SELF']);
-$QUERY_STRING = isset($_SERVER['QUERY_STRING']) ? cleanurl($_SERVER['QUERY_STRING']) : "";
-$REQUEST_URI = isset($_SERVER['REQUEST_URI']) ? cleanurl($_SERVER['REQUEST_URI']) : "";
+
+// Common definitions
+define("FUSION_REQUEST", isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != "" ? $_SERVER['REQUEST_URI'] : $_SERVER['SCRIPT_NAME']);
+define("FUSION_QUERY", isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : "");
+define("FUSION_SELF", basename($_SERVER['PHP_SELF']));
 
 // Set defines
 define("ADMINISTRATION", BASEDIR."administration/");

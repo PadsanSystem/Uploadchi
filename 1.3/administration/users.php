@@ -1,5 +1,6 @@
 <?php
 require_once 'subheader.php';
+if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('../index.php'); }
 ?>
 <div id="page-wrapper">
 	<div class="row">
