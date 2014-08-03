@@ -50,11 +50,11 @@ if(isset($_POST['submit'])){
 			<form class="form-vertical" role="form" method="post" action="register.php" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">Username</label><br>
-					<input id="username" name="username" type="text" class="form-control" placeholder="Enter your username">
+					<input id="username" name="username" type="text" class="form-control" placeholder="Enter your username" autocomplete="off">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="password" class="control-label">Password</label><br>
-					<input id="password" name="password" type="password" class="form-control" placeholder="Enter your password">
+					<input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" autocomplete="off">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label">Name</label><br>

@@ -266,7 +266,7 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 }
 
 function login($username, $password, $remember=0){
-	$username=secure_itext($username);
+	$username=secure_itext(strtolower($username));
 	$password=secure_itext(md5(md5($password)));
 	
 	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
@@ -421,7 +421,7 @@ if (iADMIN) {
 }
 
 // User level, Admin Rights & User Group definitions
-// define("iGUEST", $userdata['user_group'] == 0 ? 1 : 0);
+define("iGUEST", $userdata['user_group'] == 0 ? 1 : 0);
 define("iMEMBER", $userdata['user_group'] >= 100 ? 1 : 0);
 define("iADMIN", $userdata['user_group'] == 200 ? 1 : 0);
 ?>

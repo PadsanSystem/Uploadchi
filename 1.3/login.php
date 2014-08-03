@@ -13,14 +13,14 @@
 */
 require_once 'subheader_uniq.php';
 
-if(iADMIN) { redirect(BASEDIR.'index.php'); }
+if(iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 if(isset($_POST['submit'])){
 	login($username=$_POST['username'], $password=$_POST['password'], $remember=$_POST['remember']);
 }
 ?>
 <div class="container">
-	<form role="form" method="post" action="login.php">
+	<form name="form_login" role="form" method="post" action="<?php echo BASEDIR.'login.php'; ?>">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-panel panel panel-default">
@@ -30,10 +30,10 @@ if(isset($_POST['submit'])){
 					<div class="panel-body">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autofocus required>
+								<input class="form-control" placeholder="Username" name="username" type="text" autocomplete="off" autofocus required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" required>
+								<input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" required>
 							</div>
 							<div class="checkbox">
 								<label>
