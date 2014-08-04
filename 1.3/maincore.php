@@ -277,7 +277,6 @@ function login($username, $password, $remember=0){
 	
 	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
 	
-	
 	if(dbrows($result)!=0){
 		$data=dbarray($result);
 		$expired=time()+86400;
@@ -292,9 +291,9 @@ function login($username, $password, $remember=0){
 			$_SESSION['user_password']=$data['user_password'];
 			$_SESSION['user_group']=$data['user_group_access'];
 		}
-		redirect($PHP_SELF);
+		redirect(BASEDIR.'index.php');
 	}else{
-		redirect($PHP_SELF);
+		redirect(BASEDIR.'index.php');
 	}
 }
 
@@ -305,17 +304,16 @@ if(isset($logout) && $logout=='yes'){
 	setcookie("user_username", $data['user_username'], -100);
 	setcookie("user_password", $data['user_password'], -100);
 	setcookie("user_group", $data['user_group_access'], -100);
-	redirect($PHP_SELF);
+	redirect(BASEDIR.'index.php');
 }
 
+// Set Cookie OR Session
 if(isset($_COOKIE)){
-	foreach ($_COOKIE as $value) {
+	foreach ($_COOKIE as $value){
 		$userdata = $_COOKIE;
 	}
-}
-
-if(isset($_SESSION)){
-	foreach ($_SESSION as $value) {
+}else{
+	foreach ($_SESSION as $value){
 		$userdata = $_SESSION;
 	}
 }
@@ -377,6 +375,12 @@ function verify_image($file) {
 	elseif (preg_match("#(<[^>]+)style=([\`\'\"]*).*behaviour\([^>]*>#iU", $txt)) { $image_safe = false; }
 	elseif (preg_match("#</*(applet|link|style|script|iframe|frame|frameset)[^>]*>#i", $txt)) { $image_safe = false; }
 	return $image_safe;
+}
+
+function show_error($error_id){
+	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error_id' LIMIT 1");
+	$data=dbarray($result);
+	return $data;
 }
 
 // Generate random text

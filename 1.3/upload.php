@@ -12,15 +12,18 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
-require_once INCLUDES.'file_hosting.php';
+
+if(is_uploaded_file($_FILES['file_hosting']['tmp_name']))
+	require_once INCLUDES.'file_hosting.php';
+else
+	$error=103;
 
 // Check $download_url not empty
 if(!isset($download_url) && !isset($error) && !cleanurl($download_url)) redirect(BASEDIR.'index.php');
 if (isset($error) && !isnum($error)) { redirect(BASEDIR.'index.php'); }
 
 if(isset($error)){
-	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error'");
-	$data=dbarray($result);
+	$data=show_error($error);
 	?>
 	<!-- Begin page content -->
 	<div class="container">
