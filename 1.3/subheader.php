@@ -25,20 +25,15 @@ require_once 'maincore.php';
 	<meta name="author" content="PadsanSystem Corporation">
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
-	<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
 	<?php
 	if(iADMIN && isset($_GET['aidlink']) || preg_match('/login.php/i', $_SERVER['SCRIPT_FILENAME'])){
-		?>
-		<link href="<?php echo CSS.'sb-admin-2.css'; ?>" rel="stylesheet">
-		<?php
+		$get_styles = array(CSS.'bootstrap.min.css', CSS.'jasny-bootstrap.min.css', CSS.'ui-lightness/jquery-ui.min.css', CSS.'sb-admin-2.css');
 	}else{
-		?>
-		<link href="<?php echo CSS.'styles.min.css'; ?>" rel="stylesheet">
-		<?php
+		$get_styles = array(CSS.'bootstrap.min.css', CSS.'jasny-bootstrap.min.css', CSS.'ui-lightness/jquery-ui.min.css', CSS.'styles.min.css');
 	}
+	compress_file($get_styles, 'css');
 	?>
-	<link href="<?php echo CSS.'jasny-bootstrap.min.css'; ?>" rel="stylesheet">
-	<link href="<?php echo CSS.'ui-lightness/jquery-ui.min.css'; ?>" rel="stylesheet"/>
+	<link href="<?php echo CSS.'cstyles.min.css'; ?>" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

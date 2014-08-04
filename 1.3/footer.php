@@ -11,6 +11,7 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
+
 ?>
 <div id="footer">
 	<div class="container">
@@ -21,14 +22,11 @@
 		</div>
 	</div>
 </div>
-<script src="<?php echo JAVASCRIPTS."jquery.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."jquery-ui.min.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."bootstrap.min.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."jasny-bootstrap.min.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."tab.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."modal.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."tooltip.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."fileinput.js"; ?>"></script>
-<script src="<?php echo JAVASCRIPTS."inputmask.js"; ?>"></script>
+<?php
+$get_jscripts = array(JAVASCRIPTS.'jquery.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'tab.js', JAVASCRIPTS.'modal.js', JAVASCRIPTS.'tooltip.js', JAVASCRIPTS.'fileinput.js', JAVASCRIPTS.'inputmask.js');
+
+compress_file($get_jscripts, 'javascript');
+?>
+<script src="<?php echo JAVASCRIPTS."cjscript.min.js"; ?>"></script>
 </body>
 </html>

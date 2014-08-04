@@ -307,12 +307,15 @@ if(isset($logout) && $logout=='yes'){
 	redirect(BASEDIR.'index.php');
 }
 
-// Set Cookie OR Session
+// Set Cookie
 if(isset($_COOKIE)){
 	foreach ($_COOKIE as $value){
 		$userdata = $_COOKIE;
 	}
-}else{
+}
+
+// Set Session
+if(isset($_SESSION)){
 	foreach ($_SESSION as $value){
 		$userdata = $_SESSION;
 	}
@@ -423,6 +426,54 @@ function get_ip(){
 		$ipaddress = 'UNKNOWN';
  
     return $ipaddress;
+}
+
+function cpress_css($buffer){
+	// remove comments
+	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+	// remove tabs, spaces, newlines, etc.
+	$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+	/* remove other spaces before/after ) */
+	$buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
+	
+	return $buffer;
+}
+
+function cpress_js($buffer){
+	// remove comments
+	// $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+	// remove tabs, spaces, newlines, etc.
+	// $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+	/* remove other spaces before/after ) */
+	// $buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
+	
+	return $buffer;
+}
+
+function compress_file($array_file, $type){
+	$content='';
+	if($type=='css'){
+		$create_file=CSS.'cstyles.min.css';
+	}else if($type=='javascript'){
+		$create_file=JAVASCRIPTS.'cjscript.min.js';
+	}
+	foreach($array_file as $sheet){
+		$sheets = trim($sheet);
+		if(file_exists($sheets)){
+			if($type=='css'){
+				$content.=cpress_css(file_get_contents($sheets));
+			}else if($type=='javascript'){
+				$content.=cpress_js(file_get_contents($sheets));
+			}
+			
+		}
+	}
+	if(file_exists($create_file)){
+		$md5=md5(file_get_contents($create_file));
+	}
+	if($md5!=$content){
+		file_put_contents($create_file, $content);
+	}
 }
 
 if (iADMIN) {

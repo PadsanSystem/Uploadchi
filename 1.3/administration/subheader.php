@@ -300,7 +300,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 								<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Management<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
 									<li>
-										<a href="<?php echo ADMINISTRATION.'attachments.php'; ?>"><i class="fa fa-upload fa-fw"></i> Uploaded files</a>
+										<a href="<?php echo ADMINISTRATION.'attachments.php'.$aidlink; ?>"><i class="fa fa-upload fa-fw"></i> Uploaded files</a>
 									</li>
 									<li>
 										<a href="<?php echo ADMINISTRATION.'attachments.php'; ?>"><i class="fa fa-eye fa-fw"></i> Admins</a>
@@ -312,7 +312,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 										<a href="<?php echo ADMINISTRATION.'attachments.php'; ?>"><i class="fa fa-eye fa-fw"></i> View files</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'users.php'; ?>"><i class="fa fa-user fa-fw"></i> Users</a>
+										<a href="<?php echo ADMINISTRATION.'users.php'.$aidlink; ?>"><i class="fa fa-user fa-fw"></i> Users</a>
 									</li>
 									<li>
 										<a href="<?php echo ADMINISTRATION.'attachments.php'; ?>"><i class="fa fa-gear fa-fw"></i> Settings</a>
