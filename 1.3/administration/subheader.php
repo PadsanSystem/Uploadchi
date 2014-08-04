@@ -28,27 +28,12 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 		<title><?php echo $settings['setting_title']; ?></title>
 
-		<!-- Bootstrap Core CSS -->
-		<link href="<?php echo CSS.'bootstrap.min.css'; ?>" rel="stylesheet">
-
-		<!-- MetisMenu CSS -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/metisMenu/metisMenu.min.css'; ?>" rel="stylesheet">
-
-		<!-- Timeline CSS -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/timeline.css'; ?>" rel="stylesheet">
+		<?php
+		$get_styles = array(CSS.'bootstrap.min.css', ADMINISTRATION_THEMES.'plugins/metisMenu/metisMenu.min.css', ADMINISTRATION_THEMES.'plugins/timeline.css', ADMINISTRATION_THEMES.'plugins/dataTables.css', ADMINISTRATION_THEMES.'plugins/dataTables.bootstrap.css', CSS.'sb-admin-2.css', ADMINISTRATION_THEMES.'plugins/morris.css', ADMINISTRATION_THEMES.'font-awesome/css/font-awesome.min.css');
 		
-		<!-- DataTables CSS -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/dataTables.css'; ?>" rel="stylesheet">
-		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/dataTables.bootstrap.css'; ?>" rel="stylesheet">
-		
-		<!-- Custom CSS -->
-		<link href="<?php echo CSS.'sb-admin-2.css'; ?>" rel="stylesheet">
-
-		<!-- Morris Charts CSS -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'plugins/morris.css'; ?>" rel="stylesheet">
-
-		<!-- Custom Fonts -->
-		<link href="<?php echo ADMINISTRATION_THEMES.'font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
+		compress_file($get_styles, 'css');
+		?>
+		<link href="<?php echo ADMINISTRATION_THEMES.'cstyles.min.css'; ?>" rel="stylesheet" type="text/css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

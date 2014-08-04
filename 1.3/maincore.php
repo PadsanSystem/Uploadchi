@@ -451,11 +451,20 @@ function cpress_js($buffer){
 }
 
 function compress_file($array_file, $type){
+	global $_GET;
 	$content='';
-	if($type=='css'){
-		$create_file=CSS.'cstyles.min.css';
-	}else if($type=='javascript'){
-		$create_file=JAVASCRIPTS.'cjscript.min.js';
+	if(iADMIN && isset($_GET['aid'])){
+		if($type=='css'){
+			$create_file=ADMINISTRATION_THEMES.'cstyles.min.css';
+		}else if($type=='javascript'){
+			$create_file=ADMINISTRATION_JSCRIPTS.'cjscript.min.js';
+		}
+	}else{
+		if($type=='css'){
+			$create_file=CSS.'cstyles.min.css';
+		}else if($type=='javascript'){
+			$create_file=JAVASCRIPTS.'cjscript.min.js';
+		}
 	}
 	foreach($array_file as $sheet){
 		$sheets = trim($sheet);
