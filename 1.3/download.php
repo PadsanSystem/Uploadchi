@@ -14,7 +14,7 @@
 require_once 'subheader.php';
 if(!isset($url) && !cleanurl($url)) redirect(BASEDIR.'index.php');
 
-$result=dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."servers s WHERE a.attachment_uid='$url' AND a.attachment_server=s.server_id");
+$result=dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."servers s WHERE a.attachment_uid='$url' AND a.attachment_server=s.server_id AND a.attachment_status='Enable' AND s.server_status='Enable'");
 $data=dbarray($result);
 
 if(iMEMBER){

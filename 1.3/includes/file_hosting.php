@@ -85,8 +85,11 @@ if(isset($_POST['send_file'])){
 			$data=dbarray($result);
 			
 			$attachment_folder='NULL';
+			
+			// Get prefix char of country
+			$country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
 
-			dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '1', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', 'Enable')");
+			dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '1', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '$country_code', 'Enable')");
 			
 			$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 		}
