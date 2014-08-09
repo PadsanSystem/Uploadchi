@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -11,7 +11,7 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
-require_once "subheader.php";
+require_once 'subheader.php';
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -62,5 +62,5 @@ require_once "subheader.php";
 	</div>
 </div>
 <?php
-require_once BASEDIR."footer.php";
+require_once BASEDIR.'footer.php';
 ?>

@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -16,7 +16,6 @@ require_once 'subheader.php';
 if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 if (!isset($rowstart)) { $rowstart = 0; }
 if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.php'); }
-
 ?>
 <!-- Begin page content -->
 <div class="container">

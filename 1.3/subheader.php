@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -26,16 +26,10 @@ require_once 'maincore.php';
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
 	<?php
-	if(iADMIN && isset($_GET['aidlink']) || preg_match('/login.php/i', $_SERVER['SCRIPT_FILENAME'])){
-		$get_styles = array(CSS.'bootstrap.min.css', CSS.'jasny-bootstrap.min.css', CSS.'ui-lightness/jquery-ui.min.css', CSS.'sb-admin-2.css');
-	}else{
-		$get_styles = array(CSS.'bootstrap.min.css', CSS.'jasny-bootstrap.min.css', CSS.'ui-lightness/jquery-ui.min.css', CSS.'styles.min.css');
-	}
+	$get_styles = array(CSS.'bootstrap.min.css', CSS.'jasny-bootstrap.min.css', CSS.'ui-lightness/jquery-ui.min.css', CSS.'styles.min.css');
 	compress_file($get_styles, 'css');
 	?>
 	<link href="<?php echo CSS.'cstyles.min.css'; ?>" rel="stylesheet">
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

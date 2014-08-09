@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -11,7 +11,6 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
-
 ?>
 <div id="footer">
 	<div class="container">
@@ -23,10 +22,10 @@
 	</div>
 </div>
 <?php
-$get_jscripts = array(JAVASCRIPTS.'jquery.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'tab.js', JAVASCRIPTS.'modal.js', JAVASCRIPTS.'tooltip.js', JAVASCRIPTS.'fileinput.js', JAVASCRIPTS.'inputmask.js');
+$get_jscripts = array(JAVASCRIPTS.'jquery.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'tab.js', JAVASCRIPTS.'modal.js', JAVASCRIPTS.'tooltip.js',  JAVASCRIPTS.'inputmask.js', JAVASCRIPTS.'livechat.js');
 
 compress_file($get_jscripts, 'javascript');
 ?>
-<script src="<?php echo JAVASCRIPTS."cjscript.min.js"; ?>"></script>
+<script src="<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|

@@ -1,9 +1,9 @@
 <?php
 /*
 |-------------------------------|
-| PadsanSystem Corporation		|
+| PadsanCMS						|
 |-------------------------------|
-| Upload Center Version			|
+| UploadCenter Version v1.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -51,7 +51,7 @@ require_once 'subheader.php';
 		<div class="tab-pane active" id="upload_file">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="upload.php" enctype="multipart/form-data">
+					<form class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<div class="col-lg-8 col-lg-offset-2 text-center">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -71,8 +71,6 @@ require_once 'subheader.php';
 			</div>
 		</div>
 	</div>
-	
-			
 	<script>
 	  $(function () {
 		$('#myTab a:last').tab('show')

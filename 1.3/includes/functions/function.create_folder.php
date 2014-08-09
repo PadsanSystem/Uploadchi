@@ -1,15 +1,15 @@
 <?php
 /*
-|-----------------------------------|
-|	PadsanSystem					|
-|-----------------------------------|
-|	Uploadcenter Version			|
-|-----------------------------------|
-|	Web   : www.PadsanSystem.com	|
-|	Email : Info@PadsanSystem.com	|
-|	Tel   : +98 - 26 325 45 700		|
-|	Fax   : +98 - 26 325 45 701		|
-|-----------------------------------|
+|-------------------------------|
+| PadsanCMS						|
+|-------------------------------|
+| UploadCenter Version v1.0		|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
 */
 if(isset($_POST['create_folder'])){
 	$attachment_folder_name=secure_itext($_POST['attachment_folder_name']);
