@@ -12,29 +12,58 @@
 |-------------------------------|
 */
 if(isset($_POST['send_file'])){
-	// Include class ftp_upload
-	include_once CLASSES."class.ftp_upload.php";
+	// Get headers
+	function getHeaders($url){
+		$ch=curl_init($url);
+		curl_setopt($ch, CURLOPT_NOBODY, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
+		curl_exec($ch);
+		$headers=curl_getinfo($ch);
+		curl_close($ch);
+
+		return $headers;
+	}
+	
+	// Download via curl
+	function download($url, $path){
+		$fp = fopen ($path, 'w+');
+		$ch = curl_init();
+		curl_setopt( $ch, CURLOPT_URL, $url );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+		curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
+		curl_setopt($ch, CURLOPT_FILE, $fp);
+		curl_exec($ch);
+		curl_close($ch);
+		fclose($fp);
+
+		if (filesize($path) > 0) return true;
+	}
 	
 	// Get string
-	$string=$_FILES['local_upload'];
+	$string=$_POST['remote_upload'];
 	
 	// Get Files
-	$name=get_name($string, 'files');
+	$name=get_name($string, 'post');
 	
 	// Get type file
-	$type=get_type($string, 'files');
-	
-	// Get size file
-	$size=get_size($string, 'files');
+	$type=get_type($string, 'post');
 	
 	// Set uid file
 	$uid=set_uid($name, $type, '_');
+	
+	// Get size file
+	$size=get_size($string, 'post');
 	
 	include_once FUNCTIONS.'function.attachments_exts.php';
 	$trust_type=check_validate_exts($type);
 	
 	// Check and set Image virus
-	$original_name=$string['tmp_name'];
+	$original_name=$_FILES['remote_upload']['tmp_name'];
 	$verify_image=verify_image($original_name);
 	
 	if($trust_type==false){
@@ -48,6 +77,7 @@ if(isset($_POST['send_file'])){
 			
 			// String of name and type file
 			$generate_name=$generate_name.".".$type;
+			$size=$_FILES['remote_upload']['size'];
 			
 			// Select best server for upload files
 			$result_server=dbquery("SELECT * FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com'");
@@ -60,7 +90,6 @@ if(isset($_POST['send_file'])){
 			
 			// Set username of server connect
 			$rand_username=$data_server['server_username'];
-
 			// Set password of server connect
 			$rand_password=$data_server['server_password'];
 			
@@ -75,7 +104,7 @@ if(isset($_POST['send_file'])){
 			// Initialize FTP server
 			$ftp_upload->initialize();
 			// Upload file in FTP Server
-			$ftp_upload->upload($_FILES['local_upload']['tmp_name'], $generate_name);
+			$ftp_upload->upload($_FILES['remote_upload']['tmp_name'], $generate_name);
 			// Close ftp connection
 			$ftp_upload->close_connection();
 			

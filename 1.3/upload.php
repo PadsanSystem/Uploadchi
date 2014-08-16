@@ -15,6 +15,8 @@ require_once 'subheader.php';
 
 if(is_uploaded_file($_FILES['local_upload']['tmp_name']))
 	require_once INCLUDES.'local_upload.php';
+else if($_POST['remote_upload'])
+	require_once INCLUDES.'remote_upload.php';
 else
 	$error=103;
 

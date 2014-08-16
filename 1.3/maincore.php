@@ -204,7 +204,10 @@ function set_uid($name, $type, $separator){
 }
 
 // Get file names
-function get_name($url){
+function get_name($url, $method){
+	if($method!='post'){
+		$url=$url['name'];
+	}
 	// Explode name
 	$get_explode=explode(".", $url);
 	$name=$get_explode[0];
@@ -213,7 +216,10 @@ function get_name($url){
 }
 
 // Get file types
-function get_type($url){
+function get_type($url, $method){
+	if($method!='post'){
+		$url=$url['name'];
+	}
 	// Explode name
 	$get_explode=explode(".", $url);
 	$type=$get_explode[1];
@@ -222,10 +228,15 @@ function get_type($url){
 	return $type;
 }
 
+// Get file size
+function get_size($url, $method){
+	if($method!='post'){
+		return $url['size'];
+	}
+}
+
 // Making Page Navigation
 function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = "rowstart") {
-	global $locale;
-
 	if ($link == "") { $link = BASEDIR."?"; }
 	if (!preg_match("#[0-9]+#", $count) || $count == 0) return false;
 	
