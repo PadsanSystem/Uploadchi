@@ -116,7 +116,7 @@ if(isset($action) && ($action=='delete')) { redirect($_SERVER['PHP_SELF']); }
 									<tr>
 										<td class="text-left col-lg-5">
 											<a href="<?php echo BASEDIR."download.php?url=".$data_attachment['attachment_uid']; ?>" target="_blank">
-											<img src="<?php echo IMAGES_TYPES.get_type($data_attachment['attachment_uid']).".png"; ?>"/>
+											<img src="<?php echo IMAGES_TYPES.get_type($data_attachment['attachment_uid'], 'post').".png"; ?>"/>
 											<?php echo $data_attachment['attachment_uid']; ?>
 											</a>
 										</td>
@@ -124,7 +124,7 @@ if(isset($action) && ($action=='delete')) { redirect($_SERVER['PHP_SELF']); }
 											<small><?php echo date("m/d/Y H:m:s A", $data_attachment['attachment_time']); ?></small>
 										</td>
 										<td class="text-center col-lg-1 text-muted">
-											<small><?php echo strtoupper(get_type($data_attachment['attachment_uid']))." File"; ?></small>
+											<small><?php echo strtoupper(get_type($data_attachment['attachment_uid'], 'post'))." File"; ?></small>
 										</td>
 										<td class="text-center col-lg-1 text-muted">
 											<small><?php echo parsebytesize($data_attachment['attachment_size'], 2); ?></small>

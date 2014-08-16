@@ -68,7 +68,7 @@ if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.p
 							<tr>
 								<td class="text-left col-lg-5">
 									<a href="<?php echo BASEDIR."download.php?url=".$data_attachment_view['attachment_uid']; ?>" target="_blank">
-									<img src="<?php echo IMAGES_TYPES.get_type($data_attachment_view['attachment_uid']).".png"; ?>"/>
+									<img src="<?php echo IMAGES_TYPES.get_type($data_attachment_view['attachment_uid'], 'post').".png"; ?>"/>
 									<?php echo $data_attachment_view['attachment_uid']; ?>
 									</a>
 								</td>
@@ -76,7 +76,7 @@ if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.p
 									<small><?php echo date("m/d/Y H:m:s A", $data_attachment_view['attachment_time']); ?></small>
 								</td>
 								<td class="text-center col-lg-1 text-muted">
-									<small><?php echo strtoupper(get_type($data_attachment_view['attachment_uid']))." File"; ?></small>
+									<small><?php echo strtoupper(get_type($data_attachment_view['attachment_uid'], 'post'))." File"; ?></small>
 								</td>
 								<td class="text-center col-lg-1 text-muted">
 									<small><?php echo parsebytesize($data_attachment_view['attachment_size'], 2); ?></small>

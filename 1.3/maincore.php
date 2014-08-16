@@ -207,6 +207,8 @@ function set_uid($name, $type, $separator){
 function get_name($url, $method){
 	if($method!='post'){
 		$url=$url['name'];
+	}else{
+		$url='file';
 	}
 	// Explode name
 	$get_explode=explode(".", $url);
@@ -216,13 +218,13 @@ function get_name($url, $method){
 }
 
 // Get file types
-function get_type($url, $method){
+function get_type($url, $method='file'){
 	if($method!='post'){
 		$url=$url['name'];
 	}
 	// Explode name
 	$get_explode=explode(".", $url);
-	$type=$get_explode[1];
+	$type=$get_explode[count($get_explode)-1];
 	$type=strtolower($type);
 	
 	return $type;
@@ -232,6 +234,20 @@ function get_type($url, $method){
 function get_size($url, $method){
 	if($method!='post'){
 		return $url['size'];
+	}else{
+		$ch=curl_init($url);
+		curl_setopt($ch, CURLOPT_NOBODY, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Uploadchibot/1.0');
+		curl_setopt($ch, CURLOPT_REFERER, 'http://www.uploadchi.com'); 
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_MAXREDIRS, 3);
+		curl_exec($ch);
+		$filesize = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+		curl_close($ch);
+		if($filesize)
+			return $filesize;
 	}
 }
 

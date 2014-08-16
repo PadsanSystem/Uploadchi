@@ -27,7 +27,6 @@ if (isset($error) && !isnum($error)) { redirect(BASEDIR.'index.php'); }
 if(isset($error)){
 	$data=show_error($error);
 	?>
-	<!-- Begin page content -->
 	<div class="container">
 		<div class="alert alert-warning" role="alert">
 			<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
@@ -36,8 +35,8 @@ if(isset($error)){
 	</div>
 	<?php
 }else{
+	include_once(CLASSES.'class.qr_code.php');
 	?>
-	<!-- Begin page content -->
 	<div class="container">
 		<div class="panel panel-default">
 			<div class="panel-heading"><span class="glyphicon glyphicon-cloud-download"></span> Download Link</div>
