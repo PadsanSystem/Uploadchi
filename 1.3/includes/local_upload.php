@@ -16,22 +16,22 @@ if(isset($_POST['send_file'])){
 	include_once CLASSES."class.ftp_upload.php";
 	
 	// Get Files
-	$name=get_name($_FILES['file_hosting']['name']);
+	$name=get_name($_FILES['local_upload']['name']);
 	
 	// Get type file
-	$type=get_type($_FILES['file_hosting']['name']);
+	$type=get_type($_FILES['local_upload']['name']);
 	
 	// Set uid file
 	$uid=set_uid($name, $type, '_');
 	
 	// Get size file
-	$size=$_FILES['file_hosting']['size'];
+	$size=$_FILES['local_upload']['size'];
 	
 	include_once FUNCTIONS.'function.attachments_exts.php';
 	$trust_type=check_validate_exts($type);
 	
 	// Check and set Image virus
-	$original_name=$_FILES['file_hosting']['tmp_name'];
+	$original_name=$_FILES['local_upload']['tmp_name'];
 	$verify_image=verify_image($original_name);
 	
 	if($trust_type==false){
@@ -45,7 +45,7 @@ if(isset($_POST['send_file'])){
 			
 			// String of name and type file
 			$generate_name=$generate_name.".".$type;
-			$size=$_FILES['file_hosting']['size'];
+			$size=$_FILES['local_upload']['size'];
 			
 			// Select best server for upload files
 			$result_server=dbquery("SELECT * FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com'");
@@ -72,7 +72,7 @@ if(isset($_POST['send_file'])){
 			// Initialize FTP server
 			$ftp_upload->initialize();
 			// Upload file in FTP Server
-			$ftp_upload->upload($_FILES['file_hosting']['tmp_name'], $generate_name);
+			$ftp_upload->upload($_FILES['local_upload']['tmp_name'], $generate_name);
 			// Close ftp connection
 			$ftp_upload->close_connection();
 			

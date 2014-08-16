@@ -13,8 +13,8 @@
 */
 require_once 'subheader.php';
 
-if(is_uploaded_file($_FILES['file_hosting']['tmp_name']))
-	require_once INCLUDES.'file_hosting.php';
+if(is_uploaded_file($_FILES['local_upload']['tmp_name']))
+	require_once INCLUDES.'local_upload.php';
 else
 	$error=103;
 

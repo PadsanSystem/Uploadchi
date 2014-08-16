@@ -46,6 +46,7 @@ require_once 'subheader.php';
 	</div>
 	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
 	  <li class="active"><a href="#upload_file" data-toggle="tab">Local Upload</a></li>
+	  <li><a href="#download_link" data-toggle="tab">Remote Upload</a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="upload_file">
@@ -56,7 +57,7 @@ require_once 'subheader.php';
 							<div class="col-lg-8 col-lg-offset-2 text-center">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 								  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-								  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span><input type="file" name="file_hosting"></span>
+								  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span><input type="file" name="local_upload"></span>
 								</div>
 								<br>
 							</div>
@@ -70,11 +71,33 @@ require_once 'subheader.php';
 				</div>
 			</div>
 		</div>
+		<div class="tab-pane" id="download_link">
+			<div class="panel panel-success" style="border-top-left-radius:0">
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>">
+						<div class="form-group">
+							<div class="col-lg-8 col-lg-offset-2 text-center">
+								<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-import"></span></span>
+								<input name="remote_upload" type="text" class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-4 col-lg-offset-4 text-center">
+								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span> Upload Files</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script>
-	  $(function () {
-		$('#myTab a:last').tab('show')
-	  })
+		$('#myTab a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		})
 	</script>
 </div>
 <?php
