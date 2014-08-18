@@ -13,7 +13,6 @@
 */
 require_once 'subheader.php';
 ?>
-<!-- Begin page content -->
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="Home">Home</a></li>
