@@ -72,9 +72,8 @@ if(isset($_POST['send_file'])){
 		$path = 'tmp/'.$generate_name;
 		$headers = getHeaders($url);
 		
-		if ($headers['http_code'] === 200 and $headers['download_content_length'] < 1024*1024){
+		if ($headers['http_code']===200 AND $headers['download_content_length'] > 1024){
 			if (download($url, $path)){
-				
 				// String of name and type file
 				$generate_name=$generate_name.".".$type;
 				
