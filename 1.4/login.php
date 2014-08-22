@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 					<div class="panel-body">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="Username" name="username" type="text" autocomplete="off" required autofocus>
+								<input class="form-control" placeholder="Username" name="username" type="text" required autofocus>
 							</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" autocomplete="off" required>
