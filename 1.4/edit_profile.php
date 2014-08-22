@@ -19,15 +19,14 @@ $result_profile=dbquery("SELECT * FROM ".DB_PREFIX."users WHERE user_id='".$user
 $data_profile=dbarray($result_profile);
 
 if(isset($_POST['submit'])){
-	$user_password=$_POST['password'];
-	if($user_password!='')
-		$user_password=md5(md5(secure_itext($user_password)));
-	else
+	$user_password=md5(md5(secure_itext($_POST['password'])));
+	if($user_password=='')
 		$user_password=$data_profile['user_password'];
 		
 	$user_name=secure_itext($_POST['name']);
 	$user_family=secure_itext($_POST['family']);
 	
+	$user_email=strtolower($_POST['email']);
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 		$error=104;
 		$user_email=strtolower($data_profile['user_email']);

@@ -17,35 +17,54 @@ if(iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 if(isset($_POST['submit'])){
 	$user_username=strtolower(secure_itext($_POST['username']));
-	if (!preg_match('/^[a-z\d_]{2,20}$/i', $user_username))
+	$user_username_exists=dbcount("(*)", "users", "user_username='$user_username'");
+	if (!preg_match('/^[a-z\d_]{5,20}$/i', $user_username)){
 		$error=107;
-		
+	}
+	if($user_username_exists!=0){
+		$error=108;
+	}
+	
 	$user_password=md5(md5(secure_itext($_POST['password'])));
 	$user_name=secure_itext($_POST['name']);
 	$user_family=secure_itext($_POST['family']);
 	
 	$user_email=strtolower($_POST['email']);
-	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+	$user_email_exists=dbcount("(*)", "users", "user_email='$user_email'");
+	if($user_email_exists!=0){
+		$error=109;
+	}
+	if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
 		$error=104;
-	}else{
-		$user_email=strtolower($_POST['email']);
 	}
 	
-	$upload_avatar=$_FILES['avatar']['tmp_name'];
-	
-	$user_exists=dbcount("(*)", "users", "user_username='$user_username'");
-	if(($user_exists==0) && (!isset($error))){
-		if(is_uploaded_file($upload_avatar)){
-			$user_avatar_name=random_text($type='number');
-			$user_avatar_type=get_type($_FILES['avatar']['name']);
-			$user_avatar=$user_avatar_name.".".$user_avatar_type;
-			move_uploaded_file($upload_avatar, AVATARS.$user_avatar);
+	// Get string
+	$string=$_FILES['avatar'];
+	if(is_uploaded_file($string['tmp_name'])){
+		// Get type file
+		$type=get_type($string, 'file');
+		$type_array=array('jpg', 'png', 'gif');
+		if(!in_array($type, $type_array))
+			$error=106;
+			
+		// Get size file
+		$size=get_size($string, 'file');
+		if($size>5242880){
+			$error=105;
 		}
+		
+		$user_avatar_name=random_text($type='number');
+		$user_avatar_type=get_type($string);
+		$user_avatar=$user_avatar_name.".".$user_avatar_type;
+	}else{
+		$user_avatar='noavatar_small.png';
+	}
+	
+	if(!isset($error)){	
+		move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
 		
 		dbquery("INSERT INTO ".DB_PREFIX."users (user_username, user_password, user_name, user_family, user_email, user_avatar, user_time_sign, user_time_visit, user_group, user_status) VALUES ('$user_username', '$user_password', '$user_name', '$user_family', '$user_email', '$user_avatar', '".time()."', '".time()."', '2', 'Enable')");
 		$message="<div class='alert alert-success'>Well done! You successfully register on Uploadchi.</div>";
-	}else{
-		$error=108;
 	}
 }
 ?>
