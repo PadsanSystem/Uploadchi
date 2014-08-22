@@ -45,8 +45,8 @@ require_once 'subheader.php';
 		</div>
 	</div>
 	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
-	  <li class="active"><a href="#upload_files" data-toggle="tab"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Local Upload</a></li>
-	  <li><a href="#transfer_links" data-toggle="tab"><span class="glyphicon glyphicon-import"></span>&nbsp;&nbsp;Remote Upload</a></li>
+	  <li class="active"><a href="#upload_files" data-toggle="tab"><span class="glyphicon glyphicon-hdd"></span>&nbsp;&nbsp;Local Upload</a></li>
+	  <li><a href="#transfer_links" data-toggle="tab"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Remote Upload</a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="upload_files">
