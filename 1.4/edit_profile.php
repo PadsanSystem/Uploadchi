@@ -19,20 +19,21 @@ $result_profile=dbquery("SELECT * FROM ".DB_PREFIX."users WHERE user_id='".$user
 $data_profile=dbarray($result_profile);
 
 if(isset($_POST['submit'])){
-	$user_password=md5(md5(secure_itext($_POST['password'])));
-	if($user_password=='')
+	if($_POST['password']=='')
 		$user_password=$data_profile['user_password'];
-		
+	else
+		$user_password=md5(md5(secure_itext($_POST['password'])));
+
 	$user_name=secure_itext($_POST['name']);
 	$user_family=secure_itext($_POST['family']);
-	
-	$user_email=strtolower($_POST['email']);
-	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-		$error=104;
+
+	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 		$user_email=strtolower($data_profile['user_email']);
+		$error=104;
 	}else{
 		$user_email=strtolower($_POST['email']);
 	}
+
 	// Get string
 	$string=$_FILES['avatar'];
 	
@@ -52,9 +53,7 @@ if(isset($_POST['submit'])){
 		
 		if(!isset($error)){
 			$user_avatar=random_text('number').'.'.$type;
-			
 			move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
-			
 			unlink(AVATARS.$data_profile['user_avatar']);
 		}
 	}else{
@@ -87,7 +86,7 @@ if(isset($_POST['submit'])){
 			}
 			echo $message;
 			?>
-			<form class="form-vertical" role="form" method="post" action="edit_profile.php" enctype="multipart/form-data">
+			<form name="form_edit_profile" class="form-vertical" role="form" method="post" action="edit_profile.php" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">Username</label><br>
 					<input id="username" name="username" type="text" value="<?php echo $data_profile['user_username']; ?>" class="form-control" placeholder="Enter your username" autocomplete="off" disabled>
@@ -98,15 +97,15 @@ if(isset($_POST['submit'])){
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label">Name</label><br>
-					<input id="name" name="name" type="text"  value="<?php echo $data_profile['user_name']; ?>"class="form-control" placeholder="Enter your name">
+					<input id="name" name="name" type="text" value="<?php echo $data_profile['user_name']; ?>" class="form-control" placeholder="Enter your name">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="family" class="control-label">Family</label><br>
-					<input id="family" name="family" type="text"  value="<?php echo $data_profile['user_family']; ?>"class="form-control" placeholder="Enter your family">
+					<input id="family" name="family" type="text" value="<?php echo $data_profile['user_family']; ?>" class="form-control" placeholder="Enter your family">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="email" class="control-label">Email</label><br>
-					<input id="email" name="email" type="text"  value="<?php echo $data_profile['user_email']; ?>"class="form-control" placeholder="Enter your email">
+					<input id="email" name="email" type="text" value="<?php echo $data_profile['user_email']; ?>" class="form-control" placeholder="Enter your email">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="avatar" class="control-label">Avatar</label><br>

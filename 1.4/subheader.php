@@ -13,6 +13,7 @@
 */
 session_start();
 require_once 'maincore.php';
+csrfguard_start();
 ?>
 <!DOCTYPE html>
 <html>

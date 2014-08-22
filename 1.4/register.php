@@ -16,11 +16,12 @@ require_once 'subheader.php';
 if(iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 if(isset($_POST['submit'])){
-	$user_username=strtolower(secure_itext($_POST['username']));
-	$user_username_exists=dbcount("(*)", "users", "user_username='$user_username'");
-	if (!preg_match('/^[a-z\d_]{5,20}$/i', $user_username)){
+	if (!preg_match('/^[a-z\d_]{5,20}$/i', $_POST['username'])){
 		$error=107;
+	}else{
+		$user_username=strtolower($_POST['username']);
 	}
+	$user_username_exists=dbcount("(*)", "users", "user_username='$user_username'");
 	if($user_username_exists!=0){
 		$error=108;
 	}
@@ -29,13 +30,14 @@ if(isset($_POST['submit'])){
 	$user_name=secure_itext($_POST['name']);
 	$user_family=secure_itext($_POST['family']);
 	
-	$user_email=strtolower($_POST['email']);
+	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+		$error=104;
+	}else{
+		$user_email=strtolower($_POST['email']);
+	}
 	$user_email_exists=dbcount("(*)", "users", "user_email='$user_email'");
 	if($user_email_exists!=0){
 		$error=109;
-	}
-	if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
-		$error=104;
 	}
 	
 	// Get string
@@ -49,10 +51,13 @@ if(isset($_POST['submit'])){
 			
 		// Get size file
 		$size=get_size($string, 'file');
-		if($size>5242880){
+		if($size>5242880)
 			$error=105;
-		}
-		
+			
+		$verify_image=verify_image($string['tmp_name']);
+		if($verify_image==false)
+			$error=101;
+			
 		$user_avatar_name=random_text($type='number');
 		$user_avatar_type=get_type($string);
 		$user_avatar=$user_avatar_name.".".$user_avatar_type;
@@ -60,7 +65,7 @@ if(isset($_POST['submit'])){
 		$user_avatar='noavatar_small.png';
 	}
 	
-	if(!isset($error)){	
+	if(!isset($error)){
 		move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
 		
 		dbquery("INSERT INTO ".DB_PREFIX."users (user_username, user_password, user_name, user_family, user_email, user_avatar, user_time_sign, user_time_visit, user_group, user_status) VALUES ('$user_username', '$user_password', '$user_name', '$user_family', '$user_email', '$user_avatar', '".time()."', '".time()."', '2', 'Enable')");
@@ -87,14 +92,14 @@ if(isset($_POST['submit'])){
 			}
 			echo $message;
 			?>
-			<form class="form-vertical" role="form" method="post" action="register.php" enctype="multipart/form-data">
+			<form name="form_register" class="form-vertical" role="form" method="post" action="register.php" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">Username</label><br>
-					<input id="username" name="username" type="text" class="form-control" placeholder="Enter your username" autocomplete="off">
+					<input id="username" name="username" type="text" class="form-control" placeholder="Enter your username" autocomplete="off" required>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="password" class="control-label">Password</label><br>
-					<input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" autocomplete="off">
+					<input id="password" name="password" type="password" class="form-control" placeholder="Enter your password" autocomplete="off" required>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label">Name</label><br>
@@ -106,7 +111,7 @@ if(isset($_POST['submit'])){
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="email" class="control-label">Email</label><br>
-					<input id="email" name="email" type="text" class="form-control" placeholder="Enter your email">
+					<input id="email" name="email" type="text" class="form-control" placeholder="Enter your email" required>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="avatar" class="control-label">Avatar</label><br>

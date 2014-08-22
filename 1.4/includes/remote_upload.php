@@ -13,7 +13,7 @@
 */
 if(isset($_POST['send_file'])){
 	// Get string
-	$string=$_POST['remote_upload'];
+	$string=secure_itext($_POST['remote_upload']);
 	
 	// Get Files
 	$name=get_name($string, 'post');

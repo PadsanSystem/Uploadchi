@@ -91,7 +91,6 @@ if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.p
 								</td>
 								<td class="text-center col-lg-1">
 									<a href="<?php echo BASEDIR."download.php?url=".$data_attachment_view['attachment_uid']; ?>" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span></a>
-									<a href="#" data-toggle="modal" data-target="#file_info"><span class="glyphicon glyphicon-info-sign"></span></a>
 								</td>
 							</tr>
 							<?php
@@ -104,7 +103,7 @@ if (isset($rowstart) && !isnum($rowstart)) { redirect(BASEDIR.'user_statistics.p
 				<div class="col-lg-12 text-center">
 					<?php
 					if($result_attachment_count>$limitrow)
-						echo makepagenav($start=$rowstart, $count=$limitrow, $total=$result_attachment_count, $range = 1, $link = "", $getname = "rowstart");
+						echo makepagenav($start=$rowstart, $count=$limitrow, $total=$result_attachment_count, $range = 2, $link = "", $getname = "rowstart");
 					?>
 				</div>
 			</div>

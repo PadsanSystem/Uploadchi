@@ -45,14 +45,14 @@ require_once 'subheader.php';
 		</div>
 	</div>
 	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
-	  <li class="active"><a href="#upload_files" data-toggle="tab"><span class="glyphicon glyphicon-hdd"></span>&nbsp;&nbsp;Local Upload</a></li>
-	  <li><a href="#transfer_links" data-toggle="tab"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Remote Upload</a></li>
+	  <li class="active"><a href="#local_upload" data-toggle="tab"><span class="glyphicon glyphicon-hdd"></span>&nbsp;&nbsp;Local Upload</a></li>
+	  <li><a href="#remote_upload" data-toggle="tab"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Remote Upload</a></li>
 	</ul>
 	<div class="tab-content">
-		<div class="tab-pane active" id="upload_files">
+		<div class="tab-pane active" id="local_upload">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>" enctype="multipart/form-data">
+					<form name="form_local_upload" class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>" enctype="multipart/form-data">
 						<div class="form-group">
 							<div class="col-lg-8 col-lg-offset-2 text-center">
 								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
@@ -71,15 +71,15 @@ require_once 'subheader.php';
 				</div>
 			</div>
 		</div>
-		<div class="tab-pane" id="transfer_links">
+		<div class="tab-pane" id="remote_upload">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>">
+					<form name="form_remote_upload" class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>">
 						<div class="form-group">
 							<div class="col-lg-8 col-lg-offset-2 text-center">
 								<div class="input-group">
-								<input name="remote_upload" type="text" class="form-control">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+									<input name="remote_upload" type="text" class="form-control">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
 								</div>
 								<br>
 							</div>

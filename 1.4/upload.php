@@ -15,7 +15,7 @@ require_once 'subheader.php';
 
 if(is_uploaded_file($_FILES['local_upload']['tmp_name']))
 	require_once INCLUDES.'local_upload.php';
-else if($_POST['remote_upload'])
+else if(isset($_POST['remote_upload']))
 	require_once INCLUDES.'remote_upload.php';
 else
 	$error=103;
@@ -42,8 +42,12 @@ if(isset($error)){
 			<div class="panel-heading"><span class="glyphicon glyphicon-cloud-download"></span> Download Link</div>
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-md-5 col-md-offset-3">
-						<input type="text" class="form-control" value="<?php echo $download_url; ?>">
+					<div class="col-lg-8 col-lg-offset-2 text-center">
+						<div class="input-group">
+							<input name="download_url" type="text" class="form-control" value="<?php echo $download_url; ?>">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+						</div>
+						<br>
 					</div>
 				</div>
 			</div>

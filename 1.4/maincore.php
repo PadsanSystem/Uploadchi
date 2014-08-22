@@ -268,7 +268,7 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 		if ($cur_page > ($range + 1)) {
 			$res .= "<li><a href='".$link.$getname."=0'>1</a></li>";
 			if ($cur_page != ($range + 2)) {
-				$res .= "...";
+				$res .= "";
 			}
 		}
 	}
@@ -289,7 +289,7 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 	if ($idx_next < $total) {
 		if ($cur_page < ($pg_cnt - $range)) {
 			if ($cur_page != ($pg_cnt - $range - 1)) {
-				$res .= "...";
+				$res .= "";
 			}
 			$res .= "<li><a href='".$link.$getname."=".($pg_cnt - 1) * $count."'>".$pg_cnt."</a></li>\n";
 		}
@@ -299,8 +299,8 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 }
 
 function login($username, $password, $remember=0){
-	$username=secure_itext(strtolower($username));
-	$password=secure_itext(md5(md5($password)));
+	$username=strtolower(secure_itext($username));
+	$password=md5(md5(secure_itext($password)));
 	
 	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
 	
@@ -414,6 +414,96 @@ function show_error($error_id){
 	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error_id'");
 	$data=dbarray($result);
 	return $data;
+}
+
+function store_in_session($key,$value){
+	if (isset($_SESSION)){
+		$_SESSION[$key]=$value;
+	}
+}
+
+function unset_session($key){
+	$_SESSION[$key]=' ';
+	unset($_SESSION[$key]);
+}
+
+function get_from_session($key){
+	if (isset($_SESSION[$key])){
+		return $_SESSION[$key];
+	}else{
+		return false;
+	}
+}
+
+function csrfguard_generate_token($unique_form_name){
+	if (function_exists("hash_algos") and in_array("sha512",hash_algos())){
+		$token=hash("sha512",mt_rand(0,mt_getrandmax()));
+	}else{
+		$token=' ';
+		for ($i=0;$i<128;++$i){
+			$r=mt_rand(0,35);
+			if ($r<26){
+				$c=chr(ord('a')+$r);
+			}else{ 
+				$c=chr(ord('0')+$r-26);
+			} 
+			$token.=$c;
+		}
+	}
+	store_in_session($unique_form_name,$token);
+	return $token;
+}
+
+function csrfguard_validate_token($unique_form_name,$token_value){
+	$token=get_from_session($unique_form_name);
+	if ($token===false){
+		return false;
+	}elseif ($token===$token_value){
+		$result=true;
+	}else{ 
+		$result=false;
+	} 
+	unset_session($unique_form_name);
+	return $result;
+}
+
+function csrfguard_replace_forms($form_data_html){
+	$count=preg_match_all("/<form(.*?)>(.*?)<\\/form>/is", $form_data_html, $matches, PREG_SET_ORDER);
+	if (is_array($matches)){
+		foreach ($matches as $m){
+			if (strpos($m[1],"nocsrf")!==false) { continue; }
+			$name="CSRFGuard_".mt_rand(0,mt_getrandmax());
+			$token=csrfguard_generate_token($name);
+			$form_data_html=str_replace($m[0],
+				"<form{$m[1]}>
+					<input type='hidden' name='CSRFName' value='{$name}' />
+					<input type='hidden' name='CSRFToken' value='{$token}' />{$m[2]}</form>",$form_data_html);
+		}
+	}
+	return $form_data_html;
+}
+
+function csrfguard_inject(){
+	$data=ob_get_clean();
+	$data=csrfguard_replace_forms($data);
+	echo $data;
+}
+
+function csrfguard_start(){
+	if (count($_POST)){
+		if (!isset($_POST['CSRFName']) or !isset($_POST['CSRFToken'])){
+			redirect(BASEDIR.'index.php');
+		} 
+		$name =$_POST['CSRFName'];
+		$token=$_POST['CSRFToken'];
+		if (!csrfguard_validate_token($name, $token)){ 
+			redirect(BASEDIR.'index.php');
+		}
+	}
+	ob_start();
+	/* adding double quotes for "csrfguard_inject" to prevent: 
+	Notice: Use of undefined constant csrfguard_inject - assumed 'csrfguard_inject' */
+	register_shutdown_function("csrfguard_inject");	
 }
 
 // Generate random text

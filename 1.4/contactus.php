@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 			<div class="form-group col-lg-5 text-center">
 				<img src="<?php echo IMAGES."contact.jpg"; ?>" alt="Contact Us" title="Contact Us" class="img-responsive img-thumbnail">
 			</div>
-			<form class="form-vertical" role="form" method="post" action="contactus.php">
+			<form name="form_contactus" class="form-vertical" role="form" method="post" action="contactus.php">
 				<div class="form-group col-lg-7">
 					<label for="name" class="control-label">Department</label><br>
 					<select name="department" class="form-control col-lg-12">
