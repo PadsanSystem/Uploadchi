@@ -67,7 +67,7 @@ if(!isset($_GET['aidlink']) && !preg_match('/login.php/i', $_SERVER['SCRIPT_FILE
 						<?php
 						if($userdata['user_avatar']!='noavatar.png'){
 							?>
-							<img src="<?php echo AVATARS.'noavatar_small.png'; ?>" class="img-circle">
+							<img src="<?php echo AVATARS.$userdata['user_avatar']; ?>" width="19px" height="19px" class="img-circle">
 							<?php
 						}else{
 							?>

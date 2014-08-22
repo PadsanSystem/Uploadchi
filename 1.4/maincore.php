@@ -312,11 +312,13 @@ function login($username, $password, $remember=0){
 			setcookie("user_username", $data['user_username'], $expired, 1);
 			setcookie("user_password", $data['user_password'], $expired, 1);
 			setcookie("user_group", $data['user_group_access'], $expired, 1);
+			setcookie("user_avatar", $data['user_avatar'], $expired, 1);
 		}else{
 			$_SESSION['user_id']=$data['user_id'];
 			$_SESSION['user_username']=$data['user_username'];
 			$_SESSION['user_password']=$data['user_password'];
 			$_SESSION['user_group']=$data['user_group_access'];
+			$_SESSION['user_avatar']=$data['user_avatar'];
 		}
 		redirect(BASEDIR.'index.php');
 	}else{
@@ -327,10 +329,11 @@ function login($username, $password, $remember=0){
 if(isset($logout) && $logout=='yes'){
 	session_destroy();
 	unset($userdata);
-	setcookie("user_id", $data['user_id'], -100);
-	setcookie("user_username", $data['user_username'], -100);
-	setcookie("user_password", $data['user_password'], -100);
-	setcookie("user_group", $data['user_group_access'], -100);
+	setcookie("user_id", $data['user_id'], -100, 1);
+	setcookie("user_username", $data['user_username'], -100, 1);
+	setcookie("user_password", $data['user_password'], -100, 1);
+	setcookie("user_group", $data['user_group_access'], -100, 1);
+	setcookie("user_avatar", $data['user_avatar'], -100, 1);
 	redirect(BASEDIR.'index.php');
 }
 
@@ -408,7 +411,7 @@ function verify_image($file) {
 }
 
 function show_error($error_id){
-	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error_id' LIMIT 1");
+	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error_id'");
 	$data=dbarray($result);
 	return $data;
 }

@@ -15,31 +15,79 @@ require_once 'subheader.php';
 
 if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 
-if(isset($_POST['submit'])){
-	$user_username=secure_itext($_POST['username']);
-	$user_password=md5(md5(secure_itext($_POST['password'])));
-	if($user_password!="")
-		$user_password="user_password='$user_password',";
-	else
-		$user_password="";
-	$user_name=secure_itext($_POST['name']);
-	$user_family=secure_itext($_POST['family']);
-	$user_email=$_POST['email'];
-	$user_avatar=$_FILES['avatar']['name'];
-	dbquery("UPDATE ".DB_PREFIX."users SET $user_password user_name='$user_name', user_family='$user_family', user_email='$user_email', user_time_visit='".time()."' WHERE user_id='".$userdata['user_id']."'");
-
-	$error="<div class='alert alert-success'>Well done! You successfully update your profile.</div>";
-}
-
 $result_profile=dbquery("SELECT * FROM ".DB_PREFIX."users WHERE user_id='".$userdata['user_id']."'");
 $data_profile=dbarray($result_profile);
+
+if(isset($_POST['submit'])){
+	$user_password=$_POST['password'];
+	if($user_password!='')
+		$user_password=md5(md5(secure_itext($user_password)));
+	else
+		$user_password=$data_profile['user_password'];
+		
+	$user_name=secure_itext($_POST['name']);
+	$user_family=secure_itext($_POST['family']);
+	
+	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+		$error=104;
+		$user_email=strtolower($data_profile['user_email']);
+	}else{
+		$user_email=strtolower($_POST['email']);
+	}
+	// Get string
+	$string=$_FILES['avatar'];
+	
+	if(is_uploaded_file($string['tmp_name'])){
+		// Get type file
+		$type=get_type($string, 'file');
+		$type_array=array('jpg', 'png', 'gif');
+		
+		if(!in_array($type, $type_array))
+			$error=106;
+			
+		// Get size file
+		$size=get_size($string, 'file');
+		if($size>5242880){
+			$error=105;
+		}
+		
+		if(!isset($error)){
+			$user_avatar=random_text('number').'.'.$type;
+			
+			move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
+			
+			unlink(AVATARS.$data_profile['user_avatar']);
+		}
+	}else{
+		$user_avatar=$data_profile['user_avatar'];
+	}
+
+	if(!isset($error)){
+		$message="<div class='alert alert-success'>Well done! You successfully update your profile.</div>";
+	
+		dbquery("UPDATE ".DB_PREFIX."users SET user_password='$user_password', user_name='$user_name', user_family='$user_family', user_email='$user_email', user_avatar='$user_avatar', user_time_visit='".time()."' WHERE user_id='".$userdata['user_id']."'");
+	}
+}
 ?>
 <!-- Begin page content -->
 <div class="container">
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Edit Profile</div>
 		<div class="panel-body">
-			<?php echo $error; ?>
+			<?php
+			if(isset($error)){
+				$data=show_error($error);
+				?>
+				<div class="container-fluid">
+					<div class="alert alert-warning" role="alert">
+						<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
+						<?php echo $data['error_page_content']; ?>
+					</div>
+				</div>
+				<?php
+			}
+			echo $message;
+			?>
 			<form class="form-vertical" role="form" method="post" action="edit_profile.php" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">Username</label><br>
@@ -65,7 +113,7 @@ $data_profile=dbarray($result_profile);
 					<label for="avatar" class="control-label">Avatar</label><br>
 					<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 						<div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-						<span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span><input type="file" name="file_hosting"></span>
+						<span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span><input type="file" name="avatar"></span>
 					</div>
 				</div>
 				<div class="col-md-6 col-md-offset-3 text-center">
