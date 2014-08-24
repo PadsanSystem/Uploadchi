@@ -54,7 +54,9 @@ if(isset($_POST['submit'])){
 		if(!isset($error)){
 			$user_avatar=random_text('number').'.'.$type;
 			move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
-			unlink(AVATARS.$data_profile['user_avatar']);
+			if(file_exists(AVATARS.$userdata['user_avatar'])){
+				unlink(AVATARS.$data_profile['user_avatar']);
+			}
 		}
 	}else{
 		$user_avatar=$data_profile['user_avatar'];

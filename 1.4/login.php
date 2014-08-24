@@ -21,6 +21,20 @@ if(isset($_POST['submit'])){
 ?>
 <div class="container">
 	<form name="form_login" role="form" method="post" action="<?php echo BASEDIR.'login.php'; ?>">
+		<?php
+		if(isset($error)){
+			$data=show_error($error);
+			?>
+			<div class="container-fluid">
+				<div class="alert alert-warning" role="alert">
+					<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
+					<?php echo $data['error_page_content']; ?>
+				</div>
+			</div>
+			<?php
+		}
+		echo $message;
+		?>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-panel panel panel-default">

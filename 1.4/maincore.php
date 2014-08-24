@@ -299,6 +299,7 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 }
 
 function login($username, $password, $remember=0){
+	global $settings;
 	$username=strtolower(secure_itext($username));
 	$password=md5(md5(secure_itext($password)));
 	
@@ -306,13 +307,13 @@ function login($username, $password, $remember=0){
 	
 	if(dbrows($result)!=0){
 		$data=dbarray($result);
-		$expired=time()+86400;
+		$expired=time()+604800;
 		if($remember==1){
-			setcookie("user_id", $data['user_id'], $expired, 1);
-			setcookie("user_username", $data['user_username'], $expired, 1);
-			setcookie("user_password", $data['user_password'], $expired, 1);
-			setcookie("user_group", $data['user_group_access'], $expired, 1);
-			setcookie("user_avatar", $data['user_avatar'], $expired, 1);
+			setcookie("user_id", $data['user_id'], $expired, '/', '', 1);
+			setcookie("user_username", $data['user_username'], $expired, '/', '', 1);
+			setcookie("user_password", $data['user_password'], $expired, '/', '', 1);
+			setcookie("user_group", $data['user_group_access'], $expired, '/', '', 1);
+			setcookie("user_avatar", $data['user_avatar'], $expired, '/', '', 1);
 		}else{
 			$_SESSION['user_id']=$data['user_id'];
 			$_SESSION['user_username']=$data['user_username'];
@@ -320,20 +321,21 @@ function login($username, $password, $remember=0){
 			$_SESSION['user_group']=$data['user_group_access'];
 			$_SESSION['user_avatar']=$data['user_avatar'];
 		}
-		redirect(BASEDIR.'index.php');
+		redirect(BASEDIR.'login.php');
 	}else{
-		redirect(BASEDIR.'index.php');
+		$error=120;
+		echo $error;
 	}
 }
 
 if(isset($logout) && $logout=='yes'){
 	session_destroy();
 	unset($userdata);
-	setcookie("user_id", $data['user_id'], -100, 1);
-	setcookie("user_username", $data['user_username'], -100, 1);
-	setcookie("user_password", $data['user_password'], -100, 1);
-	setcookie("user_group", $data['user_group_access'], -100, 1);
-	setcookie("user_avatar", $data['user_avatar'], -100, 1);
+	setcookie("user_id", $data['user_id'], -100, '/', '', 1);
+	setcookie("user_username", $data['user_username'], -100, '/', '', 1);
+	setcookie("user_password", $data['user_password'], -100, '/', '', 1);
+	setcookie("user_group", $data['user_group_access'], -100, '/', '', 1);
+	setcookie("user_avatar", $data['user_avatar'], -100, '/', '', 1);
 	redirect(BASEDIR.'index.php');
 }
 

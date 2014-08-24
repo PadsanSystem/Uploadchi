@@ -66,7 +66,7 @@ if(!isset($_GET['aidlink']) && !preg_match('/login.php/i', $_SERVER['SCRIPT_FILE
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<?php
-						if($userdata['user_avatar']!='noavatar.png'){
+						if($userdata['user_avatar']!='noavatar.png' && file_exists(AVATARS.$userdata['user_avatar'])){
 							?>
 							<img src="<?php echo AVATARS.$userdata['user_avatar']; ?>" width="19px" height="19px" class="img-circle">
 							<?php
