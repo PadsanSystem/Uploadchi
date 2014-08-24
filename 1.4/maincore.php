@@ -324,7 +324,7 @@ function login($username, $password, $remember=0){
 		redirect(BASEDIR.'login.php');
 	}else{
 		$error=120;
-		echo $error;
+		return $error;
 	}
 }
 

@@ -78,11 +78,9 @@ if(isset($_POST['submit'])){
 			if(isset($error)){
 				$data=show_error($error);
 				?>
-				<div class="container-fluid">
-					<div class="alert alert-warning" role="alert">
-						<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
-						<?php echo $data['error_page_content']; ?>
-					</div>
+				<div class="alert alert-warning" role="alert">
+					<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
+					<?php echo $data['error_page_content']; ?>
 				</div>
 				<?php
 			}
