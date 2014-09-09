@@ -331,11 +331,11 @@ function login($username, $password, $remember=0){
 if(isset($logout) && $logout=='yes'){
 	session_destroy();
 	unset($userdata);
-	setcookie("user_id", $data['user_id'], -100, '/', '', 1);
-	setcookie("user_username", $data['user_username'], -100, '/', '', 1);
-	setcookie("user_password", $data['user_password'], -100, '/', '', 1);
-	setcookie("user_group", $data['user_group_access'], -100, '/', '', 1);
-	setcookie("user_avatar", $data['user_avatar'], -100, '/', '', 1);
+	setcookie("user_id", $data['user_id'], -100, '/', '', true);
+	setcookie("user_username", $data['user_username'], -100, '/', '', true);
+	setcookie("user_password", $data['user_password'], -100, '/', '', true);
+	setcookie("user_group", $data['user_group_access'], -100, '/', '', true);
+	setcookie("user_avatar", $data['user_avatar'], -100, '/', '', true);
 	redirect(BASEDIR.'index.php');
 }
 
