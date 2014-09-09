@@ -309,11 +309,11 @@ function login($username, $password, $remember=0){
 		$data=dbarray($result);
 		$expired=time()+604800;
 		if($remember==1){
-			setcookie("user_id", $data['user_id'], $expired, '/', '', 1);
-			setcookie("user_username", $data['user_username'], $expired, '/', '', 1);
-			setcookie("user_password", $data['user_password'], $expired, '/', '', 1);
-			setcookie("user_group", $data['user_group_access'], $expired, '/', '', 1);
-			setcookie("user_avatar", $data['user_avatar'], $expired, '/', '', 1);
+			setcookie("user_id", $data['user_id'], $expired, '/', '', true);
+			setcookie("user_username", $data['user_username'], $expired, '/', '', true);
+			setcookie("user_password", $data['user_password'], $expired, '/', '', true);
+			setcookie("user_group", $data['user_group_access'], $expired, '/', '', true);
+			setcookie("user_avatar", $data['user_avatar'], $expired, '/', '', true);
 		}else{
 			$_SESSION['user_id']=$data['user_id'];
 			$_SESSION['user_username']=$data['user_username'];

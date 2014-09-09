@@ -73,7 +73,7 @@ if(isset($_POST['send_file'])){
 		$headers = getHeaders($url);
 		
 		if ($headers['http_code']===200){
-			if ($headers['download_content_length']>=1024 && $headers['download_content_length']<=104857600){
+			if ($headers['download_content_length']>=1 && $headers['download_content_length']<=104857600){
 				if (download($url, $path)){
 					// String of name and type file
 					$generate_name=$generate_name.".".$type;
@@ -82,7 +82,7 @@ if(isset($_POST['send_file'])){
 					$size=get_size($url, 'post');
 					
 					// Select best server for upload files
-					$result_server=dbquery("SELECT * FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com'");
+					$result_server=dbquery("SELECT * FROM ".DB_PREFIX."servers WHERE server_name='s3.uploadchi.com'");
 					$data_server=dbarray($result_server);
 					
 					// Servers
@@ -125,7 +125,7 @@ if(isset($_POST['send_file'])){
 					// Get prefix char of country
 					$country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
 
-					dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '2', '".$data['attachment_ext_id']."', '1', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '$country_code', 'Enable')");
+					dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '2', '".$data['attachment_ext_id']."', '3', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '$country_code', 'Enable')");
 					
 					$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 				}else{
