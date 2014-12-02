@@ -82,13 +82,11 @@ if(isset($_POST['send_file'])){
 					$size=get_size($url, 'post');
 					
 					// Select best server for upload files
-					$result_server=dbquery("SELECT * FROM ".DB_PREFIX."servers WHERE server_name='s3.uploadchi.com'");
+					$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com' AND server_status='Enable'");
 					$data_server=dbarray($result_server);
 					
 					// Servers
-					$upload_protocol='ftp.';
-					$server_name=$data_server['server_name'];
-					$rand_address=$upload_protocol.$server_name;
+					$rand_address='ftp.'.$data_server['server_name'];
 					
 					// Set username of server connect
 					$rand_username=$data_server['server_username'];
@@ -125,7 +123,7 @@ if(isset($_POST['send_file'])){
 					// Get prefix char of country
 					$country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
 
-					dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '2', '".$data['attachment_ext_id']."', '3', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '$country_code', 'Enable')");
+					dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '".$data['attachment_ext_id']."', '".$data_server['server_id']."', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '$country_code', 'Enable')");
 					
 					$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 				}else{

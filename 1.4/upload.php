@@ -35,7 +35,6 @@ if(isset($error)){
 	</div>
 	<?php
 }else{
-	include_once(CLASSES.'class.qr_code.php');
 	?>
 	<div class="container">
 		<div class="panel panel-default">

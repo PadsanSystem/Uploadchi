@@ -18,11 +18,10 @@ $result=dbquery("SELECT a.*, s.* FROM ".DB_PREFIX."attachments a, ".DB_PREFIX."s
 
 $data=dbarray($result);
 
-if(iMEMBER){
+if(iMEMBER)
 	$attachment_view_user="'".$userdata['user_id']."'";
-}else{
+else
 	$attachment_view_user='NULL';
-}
 
 // Get prefix char of country
 $country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
@@ -35,13 +34,7 @@ $link_download.=$data['server_name'];
 $link_download.='/';
 $link_download.=$data['attachment_address'];
 
-// include httdownload class
-include_once CLASSES."class.httpdownload.php";
-$object = new httpdownload;
-$object->set_byurl($link_download);
-$object->use_resume = true;
-$object->set_mime($mime);
-$object->download();
+redirect($link_download);
 
 require_once BASEDIR.'footer.php';
 ?>

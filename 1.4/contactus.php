@@ -32,8 +32,7 @@ if(isset($_POST['submit'])){
 			$email="administrator@uploadchi.com";
 			break;
 	}
-	echo $email;
-	mail("$email", "$subject", "$message", "From: $name");
+	@mail("$email", "$subject", "$message", "From: $name");
 }
 ?>
 <!-- Begin page content -->
