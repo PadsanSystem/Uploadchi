@@ -41,7 +41,7 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 						</div>
 					</div>
 				</div>
-				<a href="<?php echo ADMINISTRATION.'attachments.php'.$aidlink; ?>">
+				<a href="<?php echo ADMIN.'attachments.php'.$aidlink; ?>">
 					<div class="panel-footer">
 						<span class="pull-left">Management</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -65,7 +65,7 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 						</div>
 					</div>
 				</div>
-				<a href="<?php echo ADMINISTRATION.'attachments_views.php'.$aidlink; ?>">
+				<a href="<?php echo ADMIN.'attachments_views.php'.$aidlink; ?>">
 					<div class="panel-footer">
 						<span class="pull-left">Management</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -89,7 +89,7 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 						</div>
 					</div>
 				</div>
-				<a href="<?php echo ADMINISTRATION.'users.php'.$aidlink; ?>">
+				<a href="<?php echo ADMIN.'users.php'.$aidlink; ?>">
 					<div class="panel-footer">
 						<span class="pull-left">Management</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -113,7 +113,7 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 						</div>
 					</div>
 				</div>
-				<a href="<?php echo ADMINISTRATION.'payments.php'.$aidlink; ?>">
+				<a href="<?php echo ADMIN.'payments.php'.$aidlink; ?>">
 					<div class="panel-footer">
 						<span class="pull-left">Management</span>
 						<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -125,5 +125,5 @@ if (!iADMIN || !defined("iAUTH") || !isset($aid) || $aid != iAUTH) { redirect('.
 	</div>
 </div>
 <?php
-require_once ADMINISTRATION.'footer.php';
+require_once ADMIN.'footer.php';
 ?>

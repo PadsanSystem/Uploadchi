@@ -1,3 +1,4 @@
+
 RewriteEngine on
 #####################################  Start htaccess sec code
 <Files ~ "^\.ht">

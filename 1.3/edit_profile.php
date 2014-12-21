@@ -27,12 +27,10 @@ if(isset($_POST['submit'])){
 	$user_email=$_POST['email'];
 	$user_avatar=$_FILES['avatar']['name'];
 	dbquery("UPDATE ".DB_PREFIX."users SET $user_password user_name='$user_name', user_family='$user_family', user_email='$user_email', user_time_visit='".time()."' WHERE user_id='".$userdata['user_id']."'");
-
+	
 	$error="<div class='alert alert-success'>Well done! You successfully update your profile.</div>";
 }
 
-$result_profile=dbquery("SELECT * FROM ".DB_PREFIX."users WHERE user_id='".$userdata['user_id']."'");
-$data_profile=dbarray($result_profile);
 ?>
 <!-- Begin page content -->
 <div class="container">
@@ -43,7 +41,7 @@ $data_profile=dbarray($result_profile);
 			<form class="form-vertical" role="form" method="post" action="edit_profile.php" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">Username</label><br>
-					<input id="username" name="username" type="text" value="<?php echo $data_profile['user_username']; ?>" class="form-control" placeholder="Enter your username" autocomplete="off" disabled>
+					<input id="username" name="username" type="text" value="<?php echo $userdata['user_username']; ?>" class="form-control" placeholder="Enter your username" autocomplete="off" disabled>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="password" class="control-label">Password</label><br>
@@ -51,15 +49,15 @@ $data_profile=dbarray($result_profile);
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label">Name</label><br>
-					<input id="name" name="name" type="text"  value="<?php echo $data_profile['user_name']; ?>"class="form-control" placeholder="Enter your name">
+					<input id="name" name="name" type="text"  value="<?php echo $userdata['user_name']; ?>"class="form-control" placeholder="Enter your name">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="family" class="control-label">Family</label><br>
-					<input id="family" name="family" type="text"  value="<?php echo $data_profile['user_family']; ?>"class="form-control" placeholder="Enter your family">
+					<input id="family" name="family" type="text"  value="<?php echo $userdata['user_family']; ?>"class="form-control" placeholder="Enter your family">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="email" class="control-label">Email</label><br>
-					<input id="email" name="email" type="text"  value="<?php echo $data_profile['user_email']; ?>"class="form-control" placeholder="Enter your email">
+					<input id="email" name="email" type="text"  value="<?php echo $userdata['user_email']; ?>"class="form-control" placeholder="Enter your email">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="avatar" class="control-label">Avatar</label><br>

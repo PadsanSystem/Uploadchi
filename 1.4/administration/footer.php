@@ -13,9 +13,12 @@
 */
 ?>
 </div>
-<script src="<?php echo JAVASCRIPTS.'jquery.js'; ?>"></script>
+<script src="<?php echo JAVASCRIPTS.'jquery.min.js'; ?>"></script>
 <script src="<?php echo JAVASCRIPTS.'bootstrap.min.js'; ?>"></script>
-<script src="<?php echo ADMINISTRATION_JSCRIPTS.'plugins/metisMenu/metisMenu.min.js'; ?>"></script>
-<script src="<?php echo ADMINISTRATION_JSCRIPTS.'sb-admin-2.js'; ?>"></script>
+<script src="<?php echo ADMIN_THEMES_PLUGINS.'metisMenu/metisMenu.min.js'; ?>"></script>
+<script src="<?php echo JAVASCRIPTS.'dataTables/jquery.dataTables.min.js'; ?>"></script>
+<script src="<?php echo JAVASCRIPTS.'dataTables/dataTables.bootstrap.min.js'; ?>"></script>
+<script src="<?php echo ADMIN_JSCRIPTS.'sb-admin-2.min.js'; ?>"></script>
+<script src="<?php echo JAVASCRIPTS.'jasny-bootstrap.min.js'; ?>"></script>
 </body>
 </html>

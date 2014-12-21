@@ -13,7 +13,7 @@
 */
 if(isset($_POST['send_file'])){
 	// Include class ftp_upload
-	include_once CLASSES."class.ftp_upload.php";
+	include_once CLASSES."ftp_upload.php";
 	
 	// Get string
 	$string=$_FILES['local_upload'];
@@ -30,7 +30,7 @@ if(isset($_POST['send_file'])){
 	// Set uid file
 	$uid=set_uid($name, $type, '_');
 	
-	include_once FUNCTIONS.'function.attachments_exts.php';
+	include_once FUNCTIONS.'attachments_exts.php';
 	$trust_type=check_validate_exts($type);
 	
 	// Check and set Image virus
@@ -50,7 +50,7 @@ if(isset($_POST['send_file'])){
 			$generate_name=$generate_name.".".$type;
 			
 			// Select best server for upload files
-			$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com' AND server_status='Enable'");
+			$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s2.uploadchi.com' AND server_status='Enable'");
 			$data_server=dbarray($result_server);
 			
 			// Servers

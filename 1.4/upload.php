@@ -12,6 +12,8 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
+require_once LOCALESET.'errors.php';
+require_once LOCALESET.'upload.php';
 
 if(is_uploaded_file($_FILES['local_upload']['tmp_name']))
 	require_once INCLUDES.'local_upload.php';
@@ -25,12 +27,14 @@ if(!isset($download_url) && !isset($error) && !cleanurl($download_url)) redirect
 if (isset($error) && !isnum($error)) { redirect(BASEDIR.'index.php'); }
 
 if(isset($error)){
-	$data=show_error($error);
 	?>
 	<div class="container">
 		<div class="alert alert-warning" role="alert">
-			<p class="text-danger"><b>Error <?php echo $error; ?></b></p>
-			<?php echo $data['error_page_content']; ?>
+			<p class="text-danger"><b><?php echo $locale['login_105']; ?> <?php echo $error; ?></b></p>
+			<?php
+			$error_string=show_error($error, 'errors');
+			echo $locale["$error_string"];
+			?>
 		</div>
 	</div>
 	<?php
@@ -38,7 +42,7 @@ if(isset($error)){
 	?>
 	<div class="container">
 		<div class="panel panel-default">
-			<div class="panel-heading"><span class="glyphicon glyphicon-cloud-download"></span> Download Link</div>
+			<div class="panel-heading"><span class="glyphicon glyphicon-cloud-download"></span><?php echo $locale['upload_100']; ?></div>
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-8 col-lg-offset-2 text-center">

@@ -11,8 +11,11 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
-define("ADMINISTRATION_IMAGES", ADMINISTRATION."images/");
-define("ADMINISTRATION_INCLUDES", ADMINISTRATION."includes/");
-define("ADMINISTRATION_JSCRIPTS", ADMINISTRATION_INCLUDES."javascripts/");
-define("ADMINISTRATION_THEMES", ADMINISTRATION."themes/default/");
+define("ADMIN_IMAGES", ADMIN."images/");
+define("ADMIN_INCLUDES", ADMIN."includes/");
+define("ADMIN_JSCRIPTS", ADMIN_INCLUDES."javascripts/");
+define("ADMIN_THEMES", ADMIN."themes/default/");
+define("ADMIN_THEMES_CSS", ADMIN_THEMES."css/");
+define("ADMIN_THEMES_IMAGES", ADMIN_THEMES."images/");
+define("ADMIN_THEMES_PLUGINS", ADMIN_JSCRIPTS."plugins/");
 ?>

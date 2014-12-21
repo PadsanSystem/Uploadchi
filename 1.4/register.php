@@ -119,7 +119,7 @@ if(isset($_POST['submit'])){
 					</div>
 				</div>
 				<div class="col-md-6 col-md-offset-3 text-center">
-					<button name="submit" type="submit" class="btn btn-primary">Register now !</button>
+					<button name="submit" type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-user"></span> Create Account</button>
 				</div>
 			</form>
 		</div>

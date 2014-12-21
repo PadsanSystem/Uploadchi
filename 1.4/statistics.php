@@ -27,16 +27,13 @@ $users_active=dbcount("(*)", "users", "user_status='Enable'");
 		<div class="panel-body">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<span class="badge"><?php echo $files_active; ?></span>
-					URL's
+					<span class="badge"><?php echo number_format($files_active); ?></span>URL's
 				</li>
 				<li class="list-group-item">
-					<span class="badge"><?php echo $servers_active; ?></span>
-					Servers
+					<span class="badge"><?php echo number_format($servers_active); ?></span>Servers
 				</li>
 				<li class="list-group-item">
-					<span class="badge"><?php echo $users_active; ?></span>
-					Users
+					<span class="badge"><?php echo number_format($users_active); ?></span>Users
 				</li>
 			</ul>
 		</div>

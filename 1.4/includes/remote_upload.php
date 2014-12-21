@@ -24,14 +24,16 @@ if(isset($_POST['send_file'])){
 	// Set uid file
 	$uid=set_uid($name, $type, '_');
 	
-	include_once FUNCTIONS.'function.attachments_exts.php';
+	include_once FUNCTIONS.'attachments_exts.php';
 	$trust_type=check_validate_exts($type);
 	
-	if($trust_type==false){
+	if($string==''){
+		$error=103;
+	}else if($trust_type==false){
 		$error=100;
 	}else{
 		// Include class ftp_upload
-		include_once CLASSES."class.ftp_upload.php";
+		include_once CLASSES."ftp_upload.php";
 		
 		// Get headers
 		function getHeaders($url){
@@ -74,7 +76,7 @@ if(isset($_POST['send_file'])){
 		
 		if ($headers['http_code']===200){
 			if ($headers['download_content_length']>=1 && $headers['download_content_length']<=104857600){
-				if (download($url, $path)){
+				if(download($url, $path)){
 					// String of name and type file
 					$generate_name=$generate_name.".".$type;
 					
@@ -82,7 +84,7 @@ if(isset($_POST['send_file'])){
 					$size=get_size($url, 'post');
 					
 					// Select best server for upload files
-					$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com' AND server_status='Enable'");
+					$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s2.uploadchi.com' AND server_status='Enable'");
 					$data_server=dbarray($result_server);
 					
 					// Servers

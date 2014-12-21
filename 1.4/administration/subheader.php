@@ -29,11 +29,11 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 		<title><?php echo $settings['setting_title']; ?></title>
 
 		<?php
-		$get_styles = array(CSS.'bootstrap.min.css', ADMINISTRATION_THEMES.'plugins/metisMenu/metisMenu.min.css', ADMINISTRATION_THEMES.'plugins/timeline.css', ADMINISTRATION_THEMES.'plugins/dataTables.css', ADMINISTRATION_THEMES.'plugins/dataTables.bootstrap.css', CSS.'sb-admin-2.css', ADMINISTRATION_THEMES.'plugins/morris.css', ADMINISTRATION_THEMES.'font-awesome/css/font-awesome.min.css');
+		$get_styles = array(ADMIN_THEMES_CSS.'bootstrap.min.css', ADMIN_THEMES_PLUGINS.'metisMenu/metisMenu.min.css', THEMES_CSS.'dataTables.bootstrap.min.css', ADMIN_THEMES_CSS.'sb-admin-2.min.css', ADMIN_THEMES_PLUGINS.'morris.css', THEMES.'font-awesome/css/font-awesome.min.css', THEMES_CSS.'jasny-bootstrap.min.css');
 		
 		compress_file($get_styles, 'css');
 		?>
-		<link href="<?php echo ADMINISTRATION_THEMES.'cstyles.min.css'; ?>" rel="stylesheet" type="text/css">
+		<link href="<?php echo ADMIN_THEMES_CSS.'cstyles.min.css'; ?>" rel="stylesheet">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -50,7 +50,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="<?php echo ADMINISTRATION.'index.php'; ?>">Admin Uploadchi v1.0</a>
+					<a class="navbar-brand" href="<?php echo ADMIN.'index.php'; ?>">Admin Uploadchi v1.0</a>
 				</div>
 				<!-- /.navbar-header -->
 
@@ -252,7 +252,7 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 						<ul class="dropdown-menu dropdown-user">
 							<li><a href="<?php echo BASEDIR.'index.php'; ?>"><i class="fa fa-gear fa-fw"></i> View website</a></li>
 							<li class="divider"></li>
-							<li><a href="<?php echo ADMINISTRATION.'index.php?logout=yes'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+							<li><a href="<?php echo ADMIN.'index.php?logout=yes'; ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 							</li>
 						</ul>
 						<!-- /.dropdown-user -->
@@ -276,28 +276,36 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 								<!-- /input-group -->
 							</li>
 							<li>
-								<a class="active" href="<?php echo ADMINISTRATION.'index.php'.$aidlink; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+								<a class="active" href="<?php echo ADMIN.'index.php'.$aidlink; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Management<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
 									<li>
-										<a href="<?php echo ADMINISTRATION.'attachments.php'.$aidlink; ?>"><i class="fa fa-upload fa-fw"></i> Attachments</a>
+										<a href="<?php echo ADMIN.'attachments.php'.$aidlink; ?>"><i class="fa fa-upload fa-fw"></i> Attachments</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'attachments_views.php'.$aidlink; ?>"><i class="fa fa-eye fa-fw"></i> Attachment Views</a>
+										<a href="<?php echo ADMIN.'attachments_views.php'.$aidlink; ?>"><i class="fa fa-eye fa-fw"></i> Attachment Views</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'groups.php'.$aidlink; ?>"><i class="fa fa-group fa-fw"></i> Groups</a>
+										<a href="<?php echo ADMIN.'groups.php'.$aidlink; ?>"><i class="fa fa-group fa-fw"></i> Groups</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'users.php'.$aidlink; ?>"><i class="fa fa-user fa-fw"></i> Users</a>
+										<a href="<?php echo ADMIN.'users.php'.$aidlink; ?>"><i class="fa fa-user fa-fw"></i> Users</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'payments.php'.$aidlink; ?>"><i class="fa fa-dollar fa-fw"></i> Payments</a>
+										<a href="<?php echo ADMIN.'payments.php'.$aidlink; ?>"><i class="fa fa-dollar fa-fw"></i> Payments</a>
 									</li>
 									<li>
-										<a href="<?php echo ADMINISTRATION.'settings.php'.$aidlink; ?>"><i class="fa fa-gear fa-fw"></i> Settings</a>
+										<a href="<?php echo ADMIN.'settings.php'.$aidlink; ?>"><i class="fa fa-gear fa-fw"></i> Settings</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Affiliate<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="<?php echo ADMIN.'newsletter.php'.$aidlink; ?>"><i class="fa fa-upload fa-fw"></i> Newsletter</a>
 									</li>
 								</ul>
 							</li>

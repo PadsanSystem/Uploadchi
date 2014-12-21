@@ -15,24 +15,28 @@ require_once 'subheader.php';
 
 if(isset($_POST['submit'])){
 	$subject=secure_itext($_POST['subject']);
-	$message=secure_itextarea($_POST['message']);
+	$message=secure_itextarea(nl2br($_POST['message']));
 	$name=secure_itext($_POST['name']);
+	$email=secure_itext($_POST['email']);
 	$department=isnum($_POST['department']);
 	switch($department){
 		case 1:
-			$email="support@uploadchi.com";
+			$department="support@uploadchi.com";
 			break;
 		case 2:
-			$email="sales@uploadchi.com";
+			$department="sales@uploadchi.com";
 			break;
 		case 3:
-			$email="billing@uploadchi.com";
+			$department="billing@uploadchi.com";
 			break;
 		case 4:
-			$email="administrator@uploadchi.com";
+			$department="mahmoodi@uploadchi.com";
 			break;
 	}
-	@mail("$email", "$subject", "$message", "From: $name");
+	$headers='Content-type: text/html; charset=utf-8'."\r\n";
+	$headers.="From: $email";
+	
+	@mail($department, $subject, $message, $headers);
 }
 ?>
 <!-- Begin page content -->
@@ -49,7 +53,7 @@ if(isset($_POST['submit'])){
 			</div>
 			<form name="form_contactus" class="form-vertical" role="form" method="post" action="contactus.php">
 				<div class="form-group col-lg-7">
-					<label for="name" class="control-label">Department</label><br>
+					<label for="department" class="control-label">Department</label><br>
 					<select name="department" class="form-control col-lg-12">
 						<option value="1">Support</option>
 						<option value="2">Sales</option>
@@ -74,7 +78,7 @@ if(isset($_POST['submit'])){
 					<textarea id="message" name="message" class="form-control" rows="3" placeholder="Enter your message here"></textarea>
 				</div>
 				<div class="col-lg-6 col-lg-offset-3 text-center">
-					<button id="submit" name="submit" type="submit" class="btn btn-primary">Send Message</button>
+					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-envelope"></span> Send Message</button>
 				</div>
 			</form>
 		</div>

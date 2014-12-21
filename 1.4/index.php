@@ -94,12 +94,6 @@ require_once 'subheader.php';
 			</div>
 		</div>
 	</div>
-	<script>
-		$('#myTab a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
-		})
-	</script>
 </div>
 <?php
 require_once BASEDIR.'footer.php';

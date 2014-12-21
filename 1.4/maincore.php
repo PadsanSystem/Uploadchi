@@ -55,17 +55,21 @@ define("FUSION_QUERY", isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'
 define("FUSION_SELF", basename($_SERVER['PHP_SELF']));
 
 // Set defines
-define("ADMINISTRATION", BASEDIR."administration/");
+define("ADMIN", BASEDIR."administration/");
 define("IMAGES", BASEDIR."images/");
 define("IMAGES_NEWS", IMAGES."news/");
 define("AVATARS", IMAGES."avatars/");
 define("IMAGES_ADVERTISING", IMAGES."advertising/");
 define("IMAGES_TYPES", IMAGES."types/");
 define("INCLUDES", BASEDIR."includes/");
+define("LOCALE", BASEDIR."locale/");
+define("LOCALESET", LOCALE."english/");
 define("FUNCTIONS", INCLUDES."functions/");
 define("CLASSES", INCLUDES."classes/");
 define("JAVASCRIPTS", INCLUDES."javascripts/");
-define("CSS", BASEDIR."css/");
+define("THEMES", BASEDIR."themes/default/");
+define("THEMES_CSS", THEMES."css/");
+define("PAGES", INCLUDES."pages/");
 
 // MySQL database functions
 function dbquery($query) {
@@ -145,15 +149,17 @@ function secure_itextarea($text){
 }
 
 function dbconnect($db_host, $db_user, $db_pass, $db_name) {
+	global $db_connect;
+
 	$db_connect = @mysql_connect($db_host, $db_user, $db_pass);
 	$db_select = @mysql_select_db($db_name);
 	if (!$db_connect) {
-		die("<div style='font-family:tahoma;font-size:11px;text-align:center;'><b>قادر به ارتباط با بانک اطلاعاتی نمی باشید</b><br>".mysql_errno()." : ".mysql_error()."</div>");
+		die("<strong>Unable to establish connection to MySQL</strong><br />".mysql_errno()." : ".mysql_error());
 	} elseif (!$db_select) {
-		die("<div style='font-family:tahoma;font-size:11px;text-align:center;'><b>قادر به انتخاب بانک اطلاعاتی نمی باشید</b><br>".mysql_errno()." : ".mysql_error()."</div>");
+		die("<strong>Unable to select MySQL database</strong><br />".mysql_errno()." : ".mysql_error());
 	}
 	@mysql_query("SET NAMES utf8", $db_connect);
-    @mysql_query("SET CHARACTER SET utf8", $db_connect);
+	@mysql_query("SET CHARACTER SET utf8", $db_connect );
 }
 
 // Redirect browser using header or script function
@@ -168,6 +174,16 @@ function redirect($location, $type="header"){
 // Validate numeric input
 function isnum($value) {
 	return (preg_match("/^[0-9]+$/", $value));
+}
+
+// Trim a line of text to a preferred length
+function trimlink($text, $length) {
+	$dec = array("&", "\"", "'", "\\", '\"', "\'", "<", ">");
+	$enc = array("&amp;", "&quot;", "&#39;", "&#92;", "&quot;", "&#39;", "&lt;", "&gt;");
+	$text = str_replace($enc, $dec, $text);
+	if (strlen($text) > $length) $text = substr($text, 0, ($length-3))."...";
+	$text = str_replace($dec, $enc, $text);
+	return $text;
 }
 
 // Strip Input Function, prevents HTML in unwanted places
@@ -199,21 +215,18 @@ function set_uid($name, $type, $separator){
 	$uid.=random_text('number');
 	$uid.='.';
 	$uid.=$type;
-	
 	return $uid;
 }
 
 // Get file names
 function get_name($url, $method){
-	if($method!='post'){
+	if($method!='post')
 		$url=$url['name'];
-	}else{
+	else
 		$url='file';
-	}
 	// Explode name
 	$get_explode=explode(".", $url);
 	$name=$get_explode[0];
-	
 	return $name;
 }
 
@@ -298,59 +311,46 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 	return "<ul class='pagination'>\n".$res."</ul>\n";
 }
 
-function login($username, $password, $remember=0){
-	global $settings;
-	$username=strtolower(secure_itext($username));
-	$password=md5(md5(secure_itext($password)));
-	
+if(isset($_POST['login'])){
+	$username=strtolower(secure_itext($_POST['username']));
+	$password=md5(md5(secure_itext($_POST['password'])));
+
 	$result=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_username='$username' AND users.user_password='$password' AND users.user_status='Enable' AND users_groups.user_group_status='Enable' AND users.user_group=users_groups.user_group_id LIMIT 1");
-	
+
 	if(dbrows($result)!=0){
 		$data=dbarray($result);
 		$expired=time()+604800;
-		if($remember==1){
-			setcookie("user_id", $data['user_id'], $expired, '/', '', 1);
-			setcookie("user_username", $data['user_username'], $expired, '/', '', 1);
-			setcookie("user_password", $data['user_password'], $expired, '/', '', 1);
-			setcookie("user_group", $data['user_group_access'], $expired, '/', '', 1);
-			setcookie("user_avatar", $data['user_avatar'], $expired, '/', '', 1);
+		
+		if($_POST['remember']==1){
+			setcookie("user_id", $data['user_id'], $expired, "/", "", "0", "1");
 		}else{
 			$_SESSION['user_id']=$data['user_id'];
-			$_SESSION['user_username']=$data['user_username'];
-			$_SESSION['user_password']=$data['user_password'];
-			$_SESSION['user_group']=$data['user_group_access'];
-			$_SESSION['user_avatar']=$data['user_avatar'];
 		}
-		redirect(BASEDIR.'login.php');
+		$userdata=$data;
 	}else{
 		$error=120;
-		return $error;
+	}
+}
+$login_type=(isset($_SESSION) && ($_SESSION['user_id']!='') ? $_SESSION['user_id'] : $_COOKIE['user_id']);
+
+if(iMEMBER){
+	$result_member=dbquery("SELECT users.*, users_groups.* FROM ".DB_PREFIX."users users, ".DB_PREFIX."users_groups users_groups WHERE users.user_id='$login_type'");
+	if(dbrows($result_member)!=0){
+		$userdata=dbarray($result_member);
 	}
 }
 
-if(isset($logout) && $logout=='yes'){
+if(isset($_GET['logout']) && $_GET['logout']=='yes'){
 	session_destroy();
-	unset($userdata);
 	setcookie("user_id", $data['user_id'], -100, '/', '', 1);
-	setcookie("user_username", $data['user_username'], -100, '/', '', 1);
-	setcookie("user_password", $data['user_password'], -100, '/', '', 1);
-	setcookie("user_group", $data['user_group_access'], -100, '/', '', 1);
-	setcookie("user_avatar", $data['user_avatar'], -100, '/', '', 1);
 	redirect(BASEDIR.'index.php');
 }
 
-// Set Cookie
-if(isset($_COOKIE)){
-	foreach ($_COOKIE as $value){
-		$userdata = $_COOKIE;
-	}
-}
-
-// Set Session
-if(isset($_SESSION)){
-	foreach ($_SESSION as $value){
-		$userdata = $_SESSION;
-	}
+function show_error($error_id, $section=''){
+	$string=$section;
+	$string.='_';
+	$string.=$error_id;
+	return $string;
 }
 
 function censorwords($text){
@@ -399,6 +399,7 @@ function stripget($check_url) {
 function verify_image($file) {
 	$txt = file_get_contents($file);
 	$image_safe = true;
+	
 	if (preg_match('#<?php#i', $txt)) { $image_safe = false; } //edit
 	elseif (preg_match('#&(quot|lt|gt|nbsp|<?php);#i', $txt)) { $image_safe = false; }
 	elseif (preg_match("#&\#x([0-9a-f]+);#i", $txt)) { $image_safe = false; }
@@ -410,12 +411,6 @@ function verify_image($file) {
 	elseif (preg_match("#(<[^>]+)style=([\`\'\"]*).*behaviour\([^>]*>#iU", $txt)) { $image_safe = false; }
 	elseif (preg_match("#</*(applet|link|style|script|iframe|frame|frameset)[^>]*>#i", $txt)) { $image_safe = false; }
 	return $image_safe;
-}
-
-function show_error($error_id){
-	$result=dbquery("SELECT * FROM ".DB_PREFIX."errors_pages WHERE error_page_number='$error_id'");
-	$data=dbarray($result);
-	return $data;
 }
 
 function store_in_session($key,$value){
@@ -502,7 +497,6 @@ function csrfguard_start(){
 			redirect(BASEDIR.'index.php');
 		}
 	}
-	ob_start();
 	/* adding double quotes for "csrfguard_inject" to prevent: 
 	Notice: Use of undefined constant csrfguard_inject - assumed 'csrfguard_inject' */
 	register_shutdown_function("csrfguard_inject");	
@@ -512,15 +506,15 @@ function csrfguard_start(){
 function random_text($type){
 	if($type=='number'){
 		$text=time();
-		$text+=rand(10, 100);
-		$text+=rand(100, 1000);
-		$text+=rand(1000, 10000);
-		$text+=rand(10000, 100000);
-		$text+=rand(100000, 1000000);
-		$text+=rand(1000000, 10000000);
-		$text+=rand(10000000, 100000000);
-		$text+=rand(100000000, 1000000000);
-		$text+=rand(1000000000, 10000000000);
+		$text+=mt_rand(10, 100);
+		$text+=mt_rand(100, 1000);
+		$text+=mt_rand(1000, 10000);
+		$text+=mt_rand(10000, 100000);
+		$text+=mt_rand(100000, 1000000);
+		$text+=mt_rand(1000000, 10000000);
+		$text+=mt_rand(10000000, 100000000);
+		$text+=mt_rand(100000000, 1000000000);
+		$text+=mt_rand(1000000000, 10000000000);
 	}else if($type=='text'){
 	
 	}else if($type=='mixed'){
@@ -573,21 +567,20 @@ function cpress_js($buffer){
 }
 
 function compress_file($array_file, $type){
-	global $_GET;
-	$content='';
 	if(iADMIN && isset($_GET['aid'])){
 		if($type=='css'){
-			$create_file=ADMINISTRATION_THEMES.'cstyles.min.css';
+			$create_file=ADMIN_THEMES_CSS.'cstyles.min.css';
 		}else if($type=='javascript'){
-			$create_file=ADMINISTRATION_JSCRIPTS.'cjscript.min.js';
+			$create_file=ADMIN_JSCRIPTS.'cjscript.min.js';
 		}
 	}else{
 		if($type=='css'){
-			$create_file=CSS.'cstyles.min.css';
+			$create_file=THEMES_CSS.'cstyles.min.css';
 		}else if($type=='javascript'){
 			$create_file=JAVASCRIPTS.'cjscript.min.js';
 		}
 	}
+	
 	foreach($array_file as $sheet){
 		$sheets = trim($sheet);
 		if(file_exists($sheets)){
@@ -599,10 +592,11 @@ function compress_file($array_file, $type){
 			
 		}
 	}
+	
 	if(file_exists($create_file)){
 		$md5=md5(file_get_contents($create_file));
 	}
-	if($md5!=$content){
+	if($md5!=md5($content)){
 		file_put_contents($create_file, $content);
 	}
 }
@@ -613,7 +607,7 @@ if (iADMIN) {
 }
 
 // User level, Admin Rights & User Group definitions
-define("iGUEST", $userdata['user_group'] == 0 ? 1 : 0);
-define("iMEMBER", $userdata['user_group'] >= 100 ? 1 : 0);
-define("iADMIN", $userdata['user_group'] == 200 ? 1 : 0);
+define("iGUEST", $userdata['user_group_access'] == 0 ? 1 : 0);
+define("iMEMBER", $userdata['user_group_access'] >= 100 ? 1 : 0);
+define("iADMIN", $userdata['user_group_access'] == 200 ? 1 : 0);
 ?>
