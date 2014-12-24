@@ -353,6 +353,21 @@ function show_error($error_id, $section=''){
 	return $string;
 }
 
+function remove_avatars($name){
+	unlink(AVATARS.$name);
+	$seprate=explode('.', $name);
+	unlink(AVATARS.$seprate[0].'_2.'.$seprate[1]);
+	unlink(AVATARS.$seprate[0].'_3.'.$seprate[1]);
+	unlink(AVATARS.$seprate[0].'_4.'.$seprate[1]);
+}
+
+function show_avatars($number){
+	global $userdata;
+	$seprate=explode('.', $userdata['user_avatar']);
+	$show=AVATARS.$seprate[0].'_'.$number.'.'.$seprate[1];
+	return $show;
+}
+
 function censorwords($text){
 	return $text;
 }
@@ -546,22 +561,22 @@ function get_ip(){
 
 function cpress_css($buffer){
 	// remove comments
-	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-	// remove tabs, spaces, newlines, etc.
-	$buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
-	/* remove other spaces before/after ) */
-	$buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
-	
-	return $buffer;
-}
-
-function cpress_js($buffer){
-	// remove comments
 	// $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
 	// remove tabs, spaces, newlines, etc.
 	// $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
 	/* remove other spaces before/after ) */
 	// $buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
+	
+	return $buffer;
+}
+
+function cpress_js($buffer){
+	//remove comments
+	// $buffer = str_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+	//remove tabs, spaces, newlines, etc.
+	// $buffer = str_replace(array("\n"), '', $buffer);
+	// /* remove other spaces before/after ) */
+	// $buffer = str_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
 	
 	return $buffer;
 }

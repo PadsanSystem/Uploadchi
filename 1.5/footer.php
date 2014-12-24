@@ -13,8 +13,8 @@
 */
 require_once LOCALESET.'footer.php';
 
-$get_jscripts = array(JAVASCRIPTS.'jquery.min.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'inputmask.js', JAVASCRIPTS.'datatables/jquery.datatables.min.js', JAVASCRIPTS.'datatables/datatables.bootstrap.min.js', JAVASCRIPTS.'livechat.js', JAVASCRIPTS.'others.js');
-compress_file($get_jscripts, 'javascript');
+// $get_jscripts = array(JAVASCRIPTS.'jquery.min.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'inputmask.js', JAVASCRIPTS.'datatables/jquery.datatables.min.js', JAVASCRIPTS.'datatables/datatables.bootstrap.min.js', JAVASCRIPTS.'others.js', JAVASCRIPTS.'livechat.js', JAVASCRIPTS.'google_analytics.js');
+// compress_file($get_jscripts, 'javascript');
 ?>
 <script src="<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>"></script>
 <?php
@@ -25,7 +25,8 @@ mysql_close($db_connect);
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<p class="text-muted text-center"><small><br><?php echo $locale['footer_100']; ?></small></p>
+				<h5 class="text-muted text-center"><small><a href="http://blog.uploadchi.com">Blog</a> | <a href="network.php">System status</a></small></h5>
+				<p class="text-muted text-center"><small><?php echo $locale['footer_100']; ?></small></p>
 				<?php
 				if(iADMIN){
 					?>
