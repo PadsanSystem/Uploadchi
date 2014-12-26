@@ -20,7 +20,7 @@ require_once LOCALESET.'footer.php';
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h5 class="text-muted text-center"><small><a href="http://blog.uploadchi.com">Blog</a> | <a href="network.php">System status</a></small></h5>
+				<h5 class="text-muted text-center"><small><a href="http://blog.uploadchi.com">Blog</a></small></h5>
 				<p class="text-muted text-center"><small><?php echo $locale['footer_100']; ?></small></p>
 				<?php
 				if(iADMIN){
@@ -33,7 +33,21 @@ require_once LOCALESET.'footer.php';
 		</div>
 	</div>
 </div>
-<script src="<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>"></script>
+<script type="text/JavaScript">
+	function callback(){
+		if(req.readyState == 4){
+			if(req.status == 200){
+				eval(req.responseText);
+			} else {
+				// Error
+			}
+		}
+	};
+	var req = new XMLHttpRequest();
+	req.onload = callback;
+	req.open("get", "<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>", true);
+	req.send();
+</script>
 <?php
 $page_time_end=microtime();
 mysql_close($db_connect);
