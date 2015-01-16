@@ -61,6 +61,7 @@ define("ENGINES", INCLUDES.'engines/');
 define("SMARTY", ENGINES.'smarty/');
 define("CONFIGS", BASEDIR.'configs/');
 define("CACHE", BASEDIR.'cache/');
+
 // Require configuration website file
 require_once BASEDIR.'config.php';
 
@@ -68,21 +69,24 @@ require_once BASEDIR.'config.php';
 require_once CLASSES.'database.php';
 $database=new medoo(
 	[
-	'database_type'=>'mysql',
-	'database_name'=>DB_NAME,
-	'server'=>DB_HOST,
-	'username'=>DB_USER,
-	'password'=>DB_PASS,
-	// optional
-	'port'=>DB_PORT,
-	'charset'=>DB_CHARSET,
-	// driver_option for connection, read more from http://www.php.net/manual/en/pdo.setattribute.php
-	'option'=>[PDO::ATTR_CASE => PDO::CASE_NATURAL]
+		'database_type'=>'mysql',
+		'database_name'=>DB_NAME,
+		'server'=>DB_HOST,
+		'username'=>DB_USER,
+		'password'=>DB_PASS,
+		// optional
+		'port'=>DB_PORT,
+		'charset'=>DB_CHARSET,
+		// driver_option for connection, read more from http://www.php.net/manual/en/pdo.setattribute.php
+		'option'=>[PDO::ATTR_CASE => PDO::CASE_NATURAL]
 	]
 );
 
+$visit_page=basename($PHP_SELF, '.php');
+
 // Load Class templates engines
 require_once CLASSES.'template_engines.php';
+$templates=new templates();
 
 //Initiate the class
 $settings=$database->get("settings", "*", ["setting_title"=>'Uploadchi']);
@@ -115,7 +119,7 @@ function redirect($location, $type="header"){
 function exists_avatars(){
 	global $userdata;
 	
-	if($userdata['user_avatar']!='noavatar.png' && file_exists(AVATARS.$userdata['user_avatar']))
+	if(isset($userdata['user_avatar']) && $userdata['user_avatar']!='noavatar.png' && file_exists(AVATARS.$userdata['user_avatar']))
 		return true;
 	else
 		return false;

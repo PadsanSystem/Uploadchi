@@ -9,12 +9,12 @@
 	<title>{$settings_title}</title>
 	<link href="{$settings_css}" rel="stylesheet">
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-{if {$iMEMBER}}
+{if $visit_page ne 'login'}
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -34,17 +34,18 @@
 					<li><a href="{$link_contactus}" title="{$lang_commons_112}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;{$lang_commons_112}</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					{if {$iMEMBER}}
+					{if $iMEMBER}
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="{$user_avatar}" class="img-circle">
-							<small>{$lang_commons_113} <b>{$user_username}</b> </small><b class="caret"></b></a>
+								<small>{$lang_commons_113} <b>{$user_username}</b> </small><b class="caret"></b>
+							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><img src="{$user_avatar_4}" class="img-responsive"></a></li>
 								<li class="divider"></li>
 								<li><a href="{$link_edit_profile}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{$lang_commons_107}</a></li>
 								<li><a href="{$link_dashboard}"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;{$lang_commons_106}</a></li>
-								{if (iADMIN)}
+								{if $iADMIN}
 									<li><a href="{$link_admin}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;{$lang_commons_105}</a></li>
 								{/if}
 								<li class="divider"></li>

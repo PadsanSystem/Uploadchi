@@ -26,7 +26,8 @@ require_once 'maincore.php';
 // Start CSRF security
 csrfguard_start();
 
-$templates=new templates();
+$templates->debugging=false;
+$templates->caching=false;
 
 // Settings
 $templates->assign('settings_description', $settings['setting_description']);
@@ -40,9 +41,10 @@ $templates->assign('user_username', $userdata['user_username']);
 $templates->assign('user_name', $userdata['user_family']);
 $templates->assign('user_family', $userdata['user_name']);
 $templates->assign('user_avatar', exists_avatars()==true ? show_avatars(2) : AVATARS.'noavatar_small.png');
-$templates->assign('user_avatar_2', show_avatars(2));
 $templates->assign('user_avatar_4', show_avatars(4));
 $templates->assign('iMEMBER', iMEMBER);
+$templates->assign('iADMIN', iADMIN);
+$templates->assign('visit_page', $visit_page);
 
 // Load language
 require_once LOCALESET.'commons.php';
@@ -70,9 +72,9 @@ $templates->assign('link_statistics', BASEDIR.'statistics.php');
 $templates->assign('link_aboutus', BASEDIR.'aboutus.php');
 $templates->assign('link_contactus', BASEDIR.'contactus.php');
 $templates->assign('link_logout', BASEDIR.'index.php?logout=yes');
-$templates->assign('link_admin', ADMIN.'index.php'.$aidlink);
 $templates->assign('link_dashboard', BASEDIR.'dashboard.php');
 $templates->assign('link_edit_profile', BASEDIR.'edit_profile.php');
+$templates->assign('link_admin', ADMIN.'index.php'.$aidlink);
 $templates->assign('link_login', BASEDIR.'login.php');
 $templates->assign('link_register', BASEDIR.'register.php');
 
