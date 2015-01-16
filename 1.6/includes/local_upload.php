@@ -12,9 +12,6 @@
 |-------------------------------|
 */
 if(isset($_POST['send_file'])){
-	// Include class ftp_upload
-	include_once CLASSES."ftp_upload.php";
-	
 	// Get string
 	$string=$_FILES['local_upload'];
 	
@@ -39,52 +36,53 @@ if(isset($_POST['send_file'])){
 	
 	if($trust_type==false){
 		$error=100;
+	}else if($type==1 && $verify_image==false){
+		$error=101;
 	}else{
-		if($type==1 && $verify_image==false){
-			$error=101;
-		}else{
-			// Generate name
-			$generate_name=random_text('number');
-			
-			// String of name and type file
-			$generate_name=$generate_name.".".$type;
-			
-			// Select best server for upload files
-			$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s2.uploadchi.com' AND server_status='Enable'");
-			$data_server=dbarray($result_server);
-			
-			// Servers
-			$rand_address='ftp.'.$data_server['server_name'];
-			
-			// Create object as ftp_upload
-			$ftp_upload=new ftp_upload();
-			// FTP folder
-			$ftp_upload->user_ftp=$data_server['server_username'];
-			// FTP password
-			$ftp_upload->pwd_ftp=$data_server['server_password'];
-			// FTP host address
-			$ftp_upload->hostadd=$rand_address;
-			// Initialize FTP server
-			$ftp_upload->initialize();
-			// Upload file in FTP Server
-			$ftp_upload->upload($string['tmp_name'], $generate_name);
-			// Close ftp connection
-			$ftp_upload->close_connection();
-			
-			if(iMEMBER)
-				$attachment_view_user="'".$userdata['user_id']."'";
-			else
-				$attachment_view_user='NULL';
-			
-			$result=dbquery("SELECT * FROM ".DB_PREFIX."attachments_exts WHERE attachment_ext_name='$type'");
-			$data=dbarray($result);
-			
-			$attachment_folder='NULL';
+		// Include class ftp_upload
+		include_once CLASSES."ftp_upload.php";
+		
+		// Generate name
+		$generate_name=random_text('number');
+		
+		// String of name and type file
+		$generate_name=$generate_name.".".$type;
+		
+		// Select best server for upload files
+		$result_server=dbquery("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com' AND server_status='Enable'");
+		$data_server=dbarray($result_server);
+		
+		// Servers
+		$rand_address='ftp.'.$data_server['server_name'];
+		
+		// Create object as ftp_upload
+		$ftp_upload=new ftp_upload();
+		// FTP folder
+		$ftp_upload->user_ftp=$data_server['server_username'];
+		// FTP password
+		$ftp_upload->pwd_ftp=$data_server['server_password'];
+		// FTP host address
+		$ftp_upload->hostadd=$rand_address;
+		// Initialize FTP server
+		$ftp_upload->initialize();
+		// Upload file in FTP Server
+		$ftp_upload->upload($string['tmp_name'], $generate_name);
+		// Close ftp connection
+		$ftp_upload->close_connection();
+		
+		if(iMEMBER)
+			$attachment_view_user="'".$userdata['user_id']."'";
+		else
+			$attachment_view_user='NULL';
+		
+		$result=dbquery("SELECT * FROM ".DB_PREFIX."attachments_exts WHERE attachment_ext_name='$type'");
+		$data=dbarray($result);
+		
+		$attachment_folder='NULL';
 
-			dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '".$data['attachment_ext_id']."', '".$data_server['server_id']."', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '".COUNTRY_CODE."', 'Enable')");
-			
-			$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
-		}
+		dbquery("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_type, attachment_ext, attachment_server, attachment_folder, attachment_user, attachment_time, attachment_ip, attachment_country, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '".$data['attachment_ext_id']."', '".$data_server['server_id']."', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', '".COUNTRY_CODE."', 'Enable')");
+		
+		$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 	}
 }
 ?>

@@ -64,7 +64,7 @@ require_once 'subheader.php';
 						</div>
 						<div class="form-group">
 							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Files</button>
+								<button id="send_file" name="send_file" type="submit" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Files</button>
 							</div>
 						</div>
 					</form>
@@ -86,7 +86,7 @@ require_once 'subheader.php';
 						</div>
 						<div class="form-group">
 							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Transfer Links</button>
+								<button id="send_file" name="send_file" type="submit" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Transfer Links</button>
 							</div>
 						</div>
 					</form>
