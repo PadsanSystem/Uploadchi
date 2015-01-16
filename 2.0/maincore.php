@@ -112,6 +112,14 @@ function redirect($location, $type="header"){
 	}
 }
 
+function exists_avatars(){
+	global $userdata;
+	
+	if($userdata['user_avatar']!='noavatar.png' && file_exists(AVATARS.$userdata['user_avatar']))
+		return true;
+	else
+		return false;
+}
 // Validate numeric input
 function isnum($value) {
 	return (preg_match("/^[0-9]+$/", $value));

@@ -14,8 +14,7 @@
     <![endif]-->
 </head>
 <body>
-{if (iMEMBER)}
-	<!-- Fixed navbar -->
+{if {$iMEMBER}}
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -35,30 +34,29 @@
 					<li><a href="{$link_contactus}" title="{$lang_commons_112}"><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;{$lang_commons_112}</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					{if (iMEMBER)}
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="{$avatar_2}" class="img-circle">
-							<img src="{$no_avatar}" class="img-circle">
-						<small>{$lang_commons_113} <b>{$user_username}</b> </small><b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><img src="{$avatar_4}" class="img-responsive"></a></li>
-							<li class="divider"></li>
-							<li><a href="{$link_edit_profile}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{$lang_commons_107}</a></li>
-							<li><a href="{$link_dashboard}"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;{$lang_commons_106}</a></li>
-							{if (iADMIN)}
-								<li><a href="{$link_admin}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;{$lang_commons_105}</a></li>
-							{/if}
-							<li class="divider"></li>
-							<li><a href="{$link_logout}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;{$lang_commons_102}</a></li>
-						</ul>
-					</li>
+					{if {$iMEMBER}}
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<img src="{$user_avatar}" class="img-circle">
+							<small>{$lang_commons_113} <b>{$user_username}</b> </small><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><img src="{$user_avatar_4}" class="img-responsive"></a></li>
+								<li class="divider"></li>
+								<li><a href="{$link_edit_profile}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{$lang_commons_107}</a></li>
+								<li><a href="{$link_dashboard}"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;{$lang_commons_106}</a></li>
+								{if (iADMIN)}
+									<li><a href="{$link_admin}"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;{$lang_commons_105}</a></li>
+								{/if}
+								<li class="divider"></li>
+								<li><a href="{$link_logout}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;{$lang_commons_102}</a></li>
+							</ul>
+						</li>
 					{else}
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo AVATARS.'noavatar_small.png'; ?>" title="<?php echo $locale['commons_104']; ?>" alt="<?php echo $locale['commons_104']; ?>" class="img-circle"> <small><?php echo $locale['commons_104']; ?></small> <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{$user_avatar}" title="{$lang_commons_104}" alt="{$lang_commons_104}" class="img-circle"> <small>{$lang_commons_104}</small> <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?php echo BASEDIR.'login.php'; ?>" title="<?php echo $locale['commons_101']; ?>"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;<?php echo $locale['commons_101']; ?></a></li>
-								<li><a href="<?php echo BASEDIR.'register.php'; ?>" title="<?php echo $locale['commons_103']; ?>"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;<?php echo $locale['commons_103']; ?></a></li>
+								<li><a href="{$link_login}" title="{$lang_commons_101}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;{$lang_commons_101}</a></li>
+								<li><a href="{$link_register}" title="{$lang_commons_103}"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{$lang_commons_103}</a></li>
 							</ul>
 						</li>
 					{/if}

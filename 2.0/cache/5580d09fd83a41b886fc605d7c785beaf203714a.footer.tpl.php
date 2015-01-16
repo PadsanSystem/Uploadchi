@@ -1,4 +1,4 @@
-<?php /*%%SmartyHeaderCode:2443754b98e93b52107-89576816%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:450454b996d648fa43-52775722%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -9,7 +9,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2443754b98e93b52107-89576816',
+  'nocache_hash' => '450454b996d648fa43-52775722',
   'variables' => 
   array (
     'lang_footer_101' => 0,
@@ -19,10 +19,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54b98e93b8bc24_08463722',
+  'unifunc' => 'content_54b996d64bd9c8_23200843',
   'cache_lifetime' => 3600,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54b98e93b8bc24_08463722')) {function content_54b98e93b8bc24_08463722($_smarty_tpl) {?><div id="footer">
+<?php if ($_valid && !is_callable('content_54b996d64bd9c8_23200843')) {function content_54b996d64bd9c8_23200843($_smarty_tpl) {?><div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -38,7 +38,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</p>
 									<p class="text-muted text-center">
 						<small>
-							<b>RAM Usage : </b>4.6 MB <b>Render Time : </b>0.63635 Seconds
+							RAM Usage :4.56 MB Render Time :0.19625Seconds
 						</small>
 					</p>
 							</div>
