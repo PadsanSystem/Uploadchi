@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$('#filemanager').dataTable({
+	$('#tables').dataTable({
 		"paging":   false,
         "ordering": true,
 		"stateSave": true

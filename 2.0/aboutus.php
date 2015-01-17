@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -12,50 +12,38 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
-require_once LOCALESET.'commons.php';
-require_once LOCALESET.'aboutus.php';
-?>
-<div class="container">
-	<ol class="breadcrumb">
-		<li><a href="<?php echo BASEDIR.'index.php'; ?>" title="<?php echo $locale['commons_108']; ?>"><?php echo $locale['commons_108']; ?></a></li>
-		<li class="active"><?php echo $locale['aboutus_100']; ?></li>
-	</ol>
-	<div class="panel panel-default">
-		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span><?php echo $locale['aboutus_101']; ?></div>
-		<div class="panel-body">
-			<div class="form-group col-lg-5 text-center">
-				<img src="<?php echo IMAGES."location_corporation.jpg"; ?>" alt="<?php echo $locale['aboutus_102']; ?>" title="<?php echo $locale['aboutus_102']; ?>" class="img-responsive img-thumbnail">
-			</div>
-			<div class="form-group col-lg-5">
-				<blockquote>
-					<address>
-						<strong><?php echo $locale['aboutus_103']; ?></strong>
-						<small><?php echo $locale['aboutus_104']; ?></small>
-					</address>
-				</blockquote>
-				<?php echo $locale['aboutus_110']; ?>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<?php echo $locale['aboutus_111']; ?>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;
-				<?php echo $locale['aboutus_112']; ?>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;
-				<?php echo $locale['aboutus_113']; ?>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;
-				<?php echo $locale['aboutus_114']; ?>
-				<br><br><br><br>
-				<p><?php echo $locale['aboutus_105']; ?></p>
-				<img src="<?php echo IMAGES."facebook.png"; ?>" alt="<?php echo $locale['aboutus_106']; ?>" title="<?php echo $locale['aboutus_106']; ?>">
-				<img src="<?php echo IMAGES."twitter.png"; ?>" alt="<?php echo $locale['aboutus_107']; ?>" title="<?php echo $locale['aboutus_107']; ?>">
-				<img src="<?php echo IMAGES."google.png"; ?>" alt="<?php echo $locale['aboutus_108']; ?>" title="<?php echo $locale['aboutus_108']; ?>">
-				<img src="<?php echo IMAGES."linkedin.png"; ?>" alt="<?php echo $locale['aboutus_109']; ?>" title="<?php echo $locale['aboutus_109']; ?>">
-			</div>
-		</div>
-	</div>
-</div>
-<?php
+
+// Load language
+include_once LOCALESET.'commons.php';
+include_once LOCALESET.'aboutus.php';
+
+// Assign Locale
+$templates->assign('lang_commons_108', $locale['commons_108']);
+$templates->assign('lang_aboutus_100', $locale['aboutus_100']);
+$templates->assign('lang_aboutus_101', $locale['aboutus_101']);
+$templates->assign('lang_aboutus_102', $locale['aboutus_102']);
+$templates->assign('lang_aboutus_103', $locale['aboutus_103']);
+$templates->assign('lang_aboutus_104', $locale['aboutus_104']);
+$templates->assign('lang_aboutus_105', $locale['aboutus_105']);
+$templates->assign('lang_aboutus_106', $locale['aboutus_106']);
+$templates->assign('lang_aboutus_107', $locale['aboutus_107']);
+$templates->assign('lang_aboutus_108', $locale['aboutus_108']);
+$templates->assign('lang_aboutus_109', $locale['aboutus_109']);
+$templates->assign('lang_aboutus_110', $locale['aboutus_110']);
+$templates->assign('lang_aboutus_111', $locale['aboutus_111']);
+$templates->assign('lang_aboutus_112', $locale['aboutus_112']);
+$templates->assign('lang_aboutus_113', $locale['aboutus_113']);
+$templates->assign('lang_aboutus_114', $locale['aboutus_114']);
+
+// Assign Images
+$templates->assign('img_facebook', IMAGES.'facebook.png');
+$templates->assign('img_twitter', IMAGES.'twitter.png');
+$templates->assign('img_google', IMAGES.'google.png');
+$templates->assign('img_linkedin', IMAGES.'linkedin.png');
+$templates->assign('img_location_aboutus', IMAGES.'location_corporation.jpg');
+
+// Render About Us
+$templates->display('aboutus.tpl');
+
 require_once BASEDIR.'footer.php';
 ?>

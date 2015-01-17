@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 14:57:20
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 18:40:17
          compiled from "templates\default\subheader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2178054ba5c8a62b008-81760752%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9bd25df26f1943c9d9e382a8083d2937ae3bc125' => 
     array (
       0 => 'templates\\default\\subheader.tpl',
-      1 => 1421502544,
+      1 => 1421516407,
       2 => 'file',
     ),
   ),
@@ -37,10 +37,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'link_contactus' => 0,
     'lang_commons_112' => 0,
     'iMEMBER' => 0,
-    'user_avatar' => 0,
+    'img_user_avatar' => 0,
     'lang_commons_113' => 0,
     'user_username' => 0,
-    'user_avatar_4' => 0,
+    'img_user_avatar_4' => 0,
     'link_edit_profile' => 0,
     'lang_commons_107' => 0,
     'link_dashboard' => 0,
@@ -124,14 +124,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<?php if ($_smarty_tpl->tpl_vars['iMEMBER']->value) {?>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?php echo $_smarty_tpl->tpl_vars['user_avatar']->value;?>
+								<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar']->value;?>
 " class="img-circle">
 								<small><?php echo $_smarty_tpl->tpl_vars['lang_commons_113']->value;?>
 &nbsp;<b><?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 </b></small>&nbsp;<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['user_avatar_4']->value;?>
+								<li><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_4']->value;?>
 " class="img-responsive"></a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_edit_profile']->value;?>
@@ -153,7 +153,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</li>
 					<?php } else { ?>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $_smarty_tpl->tpl_vars['user_avatar']->value;?>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>
 " class="img-circle">&nbsp;<small><?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>

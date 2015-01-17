@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -12,54 +12,54 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
-require_once LOCALESET.'commons.php';
-require_once LOCALESET.'login.php';
-require_once LOCALESET.'errors.php';
+
+// Prevent view from Members
 if(iMEMBER){redirect(BASEDIR.'index.php');}
-?>
-<div class="login">
-	<div class="container-fluid">
-		<form name="form_login" role="form" method="post" action="<?php echo BASEDIR.'login.php'; ?>">
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4 col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
-					<div class="login-panel panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title"><?php echo $locale['login_100']; ?></h3>
-						</div>
-						<div class="panel-body">
-							<?php
-							if(isset($login)){
-								?>
-								<div class="alert alert-warning" role="alert">
-									<p class="text-danger"><b><?php echo $locale['login_105']; ?> <?php echo $login; ?></b></p>
-									<?php echo $locale['errors_120']; ?>
-								</div>
-								<?php
-							}
-							?>
-							<fieldset>
-								<div class="form-group">
-									<input class="form-control" placeholder="<?php echo $locale['login_101']; ?>" name="username" type="text" required autofocus>
-								</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="<?php echo $locale['login_102']; ?>" name="password" type="password" autocomplete="off" required>
-								</div>
-								<div class="checkbox">
-									<label>
-										<input name="remember" type="checkbox" value="1"><?php echo $locale['login_104']; ?>
-									</label>
-								</div>
-								<!-- Change this to a button or input when using this as a form -->
-								<button name="login" type="submit" class="btn btn-lg btn-success btn-block"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;<?php echo $locale['login_103']; ?></button>
-							</fieldset>
-						</div>
-					</div>
-					<small><a href="<?php echo BASEDIR.'index.php'; ?>"><?php echo $locale['login_106']; ?></a></small>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
-<?php
+
+// Load language
+include_once LOCALESET.'commons.php';
+include_once LOCALESET.'login.php';
+include_once LOCALESET.'errors.php';
+
+if(isset($_POST['login'])){
+	$username=strtolower(secure_itext($_POST['username']));
+	$password=md5(md5(secure_itext($_POST['password'])));
+	$remember=isNum($_POST['remember']) ? $_POST['remember'] : 0;
+	$result_login=$database->get("users", ["user_id", "user_username", "user_password"], ["AND"=>["user_username"=>$username, "user_password"=>$password, 'user_status'=>'Enable']]);
+	
+	if($result_login==false){
+		$error=120;
+		$error_string=show_error($error, 'errors');
+		$error_message=$locale["$error_string"];
+		
+		// Assign Alert Message
+		$templates->assign('lang_errors_123', $locale['errors_123']);
+		$templates->assign('error_number', $error);
+		$templates->assign('lang_error_message', $error_message);
+	}else{
+		$expired=time()+604800;
+		
+		if($remember==1){
+			setcookie("user_id", $result_login['user_id'], $expired, "/", "", true, true);
+		}else{
+			$_SESSION['user_id']=$result_login['user_id'];
+		}
+		$userdata=$result_login;
+		redirect(BASEDIR.'index.php');
+	}
+}
+
+// Assign Locale
+$templates->assign('lang_login_100', $locale['login_100']);
+$templates->assign('lang_login_101', $locale['login_101']);
+$templates->assign('lang_login_102', $locale['login_102']);
+$templates->assign('lang_login_103', $locale['login_103']);
+$templates->assign('lang_login_104', $locale['login_104']);
+$templates->assign('lang_login_105', $locale['login_105']);
+$templates->assign('lang_login_106', $locale['login_106']);
+
+// Render Login
+$templates->display('login.tpl');
+
 require_once BASEDIR.'footer.php';
 ?>

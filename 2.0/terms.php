@@ -14,8 +14,8 @@
 require_once 'subheader.php';
 
 // Load language
-require_once LOCALESET.'commons.php';
-require_once LOCALESET.'terms.php';
+include_once LOCALESET.'commons.php';
+include_once LOCALESET.'terms.php';
 
 // Assign Global Locale
 $templates->assign('lang_commons_117', $locale['commons_117']);

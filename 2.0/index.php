@@ -12,89 +12,36 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
-?>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-			<h1>
-				<?php echo $locale['commons_120']; ?>
-				<br>
-				<small class="text-success"><?php echo $locale['commons_121']; ?></small>
-			</h1>
-		</div>
-		<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-			<div class="well well-lg">
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
-						<small>
-							<ul class="no-more-left">
-								<li><?php echo $locale['commons_122']; ?></li>
-								<li><?php echo $locale['commons_123']; ?></li>
-								<li><?php echo $locale['commons_124']; ?></li>
-								<li><?php echo $locale['commons_125']; ?></li>
-								<li><?php echo $locale['commons_126']; ?></li>
-								<li><?php echo $locale['commons_127']; ?></li>
-							</ul>
-						</small>
-					</div>
-					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12" align="center">
-						<img src="<?php echo IMAGES.'banners.png'; ?>" alt="Easily store, manage and share files with anyone" title="Easily store, manage and share files with anyone" class="img-responsive">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<ul class="nav nav-tabs" id="myTab" style="border-bottom:0">
-	  <li class="active"><a href="#local_upload" data-toggle="tab"><span class="glyphicon glyphicon-hdd"></span>&nbsp;&nbsp;Local Upload</a></li>
-	  <li><a href="#remote_upload" data-toggle="tab"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;&nbsp;Remote Upload</a></li>
-	</ul>
-	<div class="tab-content">
-		<div class="tab-pane active" id="local_upload">
-			<div class="panel panel-success" style="border-top-left-radius:0">
-				<div class="panel-body">
-					<form name="form_local_upload" class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>" enctype="multipart/form-data">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-								  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-								  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Browse</span><span class="fileinput-exists">Change</span><input type="file" name="local_upload"></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Upload Files</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="tab-pane" id="remote_upload">
-			<div class="panel panel-success" style="border-top-left-radius:0">
-				<div class="panel-body">
-					<form name="form_remote_upload" class="form-horizontal" role="form" method="post" action="<?php echo BASEDIR.'upload.php'; ?>">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="input-group">
-									<input name="remote_upload" type="text" class="form-control">
-									<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Transfer Links</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<?php
+
+// Load language
+include_once LOCALESET.'upload.php';
+
+// Assign Locale
+$templates->assign('lang_commons_120', $locale['commons_120']);
+$templates->assign('lang_commons_121', $locale['commons_121']);
+$templates->assign('lang_commons_122', $locale['commons_122']);
+$templates->assign('lang_commons_123', $locale['commons_123']);
+$templates->assign('lang_commons_124', $locale['commons_124']);
+$templates->assign('lang_commons_125', $locale['commons_125']);
+$templates->assign('lang_commons_126', $locale['commons_126']);
+$templates->assign('lang_commons_127', $locale['commons_127']);
+$templates->assign('lang_upload_101', $locale['upload_101']);
+$templates->assign('lang_upload_102', $locale['upload_102']);
+$templates->assign('lang_upload_103', $locale['upload_103']);
+$templates->assign('lang_upload_104', $locale['upload_104']);
+$templates->assign('lang_upload_105', $locale['upload_105']);
+$templates->assign('lang_upload_106', $locale['upload_106']);
+$templates->assign('lang_upload_107', $locale['upload_107']);
+$templates->assign('lang_upload_108', $locale['upload_108']);
+
+// Assign Images
+$templates->assign('img_banners', IMAGES.'banners.png');
+
+// Assign Links
+$templates->assign('link_upload', BASEDIR.'upload.php');
+
+// Render Index
+$templates->display('index.tpl');
+
 require_once BASEDIR.'footer.php';
 ?>

@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -43,7 +43,6 @@ define("BASEDIR", $folder_level);
 define("ADMIN", BASEDIR."administration/");
 define("IMAGES", BASEDIR."images/");
 define("AVATARS", IMAGES."avatars/");
-define("IMAGES_ADVERTISING", IMAGES."advertising/");
 define("IMAGES_TYPES", IMAGES."types/");
 define("INCLUDES", BASEDIR."includes/");
 define("LOCALESET", BASEDIR."locale/english/");
@@ -90,10 +89,9 @@ $database=new medoo(
 require_once CLASSES.'templates.php';
 $templates=new templates();
 $templates->caching=false;
-$templates->caching_type = 'mysql'; 
 
 //Initiate the class
-$settings=$database->get("settings", "*", ["setting_title"=>'Uploadchi']);
+$settings=$database->get('settings', '*', ["setting_title"=>'Uploadchi']);
 
 function secure_itext($text){
 	$text=trim($text);
@@ -266,26 +264,6 @@ function makepagenav($start, $count, $total, $range = 0, $link = "", $getname = 
 	}
 
 	return "<ul class='pagination'>\n".$res."</ul>\n";
-}
-
-if(isset($_POST['login'])){
-	$username=strtolower(secure_itext($_POST['username']));
-	$password=md5(md5(secure_itext($_POST['password'])));
-	$remember=isNum($_POST['remember']) ? $_POST['remember'] : 0;
-	$result_login=$database->get("users", ["user_id", "user_username", "user_password"], ["AND"=>["user_username"=>$username, "user_password"=>$password, 'user_status'=>'Enable']]);
-	
-	if($result_login==false){
-		$error=120;
-	}else{
-		$expired=time()+604800;
-		
-		if($remember==1){
-			setcookie("user_id", $result_login['user_id'], $expired, "/", "", true, true);
-		}else{
-			$_SESSION['user_id']=$result_login['user_id'];
-		}
-		$userdata=$result_login;
-	}
 }
 
 $active_user=(isset($_SESSION) && $_SESSION['user_id']!='' ? $_SESSION['user_id'] : $_COOKIE['user_id']);

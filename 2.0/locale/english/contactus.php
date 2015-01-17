@@ -9,11 +9,11 @@ $locale['contactus_106']='John Carter';
 $locale['contactus_107']='example@domain.com';
 $locale['contactus_108']='Enter your subject';
 $locale['contactus_109']='Enter your message here';
-$locale['contactus_110']=' Send Message';
-$locale['contactus_111']=' Contact Us';
+$locale['contactus_110']='Send Message';
+$locale['contactus_111']='Contact Us';
 $locale['contactus_112']='Support';
 $locale['contactus_113']='Sales';
 $locale['contactus_114']='Billing';
 $locale['contactus_115']='Administration';
-$locale['contactus_116']=' Message sent successfully.';
+$locale['contactus_116']='Message sent successfully.';
 ?>

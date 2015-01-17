@@ -25,7 +25,6 @@ require_once 'maincore.php';
 
 // Load language
 include_once LOCALESET.'commons.php';
-include_once LOCALESET.'login.php';
 
 // Assign Global Settings
 $templates->assign('settings_description', $settings['setting_description']);
@@ -34,18 +33,20 @@ $templates->assign('settings_title', $settings['setting_title']);
 $templates->assign('settings_author', 'PadsanSystem Corporation');
 $templates->assign('settings_css', THEMES_CSS.'cstyles.min.css');
 
-// Assign Global Others
-$templates->assign('user_avatar', exists_avatars()==true ? show_avatars(2) : AVATARS.'noavatar_small.png');
+// Assign Images
+$templates->assign('img_user_avatar', exists_avatars()==true ? show_avatars(2) : AVATARS.'noavatar_small.png');
+
+// Assign Others
 $templates->assign('visit_page', $visit_page);
 
-// Assign Global Locale
+// Assign Locale
 $templates->assign('lang_commons_108', $locale['commons_108']);
 $templates->assign('lang_commons_109', $locale['commons_109']);
 $templates->assign('lang_commons_110', $locale['commons_110']);
 $templates->assign('lang_commons_111', $locale['commons_111']);
 $templates->assign('lang_commons_112', $locale['commons_112']);
 
-// Assign Global Links
+// Assign Links
 $templates->assign('link_home', BASEDIR.'index.php');
 $templates->assign('link_terms', BASEDIR.'terms.php');
 $templates->assign('link_statistics', BASEDIR.'statistics.php');
@@ -59,7 +60,7 @@ if(iMEMBER){
 	$templates->assign('user_username', $userdata['user_username']);
 	$templates->assign('user_name', $userdata['user_family']);
 	$templates->assign('user_family', $userdata['user_name']);
-	$templates->assign('user_avatar_4', show_avatars(4));
+	$templates->assign('img_user_avatar_4', show_avatars(4));
 	
 	// Assign Links
 	$templates->assign('link_logout', BASEDIR.'index.php?logout=yes');

@@ -12,15 +12,18 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
-require_once LOCALESET.'errors.php';
-require_once LOCALESET.'upload.php';
 
-if(is_uploaded_file($_FILES['local_upload']['tmp_name']))
+// Assign Locale
+include_once LOCALESET.'errors.php';
+include_once LOCALESET.'upload.php';
+
+if(is_uploaded_file($_FILES['local_upload']['tmp_name'])){
 	require_once INCLUDES.'local_upload.php';
-else if(isset($_POST['remote_upload']))
+}else if(isset($_POST['remote_upload'])){
 	require_once INCLUDES.'remote_upload.php';
-else
+}else{
 	$error=103;
+}
 
 if(isset($error)){
 	?>
