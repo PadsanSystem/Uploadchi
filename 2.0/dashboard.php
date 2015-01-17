@@ -13,6 +13,7 @@
 */
 require_once 'subheader.php';
 
+// Prevent view from Guests
 if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 require_once FUNCTIONS.'create_folder.php';

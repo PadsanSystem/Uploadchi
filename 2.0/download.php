@@ -33,11 +33,6 @@ if($data==false){
 	</div>
 	<?php
 }else{
-	// if(iMEMBER)
-		// $attachment_view_user="'".$userdata['user_id']."'";
-	// else
-		// $attachment_view_user='NULL';
-	
 	$database->insert(DB_PREFIX.'attachments_views', ['attachment_view_attachment'=>$data['attachment_id'], 'attachment_view_ip'=>get_ip(), 'attachment_view_user'=>$userdata['user_id'], '#attachment_view_time'=>'UNIX_TIMESTAMP()']);
 
 	// Set download link

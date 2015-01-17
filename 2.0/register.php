@@ -16,6 +16,7 @@ require_once LOCALESET.'commons.php';
 require_once LOCALESET.'register.php';
 require_once LOCALESET.'errors.php';
 
+// Prevent view from Members
 if(iMEMBER){redirect(BASEDIR.'index.php');}
 
 if(isset($_POST['submit'])){

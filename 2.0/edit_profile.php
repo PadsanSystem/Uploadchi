@@ -12,11 +12,14 @@
 |-------------------------------|
 */
 require_once 'subheader.php';
+
+// Prevent view from Guests
+if(!iMEMBER){redirect(BASEDIR.'index.php');}
+
 require_once LOCALESET.'commons.php';
 require_once LOCALESET.'errors.php';
 require_once LOCALESET.'edit_profile.php';
 
-if(!iMEMBER){redirect(BASEDIR.'index.php');}
 
 if(isset($_POST['submit'])){
 	if($_POST['password']=='')
