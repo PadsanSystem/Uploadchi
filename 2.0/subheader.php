@@ -23,9 +23,6 @@ session_start();
 // Load kernel
 require_once 'maincore.php';
 
-// Start CSRF security
-csrfguard_start();
-
 // Load language
 include_once LOCALESET.'commons.php';
 include_once LOCALESET.'login.php';
