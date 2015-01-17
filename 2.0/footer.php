@@ -13,31 +13,26 @@
 */
 require_once LOCALESET.'footer.php';
 
-$templates->assign('memory_usage', $locale['commons_114'].parsebytesize(memory_get_usage(), 2));
-$templates->assign('render_time', $locale['commons_115'].round($page_time_start-$$page_time_end, 5).$locale['commons_116']);
-$templates->assign('copyright', $locale['commons_116']);
-$templates->assign('lang_footer_101', $locale['footer_101']);
-$templates->assign('lang_footer_100', $locale['lang_footer_100']);
+// Assign Global Settings
+$templates->assign('jscript', JAVASCRIPTS.'cjscript.min.js');
 
+// Asign Global Locale
+$templates->assign('lang_copyright', $locale['footer_100']);
+$templates->assign('lang_footer_101', $locale['footer_101']);
+
+if(iADMIN){
+	// Assign Others
+	$templates->assign('memory_usage', parsebytesize(memory_get_usage(), 2));
+	$templates->assign('render_time', round($page_time_start-$page_time_end, 5));
+	
+	// Assign Locale
+	$templates->assign('lang_seconds', $locale['commons_116']);
+	$templates->assign('lang_memory_usage', $locale['commons_114']);
+	$templates->assign('lang_render_time', $locale['commons_115']);
+}
 // Render
 $templates->display('footer.tpl');
-?>
 
-<script type="text/JavaScript">
-	function callback(){
-		if(req.readyState == 4){
-			if(req.status == 200){
-				eval(req.responseText);
-			} else {
-				// Error
-			}
-		}
-	};
-	var req = new XMLHttpRequest();
-	req.onload = callback;
-	req.open("get", "<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>", true);
-	req.send();
-</script>
-<?php
+// End render time 
 $page_time_end=microtime();
 ?>

@@ -38,7 +38,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="{$user_avatar}" class="img-circle">
-								<small>{$lang_commons_113} <b>{$user_username}</b> </small><b class="caret"></b>
+								<small>{$lang_commons_113}&nbsp;<b>{$user_username}</b></small>&nbsp;<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><img src="{$user_avatar_4}" class="img-responsive"></a></li>
@@ -54,7 +54,7 @@
 						</li>
 					{else}
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{$user_avatar}" title="{$lang_commons_104}" alt="{$lang_commons_104}" class="img-circle"> <small>{$lang_commons_104}</small> <b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{$user_avatar}" title="{$lang_commons_104}" alt="{$lang_commons_104}" class="img-circle">&nbsp;<small>{$lang_commons_104}</small>&nbsp;<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{$link_login}" title="{$lang_commons_101}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;{$lang_commons_101}</a></li>
 								<li><a href="{$link_register}" title="{$lang_commons_103}"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{$lang_commons_103}</a></li>

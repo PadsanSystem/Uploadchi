@@ -33,8 +33,8 @@ if(isset($_POST['submit'])){
 		$user_email=strtolower($_POST['email']);
 	
 	// Check this
-	if($database->has(DB_PREFIX.'users', ['user_email[!]'=>$user_email]))
-		$error=109;
+	// if($database->has(DB_PREFIX.'users', ['user_email[!]'=>$user_email]))
+		// $error=109;
 	
 	// Get string
 	$string=$_FILES['avatar'];

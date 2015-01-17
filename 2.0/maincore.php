@@ -62,11 +62,16 @@ define("SMARTY", ENGINES.'smarty/');
 define("CONFIGS", BASEDIR.'configs/');
 define("CACHE", BASEDIR.'cache/');
 
+$visit_page=basename($PHP_SELF, '.php');
+
+// Start CSRF security
+csrfguard_start();
+
 // Require configuration website file
 require_once BASEDIR.'config.php';
 
 // Establish mySQL database connection
-require_once CLASSES.'database.php';
+require_once CLASSES.'medoo.php';
 $database=new medoo(
 	[
 		'database_type'=>'mysql',
@@ -82,10 +87,8 @@ $database=new medoo(
 	]
 );
 
-$visit_page=basename($PHP_SELF, '.php');
-
 // Load Class templates engines
-require_once CLASSES.'template_engines.php';
+require_once CLASSES.'templates.php';
 $templates=new templates();
 
 //Initiate the class
@@ -343,8 +346,8 @@ function parsesize($size, $digits=2, $dir=false) {
 
 // Clean URL Function, prevents entities in server globals
 function cleanurl($url) {
-	$bad_entities = array("&", "\"", "'", '\"', "\'", "<", ">", "(", ")", "*");
-	$safe_entities = array("&amp;", "", "", "", "", "", "", "", "", "");
+	$bad_entities = array("\"", "'", '\"', "\'", "<", ">", "*", "|");
+	$safe_entities = array("", "", "", "", "", "", "", "");
 	$url = str_replace($bad_entities, $safe_entities, $url);
 	$url=stripslashes($url);
 	return $url;
