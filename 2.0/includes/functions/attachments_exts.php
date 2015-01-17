@@ -13,7 +13,7 @@
 */
 function check_validate_exts($type_file){
 	global $database;
-	if($database->get("attachments_exts", ["[>]attachments_types"=>["attachment_ext_type"=>"attachment_type_id"]], ["attachment_ext_name", "attachment_ext_type", "attachment_type_id"], ["AND"=>["attachment_ext_name"=>$type_file, "attachment_ext_type"=>"attachment_type_id"]]))
+	if($database->get(DB_PREFIX.'attachments_exts', ["[>]attachments_types"=>["attachment_ext_type"=>"attachment_type_id"]], ["attachment_ext_name", "attachment_ext_type", "attachment_type_id"], ["attachment_ext_name"=>$type_file]))
 		return true;
 	else
 		return false;
