@@ -11,7 +11,8 @@
 | Fax   : +98 - 26 325 45 701	|
 |-------------------------------|
 */
-require_once LOCALESET.'footer.php';
+// Load language
+include_once LOCALESET.'footer.php';
 
 // Assign Global Settings
 $templates->assign('jscript', JAVASCRIPTS.'cjscript.min.js');

@@ -1,88 +1,76 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 14:57:20
-         compiled from "templates\default\subheader.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2178054ba5c8a62b008-81760752%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2071354ba67465b3d24-36885466%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '9bd25df26f1943c9d9e382a8083d2937ae3bc125' => 
     array (
       0 => 'templates\\default\\subheader.tpl',
-      1 => 1421502544,
+      1 => 1421502464,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2178054ba5c8a62b008-81760752',
-  'function' => 
-  array (
-  ),
+  'nocache_hash' => '2071354ba67465b3d24-36885466',
+  'cache_lifetime' => 3600,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54ba5c8a726d90_71559954',
+  'unifunc' => 'content_54ba68159173a5_10468648',
   'variables' => 
   array (
     'settings_description' => 0,
     'settings_keywords' => 0,
     'settings_author' => 0,
-    'settings_title' => 0,
+    'settings_title' => 1,
     'settings_css' => 0,
-    'visit_page' => 0,
-    'link_home' => 0,
-    'title' => 0,
-    'lang_commons_108' => 0,
-    'link_terms' => 0,
-    'lang_commons_109' => 0,
-    'link_statistics' => 0,
-    'lang_commons_110' => 0,
-    'link_aboutus' => 0,
-    'lang_commons_111' => 0,
-    'link_contactus' => 0,
-    'lang_commons_112' => 0,
-    'iMEMBER' => 0,
-    'user_avatar' => 0,
-    'lang_commons_113' => 0,
-    'user_username' => 0,
-    'user_avatar_4' => 0,
-    'link_edit_profile' => 0,
-    'lang_commons_107' => 0,
-    'link_dashboard' => 0,
-    'lang_commons_106' => 0,
-    'iADMIN' => 0,
-    'link_admin' => 0,
-    'lang_commons_105' => 0,
-    'link_logout' => 0,
-    'lang_commons_102' => 0,
-    'lang_commons_104' => 0,
-    'link_login' => 0,
-    'lang_commons_101' => 0,
-    'link_register' => 0,
-    'lang_commons_103' => 0,
+    'visit_page' => 1,
+    'link_home' => 1,
+    'title' => 1,
+    'lang_commons_108' => 1,
+    'link_terms' => 1,
+    'lang_commons_109' => 1,
+    'link_statistics' => 1,
+    'lang_commons_110' => 1,
+    'link_aboutus' => 1,
+    'lang_commons_111' => 1,
+    'link_contactus' => 1,
+    'lang_commons_112' => 1,
+    'iMEMBER' => 1,
+    'user_avatar' => 1,
+    'lang_commons_113' => 1,
+    'user_username' => 1,
+    'user_avatar_4' => 1,
+    'link_edit_profile' => 1,
+    'lang_commons_107' => 1,
+    'link_dashboard' => 1,
+    'lang_commons_106' => 1,
+    'iADMIN' => 1,
+    'link_admin' => 1,
+    'lang_commons_105' => 1,
+    'link_logout' => 1,
+    'lang_commons_102' => 1,
+    'lang_commons_104' => 1,
+    'link_login' => 1,
+    'lang_commons_101' => 1,
+    'link_register' => 1,
+    'lang_commons_103' => 1,
   ),
-  'has_nocache_code' => false,
-),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54ba5c8a726d90_71559954')) {function content_54ba5c8a726d90_71559954($_smarty_tpl) {?><!DOCTYPE html>
+  'has_nocache_code' => true,
+),true); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_54ba68159173a5_10468648')) {function content_54ba68159173a5_10468648($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="<?php echo $_smarty_tpl->tpl_vars['settings_description']->value;?>
-">
-	<meta name="keywords" content="<?php echo $_smarty_tpl->tpl_vars['settings_keywords']->value;?>
-">
-	<meta name="author" content="<?php echo $_smarty_tpl->tpl_vars['settings_author']->value;?>
-">
-	<title><?php echo $_smarty_tpl->tpl_vars['settings_title']->value;?>
-</title>
-	<link href="<?php echo $_smarty_tpl->tpl_vars['settings_css']->value;?>
-" rel="stylesheet">
+	<meta name="description" content="Easily store, manage and share files with anyone">
+	<meta name="keywords" content="Easily store, manage, share, files, anyone">
+	<meta name="author" content="PadsanSystem Corporation">
+	<title>Uploadchi</title>
+	<link href="templates/default/css/cstyles.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
-	<?php echo '<script'; ?>
- src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"><?php echo '</script'; ?>
->
-	<?php echo '<script'; ?>
- src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"><?php echo '</script'; ?>
->
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
+
 <?php if ($_smarty_tpl->tpl_vars['visit_page']->value!='login') {?>
 	<div class="navbar navbar-default">
 		<div class="container">
@@ -174,4 +162,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</div>
 		</div>
 	</div>
-<?php }?><?php }} ?>
+<?php }?>
+<?php }} ?>

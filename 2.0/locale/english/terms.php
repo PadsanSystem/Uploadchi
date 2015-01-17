@@ -1,5 +1,5 @@
 <?php
-$locale['terms_100']=' Terms';
+$locale['terms_100']='Terms';
 $locale['terms_101']='By using our services, User agrees to be bound by the following terms and conditions:';
 $locale['terms_102']='We reserve the right to disable direct linking on user accounts that are using excessive bandwidth or otherwise abusing the system.';
 $locale['terms_103']='Pornography, nudity, sexual images and any kind offensive images or videos are prohibited. Copyrighted material are also strictly prohibited. We reserve the right to decide appropriate content and can delete images or videos at any time without User notification.';

@@ -27,8 +27,8 @@ require_once 'maincore.php';
 csrfguard_start();
 
 // Load language
-require_once LOCALESET.'commons.php';
-require_once LOCALESET.'login.php';
+include_once LOCALESET.'commons.php';
+include_once LOCALESET.'login.php';
 
 // Assign Global Settings
 $templates->assign('settings_description', $settings['setting_description']);
@@ -99,6 +99,7 @@ if(iGUEST){
 	$templates->assign('lang_commons_103', $locale['commons_103']);
 	$templates->assign('lang_commons_104', $locale['commons_104']);
 }
-// Render subheader
+
+// Render Subheader
 $templates->display('subheader.tpl');
 ?>

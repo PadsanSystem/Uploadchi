@@ -33,7 +33,7 @@ define("FUSION_QUERY", isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'
 define("FUSION_SELF", basename($_SERVER['PHP_SELF']));
 
 // Locate config.php and set the basedir path
-$folder_level = "";
+$folder_level="";
 while(!file_exists($folder_level."config.php")){
 	$folder_level .= "../";
 }
@@ -42,7 +42,6 @@ while(!file_exists($folder_level."config.php")){
 define("BASEDIR", $folder_level);
 define("ADMIN", BASEDIR."administration/");
 define("IMAGES", BASEDIR."images/");
-define("IMAGES_NEWS", IMAGES."news/");
 define("AVATARS", IMAGES."avatars/");
 define("IMAGES_ADVERTISING", IMAGES."advertising/");
 define("IMAGES_TYPES", IMAGES."types/");
@@ -90,6 +89,8 @@ $database=new medoo(
 // Load Class templates engines
 require_once CLASSES.'templates.php';
 $templates=new templates();
+$templates->caching=false;
+$templates->caching_type = 'mysql'; 
 
 //Initiate the class
 $settings=$database->get("settings", "*", ["setting_title"=>'Uploadchi']);
