@@ -13,11 +13,9 @@
 */
 function check_validate_exts($type_file){
 	global $database;
-	$result=$database->get("attachments_exts", ["[>]attachments_types"=>["attachment_type_id"=>"attachment_ext_type"]], ["attachment_ext_name", "attachment_ext_type", "attachment_type_id", "attachment_type_name"], ["attachment_ext_name"=>$type_file]);
-	
-	if($result==false)
-		return false;
-	else
+	if($database->get("attachments_exts", ["[>]attachments_types"=>["attachment_ext_type"=>"attachment_type_id"]], ["attachment_ext_name", "attachment_ext_type", "attachment_type_id"], ["AND"=>["attachment_ext_name"=>$type_file, "attachment_ext_type"=>"attachment_type_id"]]))
 		return true;
+	else
+		return false;
 }
 ?>

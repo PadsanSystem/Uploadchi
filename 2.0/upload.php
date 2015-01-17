@@ -15,7 +15,7 @@ require_once 'subheader.php';
 
 if(is_uploaded_file($_FILES['local_upload']['tmp_name'])){
 	require_once INCLUDES.'local_upload.php';
-}else if(isset($_POST['remote_upload'])){
+}else if(cleanurl(isset($_POST['remote_upload']))){
 	require_once INCLUDES.'remote_upload.php';
 }else{
 	// Load language
@@ -31,15 +31,6 @@ if(is_uploaded_file($_FILES['local_upload']['tmp_name'])){
 	$templates->assign('error_number', $error);
 	$templates->assign('lang_error_message', $error_message);
 }
-
-// Load language
-include_once LOCALESET.'upload.php';
-
-// Assign Locale
-$templates->assign('lang_upload_100', $locale['upload_100']);
-
-// Assign Others
-$templates->assign('download_url', $download_url);
 
 // Render UploadFiles
 $templates->display('upload.tpl');

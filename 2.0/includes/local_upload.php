@@ -28,19 +28,30 @@ if(isset($_POST['send_file'])){
 	$uid=set_uid($name, $type, '_');
 	
 	include_once FUNCTIONS.'attachments_exts.php';
-	$trust_type=check_validate_exts($type);
 	
 	// Check and set Image virus
 	$original_name=$string['tmp_name'];
-	$verify_image=verify_image($original_name);
 	
-	if($trust_type==false){
+	if(check_validate_exts($type)==false)
 		$error=100;
-	}else if($type==1 && $verify_image==false){
+	if($type==1 && verify_image($original_name)==false)
 		$error=101;
+	
+	if(isset($error)){
+		// Load language
+		include_once LOCALESET.'errors.php';
+		
+		$error_string=show_error($error, 'errors');
+		$error_message=$locale["$error_string"];
+		
+		// Assign Alert Message
+		$templates->assign('lang_errors_122', $locale['errors_122']);
+		$templates->assign('lang_errors_123', $locale['errors_123']);
+		$templates->assign('error_number', $error);
+		$templates->assign('lang_error_message', $error_message);
 	}else{
-		// Include class ftp_upload
-		include_once CLASSES."ftp_upload.php";
+		// Load language
+		include_once LOCALESET.'upload.php';
 		
 		// Generate name
 		$generate_name=random_text('number');
@@ -49,45 +60,37 @@ if(isset($_POST['send_file'])){
 		$generate_name=$generate_name.".".$type;
 		
 		// Select best server for upload files
-		$data_server=$database->db_get_results("SELECT server_id, server_name, server_username, server_password FROM ".DB_PREFIX."servers WHERE server_name='s1.uploadchi.com' AND server_status='Enable'");		
-		
+		$data_server=$database->get(DB_PREFIX.'servers', '*', ['AND'=>['server_status'=>'Enable', 'server_name'=>'s1.uploadchi.com']]);
 		// Servers
 		$rand_address='ftp.'.$data_server['server_name'];
 		
-		// Create object as ftp_upload
+		// Include class ftp_upload
+		include_once CLASSES."ftp_upload.php";
 		$ftp_upload=new ftp_upload();
-		// FTP folder
 		$ftp_upload->user_ftp=$data_server['server_username'];
-		// FTP password
 		$ftp_upload->pwd_ftp=$data_server['server_password'];
-		// FTP host address
 		$ftp_upload->hostadd=$rand_address;
-		// Initialize FTP server
 		$ftp_upload->initialize();
-		// Upload file in FTP Server
 		$ftp_upload->upload($string['tmp_name'], $generate_name);
-		// Close ftp connection
 		$ftp_upload->close_connection();
 		
-		if(iMEMBER)
-			$attachment_view_user="'".$userdata['user_id']."'";
-		else
-			$attachment_view_user='NULL';
+		$attachment_ext_id=$database->get(DB_PREFIX.'attachments_exts', 'attachment_ext_id', ['attachment_ext_name'=>$type]);
 		
-		$data=$database->db_get_results("SELECT * FROM ".DB_PREFIX."attachments_exts WHERE attachment_ext_name='$type'");
-		
-		$attachment_folder='NULL';
-
-		$database->db_get_results("INSERT INTO ".DB_PREFIX."attachments (attachment_uid, attachment_size, attachment_address, attachment_ext, attachment_server, attachment_folder, attachment_time, attachment_ip, attachment_status) VALUES ('$uid', '$size', '$generate_name', '".$data['attachment_ext_id']."', '".$data_server['server_id']."', $attachment_folder, $attachment_view_user, '".time()."', '".get_ip()."', 'Enable')");
+		$database->insert(DB_PREFIX.'attachments', ['attachment_uid'=>$uid, 'attachment_size'=>$size, 'attachment_address'=>$generate_name, 'attachment_server'=>$data_server['server_id'], '#attachment_time'=>'UNIX_TIMESTAMP()', 'attachment_ip'=>get_ip(), 'attachment_status'=>'Enable']);
 		
 		$to='mahmoodi@uploadchi.com';
 		$subject='New file on Uploadchi';
 		$message='http://www.uploadchi.com/download.php?url='.$uid;
-		$message.='Size file:'.parsebytesize($size);
 		$headers='CC: s.saeidi@uploadchi.com';
 		@mail($to, $subject, $message, $headers);
 		
 		$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
+		
+		// Assign Locale
+		$templates->assign('lang_upload_100', $locale['upload_100']);
+
+		// Assign Others
+		$templates->assign('download_url', $download_url);
 	}
 }
 ?>

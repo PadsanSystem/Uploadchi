@@ -1,5 +1,5 @@
 <?php
-$locale['errors_100']='<p>Invalid file types. <b><a href="index.php">Please try again</a></b></p>';
+$locale['errors_100']='Invalid file types.';
 $locale['errors_101']='<p>Upload file has some dangerous items. <b><a href="index.php">Please try again</a></b></p>';
 $locale['errors_102']='<p>Your username is invalid. <b><a href="register.php">Please try again</a></b></p>';
 $locale['errors_103']='There is no items for uploading.';
