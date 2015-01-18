@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -12,19 +12,19 @@
 |-------------------------------|
 */
 if(isset($_POST['send_file'])){
-	// Get string
+	// Get String
 	$string=$_FILES['local_upload'];
 	
 	// Get Files
 	$name=get_name($string, 'files');
 	
-	// Get type file
+	// Get Type file
 	$type=get_type($string, 'files');
 	
-	// Get size file
+	// Get Size file
 	$size=get_size($string, 'files');
 	
-	// Set uid file
+	// Set UID file
 	$uid=set_uid($name, $type, '_');
 	
 	include_once FUNCTIONS.'attachments_exts.php';
@@ -32,8 +32,10 @@ if(isset($_POST['send_file'])){
 	// Check and set Image virus
 	$original_name=$string['tmp_name'];
 	
+	// Validate Type
 	if(check_validate_exts($type)==false)
 		$error=100;
+	
 	if($type==1 && verify_image($original_name)==false)
 		$error=101;
 	
@@ -47,31 +49,43 @@ if(isset($_POST['send_file'])){
 		// Assign Alert Message
 		$templates->assign('lang_errors_122', $locale['errors_122']);
 		$templates->assign('lang_errors_123', $locale['errors_123']);
-		$templates->assign('error_number', $error);
 		$templates->assign('lang_error_message', $error_message);
+		$templates->assign('error_number', $error);
 	}else{
 		// Load language
 		include_once LOCALESET.'upload.php';
 		
-		// Generate name
-		$generate_name=random_text('number');
-		
 		// String of name and type file
-		$generate_name=$generate_name.".".$type;
+		$generate_name=random_text('number').".".$type;
 		
-		// Select best server for upload files
+		// Select Best Server for UploadFiles
 		$data_server=$database->get(DB_PREFIX.'servers', '*', ['AND'=>['server_status'=>'Enable', 'server_name'=>'s1.uploadchi.com']]);
+
 		// Servers
 		$rand_address='ftp.'.$data_server['server_name'];
 		
-		// Include class ftp_upload
+		// Include Class FTP Upload
 		include_once CLASSES."ftp_upload.php";
+		
+		// Create Object as FTP Upload
 		$ftp_upload=new ftp_upload();
+		
+		// FTP Folder
 		$ftp_upload->user_ftp=$data_server['server_username'];
+		
+		// FTP Password
 		$ftp_upload->pwd_ftp=$data_server['server_password'];
+		
+		// FTP Host Address
 		$ftp_upload->hostadd=$rand_address;
+		
+		// Initialize FTP server
 		$ftp_upload->initialize();
+		
+		// Upload File in FTP Server
 		$ftp_upload->upload($string['tmp_name'], $generate_name);
+		
+		// Close FTP Connection
 		$ftp_upload->close_connection();
 		
 		$attachment_ext_id=$database->get(DB_PREFIX.'attachments_exts', 'attachment_ext_id', ['attachment_ext_name'=>$type]);

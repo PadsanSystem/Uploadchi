@@ -1,4 +1,16 @@
 <?php
+/*
+|-------------------------------|
+| PadsanCMS						|
+|-------------------------------|
+| UploadCenter Version v2.0		|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
+*/
 $locale['commons_100']='Errors';
 $locale['commons_101']='Login';
 $locale['commons_102']='Log out';
@@ -12,7 +24,7 @@ $locale['commons_109']='Terms';
 $locale['commons_110']='Statistics';
 $locale['commons_111']='About Us';
 $locale['commons_112']='Contact Us';
-$locale['commons_113']='Hi, ';
+$locale['commons_113']='Hi,';
 $locale['commons_114']='RAM Usage :';
 $locale['commons_115']='Render Time :';
 $locale['commons_116']='Seconds';

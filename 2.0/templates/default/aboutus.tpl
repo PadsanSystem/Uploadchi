@@ -4,7 +4,7 @@
 		<li class="active">{$lang_aboutus_100}</li>
 	</ol>
 	<div class="panel panel-default">
-		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;{$lang_aboutus_101}</div>
+		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;{$lang_aboutus_100}</div>
 		<div class="panel-body">
 			<div class="form-group col-lg-5 text-center">
 				<img src="{$img_location_aboutus}" alt="{$lang_aboutus_102}" title="{$lang_aboutus_102}" class="img-responsive img-thumbnail">

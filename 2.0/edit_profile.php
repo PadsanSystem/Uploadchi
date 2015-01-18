@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -16,9 +16,10 @@ require_once 'subheader.php';
 // Prevent view from Guests
 if(!iMEMBER){redirect(BASEDIR.'index.php');}
 
-require_once LOCALESET.'commons.php';
-require_once LOCALESET.'errors.php';
-require_once LOCALESET.'edit_profile.php';
+// Load Language
+include_once LOCALESET.'commons.php';
+include_once LOCALESET.'errors.php';
+include_once LOCALESET.'edit_profile.php';
 
 
 if(isset($_POST['submit'])){

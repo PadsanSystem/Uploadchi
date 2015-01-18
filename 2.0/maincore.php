@@ -89,6 +89,7 @@ $database=new medoo(
 require_once CLASSES.'templates.php';
 $templates=new templates();
 $templates->caching=false;
+$templates->debugging =false;
 
 //Initiate the class
 $settings=$database->get('settings', '*', ["setting_title"=>'Uploadchi']);
@@ -185,12 +186,12 @@ function get_name($url, $method){
 	return $name;
 }
 
-// Get file types
+// Get File Types
 function get_type($url, $method='file'){
 	if($method!='post'){
 		$url=$url['name'];
 	}
-	// Explode name
+	// Explode Name
 	$get_explode=explode(".", $url);
 	$type=$get_explode[count($get_explode)-1];
 	$type=strtolower($type);

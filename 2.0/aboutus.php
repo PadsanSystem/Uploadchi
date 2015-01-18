@@ -13,14 +13,13 @@
 */
 require_once 'subheader.php';
 
-// Load language
+// Load Language
 include_once LOCALESET.'commons.php';
 include_once LOCALESET.'aboutus.php';
 
 // Assign Locale
 $templates->assign('lang_commons_108', $locale['commons_108']);
 $templates->assign('lang_aboutus_100', $locale['aboutus_100']);
-$templates->assign('lang_aboutus_101', $locale['aboutus_101']);
 $templates->assign('lang_aboutus_102', $locale['aboutus_102']);
 $templates->assign('lang_aboutus_103', $locale['aboutus_103']);
 $templates->assign('lang_aboutus_104', $locale['aboutus_104']);

@@ -1,6 +1,17 @@
 <?php
+/*
+|-------------------------------|
+| PadsanCMS						|
+|-------------------------------|
+| UploadCenter Version v2.0		|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
+*/
 $locale['aboutus_100']='About Us';
-$locale['aboutus_101']='About Us';
 $locale['aboutus_102']='Location of PadsanSystem co';
 $locale['aboutus_103']='PadsanSystem Co.';
 $locale['aboutus_104']='We make creativity and efficiency Software';

@@ -1,4 +1,16 @@
 <?php
+/*
+|-------------------------------|
+| PadsanCMS						|
+|-------------------------------|
+| UploadCenter Version v2.0		|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
+*/
 $locale['terms_100']='Terms';
 $locale['terms_101']='By using our services, User agrees to be bound by the following terms and conditions:';
 $locale['terms_102']='We reserve the right to disable direct linking on user accounts that are using excessive bandwidth or otherwise abusing the system.';

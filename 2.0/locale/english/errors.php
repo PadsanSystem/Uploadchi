@@ -1,4 +1,16 @@
 <?php
+/*
+|-------------------------------|
+| PadsanCMS						|
+|-------------------------------|
+| UploadCenter Version v2.0		|
+|-------------------------------|
+| Web   : www.PadsanCMS.com		|
+| Email : Info@PadsanCMS.com	|
+| Tel   : +98 - 26 325 45 700	|
+| Fax   : +98 - 26 325 45 701	|
+|-------------------------------|
+*/
 $locale['errors_100']='Invalid file types.';
 $locale['errors_101']='<p>Upload file has some dangerous items. <b><a href="index.php">Please try again</a></b></p>';
 $locale['errors_102']='<p>Your username is invalid. <b><a href="register.php">Please try again</a></b></p>';

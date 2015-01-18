@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 18:36:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-18 17:33:57
          compiled from "templates\default\aboutus.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:356554ba9c74097eb1-65303560%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8bd6860016ab588129108dba49a4ed5ca792f330' => 
     array (
       0 => 'templates\\default\\aboutus.tpl',
-      1 => 1421516186,
+      1 => 1421598730,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'link_home' => 0,
     'lang_commons_108' => 0,
     'lang_aboutus_100' => 0,
-    'lang_aboutus_101' => 0,
     'img_location_aboutus' => 0,
     'lang_aboutus_102' => 0,
     'lang_aboutus_103' => 0,
@@ -54,7 +53,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </li>
 	</ol>
 	<div class="panel panel-default">
-		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_aboutus_101']->value;?>
+		<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_aboutus_100']->value;?>
 </div>
 		<div class="panel-body">
 			<div class="form-group col-lg-5 text-center">

@@ -3,7 +3,7 @@
 |-------------------------------|
 | PadsanCMS						|
 |-------------------------------|
-| UploadCenter Version v1.0		|
+| UploadCenter Version v2.0		|
 |-------------------------------|
 | Web   : www.PadsanCMS.com		|
 | Email : Info@PadsanCMS.com	|
@@ -13,7 +13,7 @@
 */
 require_once 'subheader.php';
 
-// Assign Locale
+// Load Language
 include_once LOCALESET.'contactus.php';
 include_once LOCALESET.'errors.php';
 

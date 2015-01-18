@@ -21,7 +21,7 @@ $url=cleanurl($url);
 $data=$database->get(DB_PREFIX.'attachments', ['[>]servers'=>['attachment_server'=>'server_id']], ['attachment_id', 'attachment_uid', 'attachment_address', 'attachment_status', 'server_name', 'server_status'], ["AND"=>["attachment_uid"=>$url, "attachment_status"=>'Enable', "server_status"=>'Enable']]);
 
 if($data==false){
-	// Load Locale
+	// Load Language
 	include_once LOCALESET.'errors.php';
 	
 	$error=106;
@@ -31,8 +31,8 @@ if($data==false){
 	// Assign Alert Message
 	$templates->assign('lang_errors_122', $locale['errors_122']);
 	$templates->assign('lang_errors_123', $locale['errors_123']);
-	$templates->assign('error_number', $error);
 	$templates->assign('lang_error_message', $error_message);
+	$templates->assign('error_number', $error);
 
 	// Render DownloadFiles
 	$templates->display('download.tpl');
