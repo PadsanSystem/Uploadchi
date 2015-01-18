@@ -3,9 +3,9 @@
 		<li><a href="{$link_home}" title="{$lang_commons_108}">{$lang_commons_108}</a></li>
 		<li class="active">{$lang_contactus_100}</li>
 	</ol>
-	{if isset($alert_message)}
+	{if isset($lang_alert_message)}
 		<div class="alert alert-success" role="alert">
-			<span class="glyphicon glyphicon-info-sign"></span>&nbsp;{$alert_message}
+			<span class="glyphicon glyphicon-info-sign"></span>&nbsp;{$lang_alert_message}
 		</div>
 	{elseif isset($error_number)}
 		<div class="alert alert-danger" role="alert">

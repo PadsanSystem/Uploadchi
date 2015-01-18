@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 21:17:06
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-18 22:30:05
          compiled from "templates\default\contactus.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1049454baaff120c592-17871675%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c36a87181ea138911574d650ec43f1608e4e4e9e' => 
     array (
       0 => 'templates\\default\\contactus.tpl',
-      1 => 1421525818,
+      1 => 1421616597,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'link_home' => 0,
     'lang_commons_108' => 0,
     'lang_contactus_100' => 0,
-    'alert_message' => 0,
+    'lang_alert_message' => 0,
     'error_number' => 0,
     'lang_errors_123' => 0,
     'lang_error_message' => 0,
@@ -55,9 +55,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<li class="active"><?php echo $_smarty_tpl->tpl_vars['lang_contactus_100']->value;?>
 </li>
 	</ol>
-	<?php if (isset($_smarty_tpl->tpl_vars['alert_message']->value)) {?>
+	<?php if (isset($_smarty_tpl->tpl_vars['lang_alert_message']->value)) {?>
 		<div class="alert alert-success" role="alert">
-			<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['alert_message']->value;?>
+			<span class="glyphicon glyphicon-info-sign"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_alert_message']->value;?>
 
 		</div>
 	<?php } elseif (isset($_smarty_tpl->tpl_vars['error_number']->value)) {?>

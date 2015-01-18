@@ -30,8 +30,8 @@ if(isset($_POST['submit'])){
 		
 		// Assign Alert Message
 		$templates->assign('lang_errors_123', $locale['errors_123']);
-		$templates->assign('error_number', $error);
 		$templates->assign('lang_error_message', $error_message);
+		$templates->assign('error_number', $error);
 	}else{
 		$email=strtolower($email);
 	}
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
 		@mail($department, 'Request [ Uploadchi ]', $body, $headers);
 
 		// Assign Alert Message
-		$templates->assign('alert_message', $locale['contactus_116']);
+		$templates->assign('lang_alert_message', $locale['contactus_116']);
 	}
 }
 
