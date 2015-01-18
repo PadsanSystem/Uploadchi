@@ -13,7 +13,7 @@
 */
 require_once 'subheader.php';
 
-// Load language
+// Load Language
 include_once LOCALESET.'upload.php';
 
 // Assign Locale

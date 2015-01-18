@@ -22,7 +22,7 @@
 						</small>
 					</div>
 					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12" align="center">
-						<img src="{$img_banners}" alt="{$settings_description}" title="[$settings_description]" class="img-responsive">
+						<img src="{$img_banners}" alt="{$settings_description}" title="{$settings_description}" class="img-responsive">
 					</div>
 				</div>
 			</div>

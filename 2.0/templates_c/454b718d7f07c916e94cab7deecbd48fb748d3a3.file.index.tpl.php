@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-17 19:30:55
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-18 18:52:12
          compiled from "templates\default\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1983554baa429583d77-40677074%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '454b718d7f07c916e94cab7deecbd48fb748d3a3' => 
     array (
       0 => 'templates\\default\\index.tpl',
-      1 => 1421519395,
+      1 => 1421603531,
       2 => 'file',
     ),
   ),
@@ -75,7 +75,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="col-lg-6 col-md-6 col-xs-12 col-sm-12" align="center">
 						<img src="<?php echo $_smarty_tpl->tpl_vars['img_banners']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['settings_description']->value;?>
-" title="[$settings_description]" class="img-responsive">
+" title="<?php echo $_smarty_tpl->tpl_vars['settings_description']->value;?>
+" class="img-responsive">
 					</div>
 				</div>
 			</div>
