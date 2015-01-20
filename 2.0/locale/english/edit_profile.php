@@ -28,4 +28,5 @@ $locale['edit_profile_113']='Enter your password';
 $locale['edit_profile_114']='Enter your name';
 $locale['edit_profile_115']='Enter your family';
 $locale['edit_profile_116']='Enter your email';
+$locale['edit_profile_116']='Well done! You successfully removed avatar from your profile.';
 ?>

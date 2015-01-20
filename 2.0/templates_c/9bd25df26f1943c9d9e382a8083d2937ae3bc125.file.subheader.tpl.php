@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-19 21:21:29
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-20 21:26:30
          compiled from "templates\default\subheader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2247154bd362bb64d35-87320455%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9bd25df26f1943c9d9e382a8083d2937ae3bc125' => 
     array (
       0 => 'templates\\default\\subheader.tpl',
-      1 => 1421698885,
+      1 => 1421785505,
       2 => 'file',
     ),
   ),
@@ -23,6 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'settings_keywords' => 0,
     'settings_author' => 0,
     'settings_title' => 0,
+    'seo_title' => 0,
     'settings_css' => 0,
     'visit_page' => 0,
     'link_home' => 0,
@@ -32,15 +33,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_commons_109' => 0,
     'link_statistics' => 0,
     'lang_commons_110' => 0,
-    'link_aboutus' => 0,
+    'link_about_us' => 0,
     'lang_commons_111' => 0,
-    'link_contactus' => 0,
+    'link_contact_us' => 0,
     'lang_commons_112' => 0,
     'iMEMBER' => 0,
-    'img_user_avatar' => 0,
+    'img_user_avatar_1' => 0,
     'lang_commons_113' => 0,
     'user_username' => 0,
-    'img_user_avatar_4' => 0,
+    'img_user_avatar_3' => 0,
     'link_edit_profile' => 0,
     'lang_commons_107' => 0,
     'link_dashboard' => 0,
@@ -70,6 +71,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta name="author" content="<?php echo $_smarty_tpl->tpl_vars['settings_author']->value;?>
 ">
 	<title><?php echo $_smarty_tpl->tpl_vars['settings_title']->value;?>
+&nbsp;<?php echo $_smarty_tpl->tpl_vars['seo_title']->value;?>
 </title>
 	<link href="<?php echo $_smarty_tpl->tpl_vars['settings_css']->value;?>
 " rel="stylesheet">
@@ -111,11 +113,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_110']->value;?>
 "><span class="glyphicon glyphicon-stats"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_commons_110']->value;?>
 </a></li>
-					<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_aboutus']->value;?>
+					<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_about_us']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_111']->value;?>
 "><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_commons_111']->value;?>
 </a></li>
-					<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_contactus']->value;?>
+					<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_contact_us']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_112']->value;?>
 "><span class="glyphicon glyphicon-phone-alt"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_commons_112']->value;?>
 </a></li>
@@ -124,14 +126,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<?php if ($_smarty_tpl->tpl_vars['iMEMBER']->value) {?>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar']->value;?>
+								<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_1']->value;?>
 " class="img-circle">
 								<small><?php echo $_smarty_tpl->tpl_vars['lang_commons_113']->value;?>
 &nbsp;<b><?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 </b></small>&nbsp;<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_4']->value;?>
+								<li><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_3']->value;?>
 " class="img-responsive"></a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_edit_profile']->value;?>
@@ -153,7 +155,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						</li>
 					<?php } else { ?>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar']->value;?>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_1']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>
 " class="img-circle">&nbsp;<small><?php echo $_smarty_tpl->tpl_vars['lang_commons_104']->value;?>

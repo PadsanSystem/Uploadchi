@@ -120,14 +120,6 @@ function redirect($location, $type="header"){
 	}
 }
 
-function exists_avatars(){
-	global $userdata;
-	
-	if(isset($userdata['user_avatar']) && $userdata['user_avatar']!='noavatar.png' && file_exists(AVATARS.$userdata['user_avatar']))
-		return true;
-	else
-		return false;
-}
 // Validate numeric input
 function isnum($value) {
 	return (preg_match("/^[0-9]+$/", $value));
@@ -306,15 +298,27 @@ function show_error($error_id, $section=''){
 function remove_avatars($name){
 	unlink(AVATARS.$name);
 	$seprate=explode('.', $name);
+	unlink(AVATARS.$seprate[0].'_1.'.$seprate[1]);
 	unlink(AVATARS.$seprate[0].'_2.'.$seprate[1]);
 	unlink(AVATARS.$seprate[0].'_3.'.$seprate[1]);
-	unlink(AVATARS.$seprate[0].'_4.'.$seprate[1]);
 }
 
-function show_avatars($number){
+function show_avatars($number=NULL){
 	global $userdata;
-	$seprate=explode('.', $userdata['user_avatar']);
-	$show=AVATARS.$seprate[0].'_'.$number.'.'.$seprate[1];
+
+	if($number!=NULL && $userdata['user_avatar']!=NULL){
+		$seprate=explode('.', $userdata['user_avatar']);
+		$show=AVATARS.$seprate[0].'_'.$number.'.'.$seprate[1];
+	}else if($number!=NULL && $userdata['user_avatar']==NULL){
+		$show=AVATARS.'noavatar_'.$number.'.png';
+	}else if($number==NULL && $userdata['user_avatar']!=NULL){
+		$show=AVATARS.$userdata['user_avatar'];
+	}else if($number==NULL && $userdata['user_avatar']==NULL){
+		$show=AVATARS.'noavatar.png';
+	}else{
+		$show=AVATARS.$userdata['user_avatar'];
+	}
+	
 	return $show;
 }
 

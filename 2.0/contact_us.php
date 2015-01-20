@@ -14,16 +14,18 @@
 require_once 'subheader.php';
 
 // Load Language
-include_once LOCALESET.'contactus.php';
-include_once LOCALESET.'errors.php';
+include_once LOCALESET.'contact_us.php';
 
 if(isset($_POST['submit'])){
 	$subject=secure_itext($_POST['subject']);
 	$message=secure_itextarea(nl2br($_POST['message']));
 	$name=secure_itext($_POST['name']);
-	
 	$email=secure_itext($_POST['email']);
+	
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+		// Load Language
+		include_once LOCALESET.'errors.php';
+		
 		$error=104;
 		$error_string=show_error($error, 'errors');
 		$error_message=$locale["$error_string"];
@@ -83,33 +85,33 @@ if(isset($_POST['submit'])){
 		@mail($department, 'Request [ Uploadchi ]', $body, $headers);
 
 		// Assign Alert Message
-		$templates->assign('lang_alert_message', $locale['contactus_116']);
+		$templates->assign('lang_alert_message', $locale['contact_us_116']);
 	}
 }
 
 // Assign Locale
-$templates->assign('lang_contactus_100', $locale['contactus_100']);
-$templates->assign('lang_contactus_101', $locale['contactus_101']);
-$templates->assign('lang_contactus_102', $locale['contactus_102']);
-$templates->assign('lang_contactus_103', $locale['contactus_103']);
-$templates->assign('lang_contactus_104', $locale['contactus_104']);
-$templates->assign('lang_contactus_105', $locale['contactus_105']);
-$templates->assign('lang_contactus_106', $locale['contactus_106']);
-$templates->assign('lang_contactus_107', $locale['contactus_107']);
-$templates->assign('lang_contactus_108', $locale['contactus_108']);
-$templates->assign('lang_contactus_109', $locale['contactus_109']);
-$templates->assign('lang_contactus_110', $locale['contactus_110']);
-$templates->assign('lang_contactus_111', $locale['contactus_111']);
-$templates->assign('lang_contactus_112', $locale['contactus_112']);
-$templates->assign('lang_contactus_113', $locale['contactus_113']);
-$templates->assign('lang_contactus_114', $locale['contactus_114']);
-$templates->assign('lang_contactus_115', $locale['contactus_115']);
+$templates->assign('lang_contact_us_100', $locale['contact_us_100']);
+$templates->assign('lang_contact_us_101', $locale['contact_us_101']);
+$templates->assign('lang_contact_us_102', $locale['contact_us_102']);
+$templates->assign('lang_contact_us_103', $locale['contact_us_103']);
+$templates->assign('lang_contact_us_104', $locale['contact_us_104']);
+$templates->assign('lang_contact_us_105', $locale['contact_us_105']);
+$templates->assign('lang_contact_us_106', $locale['contact_us_106']);
+$templates->assign('lang_contact_us_107', $locale['contact_us_107']);
+$templates->assign('lang_contact_us_108', $locale['contact_us_108']);
+$templates->assign('lang_contact_us_109', $locale['contact_us_109']);
+$templates->assign('lang_contact_us_110', $locale['contact_us_110']);
+$templates->assign('lang_contact_us_111', $locale['contact_us_111']);
+$templates->assign('lang_contact_us_112', $locale['contact_us_112']);
+$templates->assign('lang_contact_us_113', $locale['contact_us_113']);
+$templates->assign('lang_contact_us_114', $locale['contact_us_114']);
+$templates->assign('lang_contact_us_115', $locale['contact_us_115']);
 
 // Assign Images
-$templates->assign('img_contactus', IMAGES.'contact.jpg');
+$templates->assign('img_contact_us', IMAGES.'contact_us.jpg');
 
 // Render Contact Us
-$templates->display('contactus.tpl');
+$templates->display('contact_us.tpl');
 
 require_once BASEDIR.'footer.php';
 ?>

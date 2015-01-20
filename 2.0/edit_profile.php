@@ -18,9 +18,7 @@ if(!iMEMBER){redirect(BASEDIR.'index.php');}
 
 // Load Language
 include_once LOCALESET.'commons.php';
-include_once LOCALESET.'errors.php';
 include_once LOCALESET.'edit_profile.php';
-
 
 if(isset($_POST['submit'])){
 	$user_name=secure_itext($_POST['name']);
@@ -59,23 +57,25 @@ if(isset($_POST['submit'])){
 			$user_avatar=$random_name.'.'.$type;
 			move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
 			
+			// Load Class Image Resizer
 			include CLASSES."imageresizer.php";
+			
 			// Size s1
 			$avatar_create=new resize(AVATARS.$user_avatar);
 			$avatar_create->resizeImage(19, 19, 'exact');
-			$avatar_create->saveImage(AVATARS.$random_name.'_2.'.$type, 80);
+			$avatar_create->saveImage(AVATARS.$random_name.'_1.'.$type, 100);
 			
 			// Size s2
 			$avatar_create=new resize(AVATARS.$user_avatar);
 			$avatar_create->resizeImage(95, 59, 'exact');
-			$avatar_create->saveImage(AVATARS.$random_name.'_3.'.$type, 80);
+			$avatar_create->saveImage(AVATARS.$random_name.'_2.'.$type, 90);
 			
 			// Size s3
 			$avatar_create=new resize(AVATARS.$user_avatar);
 			$avatar_create->resizeImage(170, 99, 'exact');
-			$avatar_create->saveImage(AVATARS.$random_name.'_4.'.$type, 80);
+			$avatar_create->saveImage(AVATARS.$random_name.'_3.'.$type, 90);
 			
-			if(file_exists(AVATARS.$userdata['user_avatar']) && $userdata['user_avatar']!='noavatar.png')
+			if(file_exists(AVATARS.$userdata['user_avatar']) && $userdata['user_avatar']!=NULL)
 				remove_avatars($userdata['user_avatar']);
 		}
 	}else{
@@ -84,9 +84,11 @@ if(isset($_POST['submit'])){
 
 	if(!isset($error)){
 		$database->update(DB_PREFIX.'users', ['user_name'=>$user_name, 'user_family'=>$user_family, 'user_password'=>$user_password, 'user_email'=>$user_email, 'user_avatar'=>$user_avatar, '#user_time_visit'=>'UNIX_TIMESTAMP()'], ['user_id'=>$userdata['user_id']]);
-		redirect(BASEDIR.'edit_profile.php?action=update_profile');
+		redirect(BASEDIR.'edit_profile.php?route=update_profile');
 	}else{
-		$error=104;
+		// Load Language
+		include_once LOCALESET.'errors.php';
+		
 		$error_string=show_error($error, 'errors');
 		$error_message=$locale["$error_string"];
 		
@@ -97,15 +99,20 @@ if(isset($_POST['submit'])){
 	}
 }
 
-if(isset($_GET['action']) && ($_GET['action']=='update_profile'))
-		// Assign Alert Message
-		$templates->assign('lang_alert_message', $locale['edit_profile_112']);
+if(isset($_GET['route']) && ($_GET['route']=='update_profile'))
+	// Assign Alert Message
+	$templates->assign('lang_alert_message', $locale['edit_profile_112']);
 
-if(isset($_GET['action']) && ($_GET['action']=='remove_avatar')){
+if(isset($_GET['route']) && ($_GET['route']=='remove_avatar') && !isset($_GET['action'])){
 	if(file_exists(AVATARS.$userdata['user_avatar'])){
-		$database->update(DB_PREFIX.'users', ['user_avatar'=>'noavatar.png'], ['user_id'=>$userdata['user_id']]);
+		$database->update(DB_PREFIX.'users', ['user_avatar'=>NULL], ['user_id'=>$userdata['user_id']]);
 		remove_avatars($userdata['user_avatar']);
+		redirect(BASEDIR.'edit_profile.php?route=remove_avatar&action=removed');
 	}
+}
+if(isset($_GET['route']) && $_GET['route']=='remove_avatar' && isset($_GET['action']) && $_GET['action']=='removed'){
+	// Assign Alert Message
+	$templates->assign('lang_alert_message', $locale['edit_profile_116']);
 }
 
 // Assign Locale

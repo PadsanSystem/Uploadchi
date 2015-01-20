@@ -46,10 +46,9 @@ $templates->assign('settings_css', STATICS.'cstyles.min.css');
 $templates->assign('settings_description', $settings['setting_description']);
 $templates->assign('settings_keywords', $settings['setting_keywords']);
 $templates->assign('settings_title', $settings['setting_title']);
+if($visit_page!='index')
+	$templates->assign('seo_title', '- '.ucwords(str_replace('_', ' ', $visit_page)));
 $templates->assign('settings_author', 'PadsanSystem Corporation');
-
-// Assign Images
-$templates->assign('img_user_avatar', exists_avatars()==true ? show_avatars(2) : AVATARS.'noavatar_small.png');
 
 // Assign Others
 $templates->assign('visit_page', $visit_page);
@@ -65,8 +64,14 @@ $templates->assign('lang_commons_112', $locale['commons_112']);
 $templates->assign('link_home', BASEDIR.'index.php');
 $templates->assign('link_terms', BASEDIR.'terms.php');
 $templates->assign('link_statistics', BASEDIR.'statistics.php');
-$templates->assign('link_aboutus', BASEDIR.'aboutus.php');
-$templates->assign('link_contactus', BASEDIR.'contactus.php');
+$templates->assign('link_about_us', BASEDIR.'about_us.php');
+$templates->assign('link_contact_us', BASEDIR.'contact_us.php');
+
+// Assign Avatars [ Guest - Members ]
+$templates->assign('img_user_avatar', show_avatars());
+$templates->assign('img_user_avatar_1', show_avatars(1));
+$templates->assign('img_user_avatar_2', show_avatars(2));
+$templates->assign('img_user_avatar_3', show_avatars(3));
 
 // Member members
 if(iMEMBER){
@@ -76,9 +81,6 @@ if(iMEMBER){
 	$templates->assign('user_name', $userdata['user_name']);
 	$templates->assign('user_family', $userdata['user_family']);
 	$templates->assign('user_email', $userdata['user_email']);
-	$templates->assign('img_user_avatar_0', IMAGES.'noavatar.png');
-	$templates->assign('img_user_avatar_3', show_avatars(3));
-	$templates->assign('img_user_avatar_4', show_avatars(4));
 	
 	// Assign Links
 	$templates->assign('link_logout', BASEDIR.'index.php?logout=yes');

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-19 21:52:37
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-20 21:33:04
          compiled from "templates\default\edit_profile.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2633054bd6e95674767-49817516%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '454d8fa07a4665324583ac12334d336e5718d429' => 
     array (
       0 => 'templates\\default\\edit_profile.tpl',
-      1 => 1421620097,
+      1 => 1421785979,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54bd6e957ee026_22967316',
   'variables' => 
   array (
     'lang_alert_message' => 0,
@@ -35,18 +37,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_edit_profile_104' => 0,
     'user_email' => 0,
     'edit_profile_116' => 0,
+    'img_user_avatar_2' => 0,
     'img_user_avatar' => 0,
-    'img_user_avatar_3' => 0,
     'lang_edit_profile_111' => 0,
-    'img_user_avatar_0' => 0,
     'lang_edit_profile_105' => 0,
     'lang_edit_profile_110' => 0,
     'lang_edit_profile_109' => 0,
     'lang_edit_profile_107' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54bd6e957ee026_22967316',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54bd6e957ee026_22967316')) {function content_54bd6e957ee026_22967316($_smarty_tpl) {?><div class="container">
 	<?php if (isset($_smarty_tpl->tpl_vars['lang_alert_message']->value)) {?>
@@ -103,18 +102,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				</div>
 				<div class="form-group col-lg-6">
 					<div align="center" class="pull-left">
-						<?php if (($_smarty_tpl->tpl_vars['img_user_avatar']->value)) {?>
-							<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_3']->value;?>
+						<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_2']->value;?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 " class="img-responsive" style="margin-right:10px;">
-							<small><a href="edit_profile.php?action=remove_avatar" class="text-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_edit_profile_111']->value;?>
+						<?php if ($_smarty_tpl->tpl_vars['img_user_avatar']->value!='images/avatars/noavatar.png') {?>
+							<small><a href="edit_profile.php?route=remove_avatar" class="text-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_edit_profile_111']->value;?>
 </a></small>
-						<?php } else { ?>
-							<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_0']->value;?>
-" alt="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
-" title="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
-" class="img-responsive" style="margin-right:10px;">
 						<?php }?>
 					</div>
 					<label for="avatar" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_edit_profile_105']->value;?>

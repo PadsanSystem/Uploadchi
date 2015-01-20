@@ -29,6 +29,9 @@ compress_file($get_js, 'js');
 // Assign Javascript
 $templates->assign('jscript', STATICS.'cjscript.min.js');
 
+// Assign Links
+$templates->assign('link_privacy', BASEDIR.'privacy.php');
+
 // Asign Global Locale
 $templates->assign('lang_copyright', $locale['footer_100']);
 $templates->assign('lang_footer_101', $locale['footer_101']);
@@ -46,9 +49,9 @@ if(iADMIN){
 	$templates->assign('lang_render_time', $locale['commons_115']);
 }
 
-// Render
-$templates->display('footer.tpl');
-
 // End render time 
 $page_time_end=microtime();
+
+// Render
+$templates->display('footer.tpl');
 ?>

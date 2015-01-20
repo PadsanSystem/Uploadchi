@@ -58,8 +58,6 @@ if(isset($_POST['submit'])){
 		$user_avatar_name=random_text($type='number');
 		$user_avatar_type=get_type($string);
 		$user_avatar=$user_avatar_name.".".$user_avatar_type;
-	}else{
-		$user_avatar='noavatar_small.png';
 	}
 	
 	if(isset($error)){

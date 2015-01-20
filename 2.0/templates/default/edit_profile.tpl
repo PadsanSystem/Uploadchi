@@ -35,11 +35,9 @@
 				</div>
 				<div class="form-group col-lg-6">
 					<div align="center" class="pull-left">
-						{if ($img_user_avatar)}
-							<img src="{$img_user_avatar_3}" alt="{$user_username}" title="{$user_username}" class="img-responsive" style="margin-right:10px;">
-							<small><a href="edit_profile.php?action=remove_avatar" class="text-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;{$lang_edit_profile_111}</a></small>
-						{else}
-							<img src="{$img_user_avatar_0}" alt="{$user_username}" title="{$user_username}" class="img-responsive" style="margin-right:10px;">
+						<img src="{$img_user_avatar_2}" alt="{$user_username}" title="{$user_username}" class="img-responsive" style="margin-right:10px;">
+						{if $img_user_avatar ne 'images/avatars/noavatar.png'}
+							<small><a href="edit_profile.php?route=remove_avatar" class="text-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;{$lang_edit_profile_111}</a></small>
 						{/if}
 					</div>
 					<label for="avatar" class="control-label">{$lang_edit_profile_105}</label><br>
