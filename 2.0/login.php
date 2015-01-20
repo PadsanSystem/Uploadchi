@@ -19,7 +19,6 @@ if(iMEMBER){redirect(BASEDIR.'index.php');}
 // Load language
 include_once LOCALESET.'commons.php';
 include_once LOCALESET.'login.php';
-include_once LOCALESET.'errors.php';
 
 if(isset($_POST['login'])){
 	$username=strtolower(secure_itext($_POST['username']));
@@ -28,6 +27,9 @@ if(isset($_POST['login'])){
 	$result_login=$database->get("users", ["user_id", "user_username", "user_password"], ["AND"=>["user_username"=>$username, "user_password"=>$password, 'user_status'=>'Enable']]);
 	
 	if($result_login==false){
+		// Load language
+		include_once LOCALESET.'errors.php';
+		
 		$error=120;
 		$error_string=show_error($error, 'errors');
 		$error_message=$locale["$error_string"];
