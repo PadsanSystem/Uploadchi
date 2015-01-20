@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-18 22:33:45
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-19 21:40:43
          compiled from "templates\default\register.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:652954bc1c6680cc74-31595326%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2061854bd6ab209ded5-80117907%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '549192411214399ab72c86d778ff5d4407c5a148' => 
     array (
       0 => 'templates\\default\\register.tpl',
-      1 => 1421616753,
+      1 => 1421700039,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '652954bc1c6680cc74-31595326',
+  'nocache_hash' => '2061854bd6ab209ded5-80117907',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54bc1c66851214_96728112',
+  'unifunc' => 'content_54bd6ab21549a0_67859609',
   'variables' => 
   array (
     'link_home' => 0,
@@ -30,14 +30,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_error_message' => 0,
     'link_register' => 0,
     'lang_register_101' => 0,
+    'user_username' => 0,
     'lang_register_114' => 0,
     'lang_register_102' => 0,
     'lang_register_113' => 0,
     'lang_register_103' => 0,
+    'user_name' => 0,
     'lang_register_112' => 0,
     'lang_register_104' => 0,
+    'user_family' => 0,
     'lang_register_111' => 0,
     'lang_register_105' => 0,
+    'user_email' => 0,
     'lang_register_110' => 0,
     'lang_register_106' => 0,
     'lang_register_108' => 0,
@@ -46,7 +50,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54bc1c66851214_96728112')) {function content_54bc1c66851214_96728112($_smarty_tpl) {?><div class="container">
+<?php if ($_valid && !is_callable('content_54bd6ab21549a0_67859609')) {function content_54bd6ab21549a0_67859609($_smarty_tpl) {?><div class="container">
 	<ol class="breadcrumb">
 		<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_home']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_commons_108']->value;?>
@@ -80,7 +84,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_register_101']->value;?>
 </label><br>
-					<input id="username" name="username" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_114']->value;?>
+					<input id="username" name="username" type="text" value="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_114']->value;?>
 " autocomplete="off" required>
 				</div>
 				<div class="form-group col-lg-6">
@@ -92,19 +97,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_register_103']->value;?>
 </label><br>
-					<input id="name" name="name" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_112']->value;?>
+					<input id="name" name="name" type="text" value="<?php echo $_smarty_tpl->tpl_vars['user_name']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_112']->value;?>
 ">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="family" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_register_104']->value;?>
 </label><br>
-					<input id="family" name="family" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_111']->value;?>
+					<input id="family" name="family" type="text" value="<?php echo $_smarty_tpl->tpl_vars['user_family']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_111']->value;?>
 ">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="email" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_register_105']->value;?>
 </label><br>
-					<input id="email" name="email" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_110']->value;?>
+					<input id="email" name="email" type="text" value="<?php echo $_smarty_tpl->tpl_vars['user_email']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_register_110']->value;?>
 " required>
 				</div>
 				<div class="form-group col-lg-6">

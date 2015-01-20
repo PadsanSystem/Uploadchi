@@ -30,7 +30,7 @@ csrfguard_start();
 	<link rel="shortcut icon" href="favicon.png">
 	<title><?php echo $settings['setting_title']; ?></title>
 	<?php
-	// $get_styles = array(THEMES_CSS.'bootstrap.min.css', THEMES_CSS.'jasny-bootstrap.min.css', THEMES_CSS.'ui-lightness/jquery-ui.min.css', THEMES_CSS.'datatables.bootstrap.min.css', THEMES.'font-awesome/css/font-awesome.min.css', THEMES_CSS.'styles.min.css');
+	// $get_styles = array(THEMES_CSS.'jasny-bootstrap.min.css', THEMES_CSS.'ui-lightness/jquery-ui.min.css', THEMES_CSS.'datatables.bootstrap.min.css', THEMES.'font-awesome/css/font-awesome.min.css', THEMES_CSS.'styles.min.css');
 	// compress_file($get_styles, 'css');
 	?>
 	<link href="<?php echo THEMES_CSS.'cstyles.min.css'; ?>" rel="stylesheet">

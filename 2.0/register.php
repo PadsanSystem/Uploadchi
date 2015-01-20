@@ -21,18 +21,18 @@ include_once LOCALESET.'commons.php';
 include_once LOCALESET.'register.php';
 
 if(isset($_POST['submit'])){
+	$user_username=secure_itext($_POST['username']);
 	$user_password=md5(md5(secure_itext($_POST['password'])));
 	$user_name=secure_itext($_POST['name']);
 	$user_family=secure_itext($_POST['family']);
 	$string=$_FILES['avatar'];
 	
-	if(!preg_match('/^[a-z\d_]{5,20}$/i', secure_itext($_POST['username'])))
-		$error=102;
-	else
-		$user_username=strtolower(secure_itext($_POST['username']));
-	
 	if($database->has(DB_PREFIX.'users', ["user_username"=>$user_username]))
 		$error=108;
+	else if(!preg_match('/^[a-z\d_]{5,20}$/i', $user_username))
+		$error=102;
+	else
+		$user_username=strtolower($user_username);
 	
 	if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		$error=104;
@@ -70,6 +70,11 @@ if(isset($_POST['submit'])){
 		$error_message=$locale["$error_string"];
 		
 		// Assign Alert Message
+		$templates->assign('user_username', $user_username);
+		$templates->assign('user_name', $user_name);
+		$templates->assign('user_family', $user_family);
+		$templates->assign('user_email', $user_email);
+		
 		$templates->assign('lang_errors_123', $locale['errors_123']);
 		$templates->assign('lang_error_message', $error_message);
 		$templates->assign('error_number', $error);

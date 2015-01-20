@@ -14,12 +14,26 @@
 // Load language
 include_once LOCALESET.'footer.php';
 
-// Assign Global Settings
-$templates->assign('jscript', JAVASCRIPTS.'cjscript.min.js');
+$get_js=array(
+	STATICS.'jquery/jquery.min.js',
+	STATICS.'jquery-ui/js/jquery-ui.min.js',
+	STATICS.'bootstrap/js/bootstrap.min.js',
+	STATICS.'bootstrap-jasny/js/inputmask.min.js',
+	STATICS.'bootstrap-jasny/js/jasny-bootstrap.min.js',
+	STATICS.'others/others.min.js',
+	STATICS.'google/google_analytics.min.js'
+);
+
+compress_file($get_js, 'js');
+
+// Assign Javascript
+$templates->assign('jscript', STATICS.'cjscript.min.js');
 
 // Asign Global Locale
 $templates->assign('lang_copyright', $locale['footer_100']);
 $templates->assign('lang_footer_101', $locale['footer_101']);
+$templates->assign('lang_footer_102', $locale['footer_102']);
+$templates->assign('lang_footer_103', $locale['footer_103']);
 
 if(iADMIN){
 	// Assign Others
@@ -31,6 +45,7 @@ if(iADMIN){
 	$templates->assign('lang_memory_usage', $locale['commons_114']);
 	$templates->assign('lang_render_time', $locale['commons_115']);
 }
+
 // Render
 $templates->display('footer.tpl');
 

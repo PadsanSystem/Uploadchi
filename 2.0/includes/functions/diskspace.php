@@ -12,10 +12,12 @@
 |-------------------------------|
 */
 function user_space(){
-	global $userdata;
+	global $userdata, $database;
 	
 	$result=dbquery("SELECT count(*) AS count, SUM(attachment_size) AS size FROM ".DB_PREFIX."attachments WHERE attachment_user='".$userdata['user_id']."'");
 	$data=dbarray($result);
+	
+	$data=$database->get(DB_PREFIX.'servers', '*', ['attachment_user'=>$userdata['user_id']]);
 	
 	return $data;
 }

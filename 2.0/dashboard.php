@@ -18,7 +18,6 @@ if(!iMEMBER) { redirect(BASEDIR.'index.php'); }
 
 require_once FUNCTIONS.'create_folder.php';
 require_once FUNCTIONS.'remove.php';
-require_once FUNCTIONS.'diskspace.php';
 
 if(isset($action) && ($action=='delete')) { redirect($_SERVER['PHP_SELF']); }
 ?>
@@ -38,10 +37,10 @@ if(isset($action) && ($action=='delete')) { redirect($_SERVER['PHP_SELF']); }
 							<div class="well">
 								<?php
 								$space=10737418240;
-								$allocate=user_space()['size'];
+								$allocate=user_attachments_size();
 								$remaining=round(($allocate*100)/$space, 2);
 								?>
-								<h5><span class="glyphicon glyphicon-hdd"></span> Disk space<br><small><?php echo parsebytesize(user_space()['size'], 2); ?> of <?php echo parsebytesize($space, 2); ?></small></h5>
+								<h5><span class="glyphicon glyphicon-hdd"></span> Disk space<br><small><?php echo parsebytesize(user_attachments_size(), 2); ?> of <?php echo parsebytesize($space, 2); ?></small></h5>
 								<div class="progress">
 									<div class="progress">
 										<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $remaining; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $remaining; ?>%">

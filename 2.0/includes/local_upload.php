@@ -92,11 +92,54 @@ if(isset($_POST['send_file'])){
 		
 		$database->insert(DB_PREFIX.'attachments', ['attachment_uid'=>$uid, 'attachment_size'=>$size, 'attachment_address'=>$generate_name, 'attachment_server'=>$data_server['server_id'], '#attachment_time'=>'UNIX_TIMESTAMP()', 'attachment_ip'=>get_ip(), 'attachment_status'=>'Enable']);
 		
-		$to='mahmoodi@uploadchi.com';
-		$subject='New file on Uploadchi';
-		$message='http://www.uploadchi.com/download.php?url='.$uid;
-		$headers='CC: s.saeidi@uploadchi.com';
-		@mail($to, $subject, $message, $headers);
+		require_once MAIL.'phpmail_autoload.php';
+
+		//Create a new PHPMailer instance
+		$mail = new PHPMailer;
+
+		//Tell PHPMailer to use SMTP
+		$mail->isSMTP();
+
+		// 0 = off (for production use)
+		// 1 = client messages
+		// 2 = client and server messages
+		$mail->SMTPDebug = 0;
+
+		//Ask for HTML-friendly debug output
+		$mail->Debugoutput = 'html';
+
+		//Set the hostname of the mail server
+		$mail->Host = "mail.uploadchi.com";
+
+		//Set the SMTP port number - likely to be 25, 465 or 587
+		$mail->Port = 25;
+
+		//Whether to use SMTP authentication
+		$mail->SMTPAuth = true;
+
+		//Username to use for SMTP authentication
+		$mail->Username = "info@uploadchi.com";
+
+		//Password to use for SMTP authentication
+		$mail->Password = "@info123";
+
+		//Set who the message is to be sent from
+		$mail->setFrom('info@uploadchi.com', 'Info [ Uploadchi ]');
+
+		//Set an alternative reply-to address
+		$mail->addReplyTo('info@uploadchi.com', 'Info [ Uploadchi ]');
+
+		//Set who the message is to be sent to
+		$mail->addAddress($userdata['user_email'], $userdata['user_username']);
+
+		//Set the subject line
+		$mail->Subject = 'File Uploaded via '.$userdata['user_username'].' on Uploadchi';
+
+		//Read an HTML message body from an external file, convert referenced images to embedded,
+		//convert HTML into a basic plain-text alternative body
+		$mail->msgHTML(file_get_contents(THEMES_MAIL.'attachments.tpl'));
+		
+		$mail->send();
 		
 		$download_url=$settings['setting_siteurl'].'download.php?url='.$uid;
 		

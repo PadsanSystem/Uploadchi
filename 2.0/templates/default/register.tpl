@@ -19,7 +19,7 @@
 			<form name="form_register" class="form-vertical" role="form" method="post" action="{$link_register}" enctype="multipart/form-data">
 				<div class="form-group col-lg-6">
 					<label for="username" class="control-label">{$lang_register_101}</label><br>
-					<input id="username" name="username" type="text" class="form-control" placeholder="{$lang_register_114}" autocomplete="off" required>
+					<input id="username" name="username" type="text" value="{$user_username}" class="form-control" placeholder="{$lang_register_114}" autocomplete="off" required>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="password" class="control-label">{$lang_register_102}</label><br>
@@ -27,15 +27,15 @@
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="name" class="control-label">{$lang_register_103}</label><br>
-					<input id="name" name="name" type="text" class="form-control" placeholder="{$lang_register_112}">
+					<input id="name" name="name" type="text" value="{$user_name}" class="form-control" placeholder="{$lang_register_112}">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="family" class="control-label">{$lang_register_104}</label><br>
-					<input id="family" name="family" type="text" class="form-control" placeholder="{$lang_register_111}">
+					<input id="family" name="family" type="text" value="{$user_family}" class="form-control" placeholder="{$lang_register_111}">
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="email" class="control-label">{$lang_register_105}</label><br>
-					<input id="email" name="email" type="text" class="form-control" placeholder="{$lang_register_110}" required>
+					<input id="email" name="email" type="text" value="{$user_email}" class="form-control" placeholder="{$lang_register_110}" required>
 				</div>
 				<div class="form-group col-lg-6">
 					<label for="avatar" class="control-label">{$lang_register_106}</label><br>

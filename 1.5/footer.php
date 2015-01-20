@@ -13,8 +13,7 @@
 */
 require_once LOCALESET.'footer.php';
 
-// $get_jscripts = array(JAVASCRIPTS.'jquery.min.js', JAVASCRIPTS.'jquery-ui.min.js', JAVASCRIPTS.'bootstrap.min.js', JAVASCRIPTS.'jasny-bootstrap.min.js', JAVASCRIPTS.'inputmask.js', JAVASCRIPTS.'datatables/jquery.datatables.min.js', JAVASCRIPTS.'datatables/datatables.bootstrap.min.js', JAVASCRIPTS.'others.js', JAVASCRIPTS.'livechat.js', JAVASCRIPTS.'google_analytics.js');
-// compress_file($get_jscripts, 'javascript');
+// JAVASCRIPTS.'datatables/jquery.datatables.min.js', JAVASCRIPTS.'datatables/datatables.bootstrap.min.js');
 ?>
 <script src="<?php echo JAVASCRIPTS.'cjscript.min.js'; ?>"></script>
 <?php

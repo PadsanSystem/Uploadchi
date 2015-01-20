@@ -48,17 +48,18 @@ define("INCLUDES", BASEDIR."includes/");
 define("LOCALESET", BASEDIR."locale/english/");
 define("FUNCTIONS", INCLUDES."functions/");
 define("CLASSES", INCLUDES."classes/");
-define("JAVASCRIPTS", INCLUDES."javascripts/");
 define("THEMES", BASEDIR."templates/default/");
+define("THEMES_MAIL", THEMES."mail/");
 define("THEMES_CACHE", BASEDIR."templates_c");
 define("THEMES_CSS", THEMES."css/");
 define("PAGES", INCLUDES."pages/");
-define("EDITOR", JAVASCRIPTS."editor/tinymce/");
 define("CONFIGS", BASEDIR.'configs');
 define("ENGINES", INCLUDES.'engines/');
 define("SMARTY", ENGINES.'smarty/');
 define("CONFIGS", BASEDIR.'configs/');
 define("CACHE", BASEDIR.'cache/');
+define("STATICS", BASEDIR.'statics/');
+define("MAIL", CLASSES.'mail/');
 
 $visit_page=basename($PHP_SELF, '.php');
 
@@ -162,6 +163,22 @@ function stripinput($text) {
 function stripslash($text) {
 	if (QUOTES_GPC) { $text = stripslashes($text); }
 	return $text;
+}
+
+function user_attachments_size(){
+	global $userdata, $database;
+	
+	$data=$database->sum(DB_PREFIX.'attachments', 'attachment_size', ['attachment_user'=>$userdata['user_id']]);
+	
+	return $data;
+}
+
+function user_attachments_count(){
+	global $userdata, $database;
+	
+	$data=$database->count(DB_PREFIX.'attachments', ['attachment_user'=>$userdata['user_id']]);
+	
+	return $data;
 }
 
 // Get uid names
@@ -500,63 +517,53 @@ function get_ip(){
 }
 
 function cpress_css($buffer){
-	// remove comments
-	// $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-	// remove tabs, spaces, newlines, etc.
-	// $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
-	/* remove other spaces before/after ) */
-	// $buffer = preg_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
+	/* remove comments */
+	$buffer=preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer) ;
+	
+	/* remove tabs, spaces, newlines, etc. */
+	$arr=array("\r\n", "\r", "\n", "\t", "  ", "    ", "    ") ;
+	$buffer=str_replace($arr, '', $buffer);
 	
 	return $buffer;
 }
 
 function cpress_js($buffer){
-	//remove comments
-	// $buffer = str_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-	//remove tabs, spaces, newlines, etc.
-	// $buffer = str_replace(array("\n"), '', $buffer);
-	// /* remove other spaces before/after ) */
-	// $buffer = str_replace(array('(( )+\))','(\)( )+)'), ')', $buffer);
-	
 	return $buffer;
 }
 
 function compress_file($array_file, $type){
-	if(iADMIN && isset($_GET['aid'])){
-		if($type=='css'){
-			$create_file=ADMIN_THEMES_CSS.'cstyles.min.css';
-		}else if($type=='javascript'){
-			$create_file=ADMIN_JSCRIPTS.'cjscript.min.js';
-		}
+	if(isset($_GET['aid'])){
+		if($type=='css')
+			$create_file=STATICS.'admin_cstyles.min.css';
+		else
+			$create_file=STATICS.'admin_cjscript.min.js';
 	}else{
-		if($type=='css'){
-			$create_file=THEMES_CSS.'cstyles.min.css';
-		}else if($type=='javascript'){
-			$create_file=JAVASCRIPTS.'cjscript.min.js';
-		}
+		if($type=='css')
+			$create_file=STATICS.'cstyles.min.css';
+		else
+			$create_file=STATICS.'cjscript.min.js';
 	}
 	
 	foreach($array_file as $sheet){
-		$sheets = trim($sheet);
+		$sheets=trim($sheet);
 		if(file_exists($sheets)){
 			if($type=='css'){
 				$content.=cpress_css(file_get_contents($sheets));
-			}else if($type=='javascript'){
+				$fopen=fopen($create_file,'w');
+				fwrite($fopen,$content,strlen($content));
+				fclose($fopen);
+			}else{
 				$content.=cpress_js(file_get_contents($sheets));
+				$fopen=fopen($create_file,'w');
+				fwrite($fopen,$content,strlen($content));
+				fclose($fopen);
 			}
 		}
-	}
-	
-	if(file_exists($create_file)){
-		$md5=md5(file_get_contents($create_file));
-	}
-	if($md5!=md5($content)){
-		file_put_contents($create_file, $content);
 	}
 }
 
 function editor_advanced(){
-	echo"<script type='text/javascript' src='".EDITOR."tinymce.min.js'></script>
+	echo"<script type='text/javascript' src='".STATICS."tinymce/tinymce.min.js'></script>
 	<script type='text/javascript'>
 	tinymce.init({
 		selector: 'textarea',

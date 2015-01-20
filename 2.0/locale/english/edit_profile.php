@@ -23,4 +23,9 @@ $locale['edit_profile_108']='Edit Profile';
 $locale['edit_profile_109']='Change';
 $locale['edit_profile_110']='Browse';
 $locale['edit_profile_111']='Remove';
+$locale['edit_profile_112']='Well done! You successfully update your profile.';
+$locale['edit_profile_113']='Enter your password';
+$locale['edit_profile_114']='Enter your name';
+$locale['edit_profile_115']='Enter your family';
+$locale['edit_profile_116']='Enter your email';
 ?>

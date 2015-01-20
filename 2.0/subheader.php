@@ -12,7 +12,7 @@
 |-------------------------------|
 */
 // Start Output Buffering
-ob_start("ob_gzhandler");
+if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) ob_start("ob_gzhandler"); else ob_start();
 
 // Start render time 
 $page_time_start=microtime();
@@ -26,12 +26,27 @@ require_once 'maincore.php';
 // Load language
 include_once LOCALESET.'commons.php';
 
+$get_css=array(
+	STATICS.'bootstrap/css/bootstrap.min.css',
+	STATICS.'bootstrap/css/bootstrap-theme.min.css',
+	STATICS.'bootstrap-datatables/css/datatables.bootstrap.min.css',
+	STATICS.'bootstrap-jasny/css/jasny-bootstrap.min.css',
+	STATICS.'jquery-ui/css/jquery-ui.min.css',
+	STATICS.'jquery-ui/css/jquery-ui.structure.min.css',
+	STATICS.'jquery-ui/css/jquery-ui.theme.min.css',
+	STATICS.'others/styles.min.css'
+);
+
+compress_file($get_css, 'css');
+
+// Assign Styles
+$templates->assign('settings_css', STATICS.'cstyles.min.css');
+
 // Assign Global Settings
 $templates->assign('settings_description', $settings['setting_description']);
 $templates->assign('settings_keywords', $settings['setting_keywords']);
 $templates->assign('settings_title', $settings['setting_title']);
 $templates->assign('settings_author', 'PadsanSystem Corporation');
-$templates->assign('settings_css', THEMES_CSS.'cstyles.min.css');
 
 // Assign Images
 $templates->assign('img_user_avatar', exists_avatars()==true ? show_avatars(2) : AVATARS.'noavatar_small.png');
@@ -58,8 +73,11 @@ if(iMEMBER){
 	// Assign Others
 	$templates->assign('iMEMBER', iMEMBER);
 	$templates->assign('user_username', $userdata['user_username']);
-	$templates->assign('user_name', $userdata['user_family']);
-	$templates->assign('user_family', $userdata['user_name']);
+	$templates->assign('user_name', $userdata['user_name']);
+	$templates->assign('user_family', $userdata['user_family']);
+	$templates->assign('user_email', $userdata['user_email']);
+	$templates->assign('img_user_avatar_0', IMAGES.'noavatar.png');
+	$templates->assign('img_user_avatar_3', show_avatars(3));
 	$templates->assign('img_user_avatar_4', show_avatars(4));
 	
 	// Assign Links

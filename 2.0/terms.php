@@ -28,7 +28,7 @@ $templates->assign('lang_terms_104', $locale['terms_104']);
 $templates->assign('lang_terms_105', $locale['terms_105']);
 $templates->assign('lang_terms_106', $locale['terms_106']);
 
-// Render subheader
+// Render Terms
 $templates->display('terms.tpl');
 
 require_once BASEDIR.'footer.php';
