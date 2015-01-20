@@ -103,31 +103,31 @@ if(isset($_POST['send_file'])){
 		// 0 = off (for production use)
 		// 1 = client messages
 		// 2 = client and server messages
-		$mail->SMTPDebug = 0;
+		$mail->SMTPDebug=SMTP_DEBUG;
 
 		//Ask for HTML-friendly debug output
-		$mail->Debugoutput = 'html';
+		$mail->Debugoutput=SMTP_OUTPUT;
 
 		//Set the hostname of the mail server
-		$mail->Host = "mail.uploadchi.com";
+		$mail->Host=SMTP_HOST;
 
 		//Set the SMTP port number - likely to be 25, 465 or 587
-		$mail->Port = 25;
+		$mail->Port=SMTP_PORT;
 
 		//Whether to use SMTP authentication
-		$mail->SMTPAuth = true;
+		$mail->SMTPAuth=true;
 
 		//Username to use for SMTP authentication
-		$mail->Username = "info@uploadchi.com";
+		$mail->Username=SMTP_USER;
 
 		//Password to use for SMTP authentication
-		$mail->Password = "@info123";
+		$mail->Password=SMTP_PASS;
 
 		//Set who the message is to be sent from
-		$mail->setFrom('info@uploadchi.com', 'Info [ Uploadchi ]');
+		$mail->setFrom(SMTP_OUTPUT, 'Info [ Uploadchi ]');
 
 		//Set an alternative reply-to address
-		$mail->addReplyTo('info@uploadchi.com', 'Info [ Uploadchi ]');
+		$mail->addReplyTo(SMTP_USER, 'Info [ Uploadchi ]');
 
 		//Set who the message is to be sent to
 		$mail->addAddress($userdata['user_email'], $userdata['user_username']);
