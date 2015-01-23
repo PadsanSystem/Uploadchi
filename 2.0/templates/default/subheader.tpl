@@ -37,11 +37,11 @@
 					{if $iMEMBER}
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="{$img_user_avatar_1}" class="img-circle">
+								<img src="{$img_user_avatar_1}" alt="{$user_username}" title="{$user_username}" class="img-circle">
 								<small>{$lang_commons_113}&nbsp;<b>{$user_username}</b></small>&nbsp;<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><img src="{$img_user_avatar_3}" class="img-responsive"></a></li>
+								<li><a href="#"><img src="{$img_user_avatar_3}" alt="{$user_username}" title="{$user_username}" class="img-responsive"></a></li>
 								<li class="divider"></li>
 								<li><a href="{$link_edit_profile}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;{$lang_commons_107}</a></li>
 								<li><a href="{$link_dashboard}"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;{$lang_commons_106}</a></li>

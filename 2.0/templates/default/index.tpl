@@ -36,44 +36,14 @@
 		<div class="tab-pane active" id="{$lang_upload_103}">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form name="form_{$lang_upload_103}" class="form-horizontal" role="form" method="post" action="{$link_upload}" enctype="multipart/form-data">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-								  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i>&nbsp;<span class="fileinput-filename"></span></div>
-								  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">{$lang_upload_107}</span><span class="fileinput-exists">{$lang_upload_108}</span><input type="file" name="{$lang_upload_103}"></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;{$lang_upload_105}</button>
-							</div>
-						</div>
-					</form>
+					{include file='local_upload.tpl'}
 				</div>
 			</div>
 		</div>
 		<div class="tab-pane" id="{$lang_upload_104}">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form name="form_{$lang_upload_104}" class="form-horizontal" role="form" method="post" action="{$link_upload}">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="input-group">
-									<input name="{$lang_upload_104}" type="text" class="form-control">
-									<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;{$lang_upload_106}</button>
-							</div>
-						</div>
-					</form>
+					{include file='remote_upload.tpl'}
 				</div>
 			</div>
 		</div>

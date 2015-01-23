@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-19 17:51:56
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-21 21:13:05
          compiled from "templates\default\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1278854bd362c208d09-30908629%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '454b718d7f07c916e94cab7deecbd48fb748d3a3' => 
     array (
       0 => 'templates\\default\\index.tpl',
-      1 => 1421603531,
+      1 => 1421871171,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54bd362c44b178_88885733',
   'variables' => 
   array (
     'lang_commons_120' => 0,
@@ -31,15 +33,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_upload_101' => 0,
     'lang_upload_104' => 0,
     'lang_upload_102' => 0,
-    'link_upload' => 0,
-    'lang_upload_107' => 0,
-    'lang_upload_108' => 0,
-    'lang_upload_105' => 0,
-    'lang_upload_106' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54bd362c44b178_88885733',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54bd362c44b178_88885733')) {function content_54bd362c44b178_88885733($_smarty_tpl) {?><div class="container">
 	<div class="row">
@@ -95,28 +90,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form name="form_<?php echo $_smarty_tpl->tpl_vars['lang_upload_103']->value;?>
-" class="form-horizontal" role="form" method="post" action="<?php echo $_smarty_tpl->tpl_vars['link_upload']->value;?>
-" enctype="multipart/form-data">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-								  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i>&nbsp;<span class="fileinput-filename"></span></div>
-								  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><?php echo $_smarty_tpl->tpl_vars['lang_upload_107']->value;?>
-</span><span class="fileinput-exists"><?php echo $_smarty_tpl->tpl_vars['lang_upload_108']->value;?>
-</span><input type="file" name="<?php echo $_smarty_tpl->tpl_vars['lang_upload_103']->value;?>
-"></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_upload_105']->value;?>
-</button>
-							</div>
-						</div>
-					</form>
+					<?php echo $_smarty_tpl->getSubTemplate ('local_upload.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 				</div>
 			</div>
 		</div>
@@ -124,26 +99,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ">
 			<div class="panel panel-success" style="border-top-left-radius:0">
 				<div class="panel-body">
-					<form name="form_<?php echo $_smarty_tpl->tpl_vars['lang_upload_104']->value;?>
-" class="form-horizontal" role="form" method="post" action="<?php echo $_smarty_tpl->tpl_vars['link_upload']->value;?>
-">
-						<div class="form-group">
-							<div class="col-lg-8 col-lg-offset-2 text-center">
-								<div class="input-group">
-									<input name="<?php echo $_smarty_tpl->tpl_vars['lang_upload_104']->value;?>
-" type="text" class="form-control">
-									<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-								</div>
-								<br>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-lg-4 col-lg-offset-4 text-center">
-								<button id="send_file" name="send_file" type="submit button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_upload_106']->value;?>
-</button>
-							</div>
-						</div>
-					</form>
+					<?php echo $_smarty_tpl->getSubTemplate ('remote_upload.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
 				</div>
 			</div>
 		</div>

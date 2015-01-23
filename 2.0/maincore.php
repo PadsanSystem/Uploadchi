@@ -52,7 +52,6 @@ define("THEMES", BASEDIR."templates/default/");
 define("THEMES_MAIL", THEMES."mail/");
 define("THEMES_CACHE", BASEDIR."templates_c");
 define("THEMES_CSS", THEMES."css/");
-define("PAGES", INCLUDES."pages/");
 define("CONFIGS", BASEDIR.'configs');
 define("ENGINES", INCLUDES.'engines/');
 define("SMARTY", ENGINES.'smarty/');
@@ -171,6 +170,18 @@ function user_attachments_count(){
 	$data=$database->count(DB_PREFIX.'attachments', ['attachment_user'=>$userdata['user_id']]);
 	
 	return $data;
+}
+
+function user_attachments_views(){
+	global $userdata, $database;
+	
+	$data=$database->count(DB_PREFIX.'attachments_views', ['attachment_view_user'=>$userdata['user_id']]);
+	
+	return $data;
+}
+
+function user_define_attachment_size(){
+	return 107374182400;
 }
 
 // Get uid names

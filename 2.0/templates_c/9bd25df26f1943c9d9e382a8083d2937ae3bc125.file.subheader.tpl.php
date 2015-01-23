@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-20 21:26:30
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-20 21:36:37
          compiled from "templates\default\subheader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2247154bd362bb64d35-87320455%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9bd25df26f1943c9d9e382a8083d2937ae3bc125' => 
     array (
       0 => 'templates\\default\\subheader.tpl',
-      1 => 1421785505,
+      1 => 1421786195,
       2 => 'file',
     ),
   ),
@@ -39,8 +39,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_commons_112' => 0,
     'iMEMBER' => 0,
     'img_user_avatar_1' => 0,
-    'lang_commons_113' => 0,
     'user_username' => 0,
+    'lang_commons_113' => 0,
     'img_user_avatar_3' => 0,
     'link_edit_profile' => 0,
     'lang_commons_107' => 0,
@@ -127,6 +127,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_1']->value;?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
+" title="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 " class="img-circle">
 								<small><?php echo $_smarty_tpl->tpl_vars['lang_commons_113']->value;?>
 &nbsp;<b><?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
@@ -134,6 +136,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><img src="<?php echo $_smarty_tpl->tpl_vars['img_user_avatar_3']->value;?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
+" title="<?php echo $_smarty_tpl->tpl_vars['user_username']->value;?>
 " class="img-responsive"></a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo $_smarty_tpl->tpl_vars['link_edit_profile']->value;?>

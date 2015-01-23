@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-20 12:55:19
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-21 21:42:39
          compiled from "templates\default\contact_us.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1091654be4227c1b8a7-60432593%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7ae887dc9c48ef1d085164445e20372e16becced' => 
     array (
       0 => 'templates\\default\\contact_us.tpl',
-      1 => 1421754868,
+      1 => 1421872954,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54be4227cd84b1_59929368',
   'variables' => 
   array (
     'link_home' => 0,
@@ -33,18 +35,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_contact_us_114' => 0,
     'lang_contact_us_115' => 0,
     'lang_contact_us_102' => 0,
+    'name' => 0,
     'lang_contact_us_106' => 0,
     'lang_contact_us_103' => 0,
+    'email' => 0,
     'lang_contact_us_107' => 0,
     'lang_contact_us_104' => 0,
+    'subject' => 0,
     'lang_contact_us_108' => 0,
     'lang_contact_us_105' => 0,
     'lang_contact_us_109' => 0,
+    'message' => 0,
     'lang_contact_us_110' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54be4227cd84b1_59929368',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54be4227cd84b1_59929368')) {function content_54be4227cd84b1_59929368($_smarty_tpl) {?><div class="container">
 	<ol class="breadcrumb">
@@ -98,26 +102,30 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="form-group col-lg-7">
 					<label for="name" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_contact_us_102']->value;?>
 </label><br>
-					<input id="name" name="name" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_106']->value;?>
+					<input id="name" name="name" type="text" value="<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_106']->value;?>
 " required>
 				</div>
 				<div class="form-group col-lg-7">
 					<label for="email" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_contact_us_103']->value;?>
 </label><br>
-					<input id="email" name="email" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_107']->value;?>
+					<input id="email" name="email" type="text" value="<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_107']->value;?>
 " required>
 				</div>
 				<div class="form-group col-lg-7">
 					<label for="subject" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_contact_us_104']->value;?>
 </label><br>
-					<input id="subject" name="subject" type="text" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_108']->value;?>
+					<input id="subject" name="subject" type="text" value="<?php echo $_smarty_tpl->tpl_vars['subject']->value;?>
+" class="form-control" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_108']->value;?>
 " required>
 				</div>
 				<div class="form-group col-lg-12">
 					<label for="message" class="control-label"><?php echo $_smarty_tpl->tpl_vars['lang_contact_us_105']->value;?>
 </label><br>
 					<textarea id="message" name="message" class="form-control" rows="3" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_109']->value;?>
-"></textarea>
+"><?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+</textarea>
 				</div>
 				<div class="col-lg-6 col-lg-offset-3 text-center">
 					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-envelope"></span>&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_contact_us_110']->value;?>

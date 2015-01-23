@@ -31,19 +31,19 @@
 				</div>
 				<div class="form-group col-lg-7">
 					<label for="name" class="control-label">{$lang_contact_us_102}</label><br>
-					<input id="name" name="name" type="text" class="form-control" placeholder="{$lang_contact_us_106}" required>
+					<input id="name" name="name" type="text" value="{$name}" class="form-control" placeholder="{$lang_contact_us_106}" required>
 				</div>
 				<div class="form-group col-lg-7">
 					<label for="email" class="control-label">{$lang_contact_us_103}</label><br>
-					<input id="email" name="email" type="text" class="form-control" placeholder="{$lang_contact_us_107}" required>
+					<input id="email" name="email" type="text" value="{$email}" class="form-control" placeholder="{$lang_contact_us_107}" required>
 				</div>
 				<div class="form-group col-lg-7">
 					<label for="subject" class="control-label">{$lang_contact_us_104}</label><br>
-					<input id="subject" name="subject" type="text" class="form-control" placeholder="{$lang_contact_us_108}" required>
+					<input id="subject" name="subject" type="text" value="{$subject}" class="form-control" placeholder="{$lang_contact_us_108}" required>
 				</div>
 				<div class="form-group col-lg-12">
 					<label for="message" class="control-label">{$lang_contact_us_105}</label><br>
-					<textarea id="message" name="message" class="form-control" rows="3" placeholder="{$lang_contact_us_109}"></textarea>
+					<textarea id="message" name="message" class="form-control" rows="3" placeholder="{$lang_contact_us_109}">{$message}</textarea>
 				</div>
 				<div class="col-lg-6 col-lg-offset-3 text-center">
 					<button id="submit" name="submit" type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-envelope"></span>&nbsp;{$lang_contact_us_110}</button>

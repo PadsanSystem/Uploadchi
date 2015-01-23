@@ -20,4 +20,6 @@ $locale['upload_105']='Upload Files';
 $locale['upload_106']='Transfer Links';
 $locale['upload_107']='Browse';
 $locale['upload_108']='Change';
+$locale['upload_109']='File Manager';
+$locale['upload_110']='file_manager';
 ?>

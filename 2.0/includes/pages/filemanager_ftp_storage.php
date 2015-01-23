@@ -1,1 +1,0 @@
-<div class="text-center text-muted"><small>You have no permissions to access this page.</small></div>

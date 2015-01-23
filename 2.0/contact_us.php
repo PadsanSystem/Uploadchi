@@ -17,10 +17,10 @@ require_once 'subheader.php';
 include_once LOCALESET.'contact_us.php';
 
 if(isset($_POST['submit'])){
-	$subject=secure_itext($_POST['subject']);
-	$message=secure_itextarea(nl2br($_POST['message']));
 	$name=secure_itext($_POST['name']);
 	$email=secure_itext($_POST['email']);
+	$subject=secure_itext($_POST['subject']);
+	$message=secure_itextarea(nl2br($_POST['message']));
 	
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 		// Load Language
@@ -29,6 +29,12 @@ if(isset($_POST['submit'])){
 		$error=104;
 		$error_string=show_error($error, 'errors');
 		$error_message=$locale["$error_string"];
+		
+		// Assign Alert Message
+		$templates->assign('name', $name);
+		$templates->assign('email', $email);
+		$templates->assign('subject', $subject);
+		$templates->assign('message', $message);
 		
 		// Assign Alert Message
 		$templates->assign('lang_errors_123', $locale['errors_123']);

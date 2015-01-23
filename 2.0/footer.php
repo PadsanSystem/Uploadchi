@@ -20,6 +20,8 @@ $get_js=array(
 	STATICS.'bootstrap/js/bootstrap.min.js',
 	STATICS.'bootstrap-jasny/js/inputmask.min.js',
 	STATICS.'bootstrap-jasny/js/jasny-bootstrap.min.js',
+	STATICS.'bootstrap-datatables/js/jquery.datatables.min.js',
+	STATICS.'bootstrap-datatables/js/datatables.bootstrap.min.js',
 	STATICS.'others/others.min.js',
 	STATICS.'google/google_analytics.min.js'
 );
