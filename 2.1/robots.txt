@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /ads/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /configs/
+Disallow: /images/
+Disallow: /locale/
+Disallow: /statics/
+Disallow: /includes/
+Disallow: /templates/
+Disallow: /templates_c/
+Disallow: /administration/
