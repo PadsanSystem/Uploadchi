@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 16:03:39
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 16:17:12
          compiled from "templates\default\download.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3127754cb5ed47961b4-30145888%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '968973e5d5e6601149c28dc3ecec9ea8a8c9dfb0' => 
     array (
       0 => 'templates\\default\\download.tpl',
-      1 => 1422630218,
+      1 => 1422631030,
       2 => 'file',
     ),
   ),
@@ -92,17 +92,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </u>
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;<u><?php echo $_smarty_tpl->tpl_vars['attachment_size']->value;?>
-</u>
+													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['attachment_size']->value;?>
+
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;<u><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['attachment_time']->value,"%m/%d/%Y");?>
-</u>
+													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['attachment_time']->value,"%m/%d/%Y");?>
+
 												</div>
 												<div align="center" class="col-lg-3">
 													<span class="glyphicon glyphicon-download-alt"></span>&nbsp;<b>Downloaded:</b>&nbsp;
-													<u><?php echo number_format($_smarty_tpl->tpl_vars['attachment_views']->value);?>
-</u>
+													<?php echo number_format($_smarty_tpl->tpl_vars['attachment_views']->value);?>
+
 												</div>
 											</div>
 										</div>

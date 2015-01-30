@@ -38,14 +38,14 @@
 													<span class="glyphicon glyphicon-user"></span>&nbsp;<b>Uploaded by:</b>&nbsp;<u>{$attachment_user}</u>
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;<u>{$attachment_size}</u>
+													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;{$attachment_size}
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;<u>{$attachment_time|date_format:"%m/%d/%Y"}</u>
+													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;{$attachment_time|date_format:"%m/%d/%Y"}
 												</div>
 												<div align="center" class="col-lg-3">
 													<span class="glyphicon glyphicon-download-alt"></span>&nbsp;<b>Downloaded:</b>&nbsp;
-													<u>{$attachment_views|number_format}</u>
+													{$attachment_views|number_format}
 												</div>
 											</div>
 										</div>
