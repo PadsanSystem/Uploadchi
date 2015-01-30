@@ -73,30 +73,32 @@ if(isset($_POST['submit'])){
 		$templates->assign('lang_error_message', $error_message);
 		$templates->assign('error_number', $error);
 	}else{
-		$user_avatar_name=random_text($type='number');
-		$user_avatar_type=get_type($string);
-		$user_avatar=$user_avatar_name.".".$user_avatar_type;
-		
-		// Upload AVATARS
-		move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
-		
-		// Load Class Image Resizer
-		include CLASSES."imageresizer.php";
-		
-		// Size s1
-		$avatar_create=new resize(AVATARS.$user_avatar);
-		$avatar_create->resizeImage(19, 19, 'exact');
-		$avatar_create->saveImage(AVATARS.$user_avatar_name.'_1.'.$user_avatar_type, 100);
-		
-		// Size s2
-		$avatar_create=new resize(AVATARS.$user_avatar);
-		$avatar_create->resizeImage(95, 59, 'exact');
-		$avatar_create->saveImage(AVATARS.$user_avatar_name.'_2.'.$user_avatar_type, 90);
-		
-		// Size s3
-		$avatar_create=new resize(AVATARS.$user_avatar);
-		$avatar_create->resizeImage(170, 99, 'exact');
-		$avatar_create->saveImage(AVATARS.$user_avatar_name.'_3.'.$user_avatar_type, 90);
+		if(is_uploaded_file($string['tmp_name'])){
+			$user_avatar_name=random_text($type='number');
+			$user_avatar_type=get_type($string);
+			$user_avatar=$user_avatar_name.".".$user_avatar_type;
+			
+			// Upload AVATARS
+			move_uploaded_file($string['tmp_name'], AVATARS.$user_avatar);
+			
+			// Load Class Image Resizer
+			include CLASSES."imageresizer.php";
+			
+			// Size s1
+			$avatar_create=new resize(AVATARS.$user_avatar);
+			$avatar_create->resizeImage(19, 19, 'exact');
+			$avatar_create->saveImage(AVATARS.$user_avatar_name.'_1.'.$user_avatar_type, 100);
+			
+			// Size s2
+			$avatar_create=new resize(AVATARS.$user_avatar);
+			$avatar_create->resizeImage(95, 59, 'exact');
+			$avatar_create->saveImage(AVATARS.$user_avatar_name.'_2.'.$user_avatar_type, 90);
+			
+			// Size s3
+			$avatar_create=new resize(AVATARS.$user_avatar);
+			$avatar_create->resizeImage(170, 99, 'exact');
+			$avatar_create->saveImage(AVATARS.$user_avatar_name.'_3.'.$user_avatar_type, 90);
+		}
 		
 		// Insert User in DB
 		$database->insert(DB_PREFIX.'users', ['user_username'=>$user_username, 'user_password'=>$user_password, 'user_name'=>$user_name, 'user_family'=>$user_family, 'user_email'=>$user_email,'user_avatar'=>$user_avatar, '#user_time_sign'=>'UNIX_TIMESTAMP()', '#user_time_visit'=>'UNIX_TIMESTAMP()', 'user_group'=>2, 'user_status'=>'Enable']);

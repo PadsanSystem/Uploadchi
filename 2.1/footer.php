@@ -26,7 +26,7 @@ $get_js=array(
 	STATICS.'google/google_analytics.min.js'
 );
 
-compress_file($get_js, 'js');
+//compress_file($get_js, 'js');
 
 // Assign Javascript
 $templates->assign('jscript', STATICS.'cjscript.min.js');

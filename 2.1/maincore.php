@@ -44,6 +44,7 @@ define("ADMIN", BASEDIR."administration/");
 define("IMAGES", BASEDIR."images/");
 define("AVATARS", IMAGES."avatars/");
 define("IMAGES_TYPES", IMAGES."types/");
+define("IMAGES_QRCODE", IMAGES."qrcode/");
 define("INCLUDES", BASEDIR."includes/");
 define("LOCALESET", BASEDIR."locale/english/");
 define("FUNCTIONS", INCLUDES."functions/");

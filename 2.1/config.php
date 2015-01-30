@@ -30,5 +30,5 @@ define('SMTP_DEBUG', 0);
 define('SEND_ERRORS_TO', 'support@uploadchi.com');
 
 // Smarty Settings
-define('DISPLAY_DEBUG', true);
+define('DISPLAY_DEBUG', false);
 ?>

@@ -1,11 +1,11 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-28 08:53:12
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 14:27:36
          compiled from "templates\default\create_folder.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1619854c895684877d4-14714444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:791854cb86c819a1f2-14247502%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
   ),
-  'nocache_hash' => '1619854c895684877d4-14714444',
+  'nocache_hash' => '791854cb86c819a1f2-14247502',
   'function' => 
   array (
   ),
@@ -18,9 +18,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54c895684c76e0_52295593',
+  'unifunc' => 'content_54cb86c8216e92_70916710',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54c895684c76e0_52295593')) {function content_54c895684c76e0_52295593($_smarty_tpl) {?><div id="create_folder" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php if ($_valid && !is_callable('content_54cb86c8216e92_70916710')) {function content_54cb86c8216e92_70916710($_smarty_tpl) {?><div id="create_folder" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

@@ -50,14 +50,14 @@
 					<td class="text-center col-lg-1">
 						<input name="no[]" type="checkbox"/>
 					</td>
-					<td class="text-left col-lg-5">
+					<td class="text-left col-lg-7">
 						<a href="{$link_user_dashboard}?route=file_manager&folder_name={$data_user_attachments_folders.attachment_folder_id}" title="{$data_user_attachments_folders.attachment_folder_name}">
 							<span class="glyphicon glyphicon-folder-open"></span>&nbsp;
 							<small>{$data_user_attachments_folders.attachment_folder_name}</small>
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small>{$data_user_attachments_folders.attachment_folder_time}</small>
+						<small>{$data_user_attachments_folders.attachment_folder_time|date_format:"%m/%d/%Y"}</small>
 					</td>
 					<td class="text-center col-lg-1 text-muted">
 						<small>{$lang_file_manager_116}</small>
@@ -72,14 +72,14 @@
 					<td class="text-center col-lg-1">
 						<input name="checkbox_attachments" type="checkbox" value="{$data_user_attachments.attachment_id}"/>
 					</td>
-					<td class="text-left col-lg-5">
+					<td class="text-left col-lg-7">
 						<a href="{$download_link}{$data_user_attachments.attachment_uid}" target="_blank" title="{$data_user_attachments.attachment_uid}">
 							<img src="{$img_attachments_types}{$data_user_attachments.attachment_ext_name}.png" alt="{$data_user_attachments.attachment_uid}" title="{$data_user_attachments.attachment_uid}"/>
 							<small>{$data_user_attachments.attachment_uid}</small>
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small>{$data_user_attachments.attachment_time}</small>
+						<small>{$data_user_attachments.attachment_time|date_format:"%m/%d/%Y"}</small>
 					</td>
 					<td class="text-center col-lg-1 text-muted">
 						<small>{$data_user_attachments.attachment_ext_name|upper}&nbsp;{$lang_file_manager_120}</small>

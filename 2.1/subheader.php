@@ -37,7 +37,7 @@ $get_css=array(
 	STATICS.'others/styles.min.css'
 );
 
-compress_file($get_css, 'css');
+//compress_file($get_css, 'css');
 
 // Assign Styles
 $templates->assign('settings_css', STATICS.'cstyles.min.css');

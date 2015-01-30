@@ -28,13 +28,6 @@ $templates->assign('lang_privacy_105', $locale['privacy_105']);
 $templates->assign('lang_privacy_106', $locale['privacy_106']);
 $templates->assign('lang_privacy_107', $locale['privacy_107']);
 
-if(!isset($_GET['route']))
-	$templates->assign('navigation_privacy_general', 'active');
-else if(isset($_GET['route']) && $_GET['route']=='general')
-	$templates->assign('navigation_privacy_general', 'active');
-else if(isset($_GET['route']) && $_GET['route']=='general')
-	$templates->assign('navigation_privacy_payments', 'active');
-
 // Render Privacy
 $templates->display('privacy.tpl');
 

@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-28 08:15:20
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 14:04:04
          compiled from "templates\default\footer.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:92754c88c88b131b9-17258386%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:852354caae9f2cb3b1-28352042%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'fa919187c1fe52a8f1fd2a120f1a77a2edea863e' => 
     array (
       0 => 'templates\\default\\footer.tpl',
-      1 => 1422052498,
+      1 => 1422623044,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '92754c88c88b131b9-17258386',
+  'nocache_hash' => '852354caae9f2cb3b1-28352042',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54caae9f318957_86287840',
   'variables' => 
   array (
     'lang_footer_101' => 0,
@@ -31,15 +33,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'jscript' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54c88c88b5f927_25010537',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54c88c88b5f927_25010537')) {function content_54c88c88b5f927_25010537($_smarty_tpl) {?><div id="footer">
+<?php if ($_valid && !is_callable('content_54caae9f318957_86287840')) {function content_54caae9f318957_86287840($_smarty_tpl) {?><div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h5 class="text-muted text-center">
-					<small><a href="http://blog.uploadchi.com" title="<?php echo $_smarty_tpl->tpl_vars['lang_footer_101']->value;?>
+				<h6 class="text-muted text-center">
+					<small class="text-muted text-center"><a href="http://blog.uploadchi.com" title="<?php echo $_smarty_tpl->tpl_vars['lang_footer_101']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['lang_footer_101']->value;?>
 </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<?php echo $_smarty_tpl->tpl_vars['link_privacy']->value;?>
 " title="<?php echo $_smarty_tpl->tpl_vars['lang_footer_102']->value;?>
@@ -47,18 +47,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://blog.uploadchi.com" title="<?php echo $_smarty_tpl->tpl_vars['lang_footer_103']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['lang_footer_103']->value;?>
 </a></small>
-				</h5>
-				<p class="text-muted text-center"><small><?php echo $_smarty_tpl->tpl_vars['lang_copyright']->value;?>
-</small></p>
+				</h6>
+				<h6 class="text-muted text-center"><small><?php echo $_smarty_tpl->tpl_vars['lang_copyright']->value;?>
+</small></h6>
 				<?php if (($_smarty_tpl->tpl_vars['iADMIN']->value)) {?>
-					<p class="text-muted text-center">
+					<h6 class="text-muted text-center">
 						<small><b><?php echo $_smarty_tpl->tpl_vars['lang_memory_usage']->value;?>
 </b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['memory_usage']->value;?>
 &nbsp;&nbsp;<b><?php echo $_smarty_tpl->tpl_vars['lang_render_time']->value;?>
 </b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['render_time']->value;?>
 &nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_seconds']->value;?>
 </small>
-					</p>
+					</h6>
 				<?php }?>
 			</div>
 		</div>
