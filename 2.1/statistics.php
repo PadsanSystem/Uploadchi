@@ -27,10 +27,10 @@ $templates->assign('lang_statistics_103', $locale['statistics_103']);
 $templates->assign('lang_statistics_104', $locale['statistics_104']);
 
 // Assign Global Others
-$templates->assign('count_all_attachments', number_format($database->count("attachments")));
-$templates->assign('count_all_attachments_views', number_format($database->count('attachments_views')));
-$templates->assign('count_all_servers', number_format($database->count('servers')));
-$templates->assign('count_all_users', number_format($database->count('users')));
+$templates->assign('count_all_attachments', $database->count("attachments"));
+$templates->assign('count_all_attachments_views', $database->count('attachments_views'));
+$templates->assign('count_all_servers', $database->count('servers'));
+$templates->assign('count_all_users', $database->count('users'));
 
 // Render Statistics
 $templates->display('statistics.tpl');

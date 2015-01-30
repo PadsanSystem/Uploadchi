@@ -106,7 +106,7 @@ if(isset($_POST['send_file'])){
 		$to='mahmoodi@uploadchi.com';
 		$subject='New file on Uploadchi';
 		$message='http://www.uploadchi.com/download.php?url='.$uid;
-		$message.='Size file:'.parsebytesize($size);
+		$message.='Size file:'.$size;
 		$headers='CC: s.saeidi@uploadchi.com';
 		@mail($to, $subject, $message, $headers);
 		

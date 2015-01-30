@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 11:52:58
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 17:26:56
          compiled from "templates\default\dashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1119854cb628a3733c7-35092107%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '409357f98b3e4fe2f62f5c2db93f93fcb5dc0ce0' => 
     array (
       0 => 'templates\\default\\dashboard.tpl',
-      1 => 1422051801,
+      1 => 1422635215,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54cb628a5e49f8_13958227',
   'variables' => 
   array (
     'lang_user_dashboard_100' => 0,
@@ -28,9 +30,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'navigation_user_reports' => 0,
     'lang_user_dashboard_102' => 0,
     'lang_user_dashboard_112' => 0,
-    'user_allocate_attachments_size_display' => 0,
+    'user_allocate_attachments_size' => 0,
     'lang_user_dashboard_104' => 0,
-    'user_define_attachment_percent_display' => 0,
+    'user_define_attachment_size' => 0,
     'lang_user_dashboard_103' => 0,
     'lang_user_dashboard_111' => 0,
     'user_attachments_count' => 0,
@@ -40,10 +42,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_user_dashboard_110' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54cb628a5e49f8_13958227',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54cb628a5e49f8_13958227')) {function content_54cb628a5e49f8_13958227($_smarty_tpl) {?><div class="container">
+<?php if ($_valid && !is_callable('content_54cb628a5e49f8_13958227')) {function content_54cb628a5e49f8_13958227($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_filesize')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.filesize.php';
+?><div class="container">
 	<div class="panel panel-default">
 		<div class="panel-heading"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_user_dashboard_100']->value;?>
 </div>
@@ -78,9 +79,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</div>
 							<ul class="list-group">
 								<li class="list-group-item">
-									<span class="badge"><small><?php echo $_smarty_tpl->tpl_vars['user_allocate_attachments_size_display']->value;?>
+									<span class="badge"><small><?php echo smarty_modifier_filesize($_smarty_tpl->tpl_vars['user_allocate_attachments_size']->value);?>
 &nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_user_dashboard_104']->value;?>
-&nbsp;<?php echo $_smarty_tpl->tpl_vars['user_define_attachment_percent_display']->value;?>
+&nbsp;<?php echo smarty_modifier_filesize($_smarty_tpl->tpl_vars['user_define_attachment_size']->value);?>
 </small></span>
 									<small><?php echo $_smarty_tpl->tpl_vars['lang_user_dashboard_103']->value;?>
 </small>

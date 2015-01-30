@@ -42,7 +42,7 @@ $templates->assign('lang_footer_103', $locale['footer_103']);
 
 if(iADMIN){
 	// Assign Others
-	$templates->assign('memory_usage', parsebytesize(memory_get_usage(), 2));
+	$templates->assign('memory_usage', memory_get_usage());
 	$templates->assign('render_time', round($page_time_start-$page_time_end, 5));
 	
 	// Assign Locale

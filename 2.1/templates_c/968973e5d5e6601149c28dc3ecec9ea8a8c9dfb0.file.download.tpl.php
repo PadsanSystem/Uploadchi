@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 16:17:12
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 17:22:22
          compiled from "templates\default\download.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3127754cb5ed47961b4-30145888%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '968973e5d5e6601149c28dc3ecec9ea8a8c9dfb0' => 
     array (
       0 => 'templates\\default\\download.tpl',
-      1 => 1422631030,
+      1 => 1422634928,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54cb5ed496a529_03425630')) {function content_54cb5ed496a529_03425630($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_54cb5ed496a529_03425630')) {function content_54cb5ed496a529_03425630($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_filesize')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.filesize.php';
+if (!is_callable('smarty_modifier_date_format')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.date_format.php';
 ?><div class="container">
 	<?php if (isset($_smarty_tpl->tpl_vars['error_number']->value)) {?>
 		<div class="alert alert-alert" role="alert">
@@ -92,11 +93,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </u>
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['attachment_size']->value;?>
+													<span class="glyphicon glyphicon-hdd"></span>&nbsp;<b>File size:</b>&nbsp;<?php echo smarty_modifier_filesize($_smarty_tpl->tpl_vars['attachment_size']->value);?>
 
 												</div>
 												<div align="center" class="col-lg-3">
-													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['attachment_time']->value,"%m/%d/%Y");?>
+													<span class="glyphicon glyphicon-time"></span>&nbsp;<b>Published date:</b>&nbsp;<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['attachment_time']->value,"%m/%d/%Y %l:%m %p");?>
 
 												</div>
 												<div align="center" class="col-lg-3">

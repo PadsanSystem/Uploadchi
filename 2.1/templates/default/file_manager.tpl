@@ -38,10 +38,10 @@
 		<thead>
 			<tr>
 				<td class="text-center col-lg-1"></td>
-				<td class="text-left col-lg-7"><a href="#"><small>{$lang_file_manager_110}</small></a></td>
+				<td class="text-left col-lg-5"><a href="#"><small>{$lang_file_manager_110}</small></a></td>
 				<td class="text-left col-lg-2"><a href="#"><small>{$lang_file_manager_111}</small></a></td>
 				<td class="text-left col-lg-2"><a href="#"><small>{$lang_file_manager_112}</small></a></td>
-				<td class="text-left col-lg-1"><a href="#"><small>{$lang_file_manager_113}</small></a></td>
+				<td class="text-left col-lg-2"><a href="#"><small>{$lang_file_manager_113}</small></a></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,19 +50,19 @@
 					<td class="text-center col-lg-1">
 						<input name="no[]" type="checkbox"/>
 					</td>
-					<td class="text-left col-lg-7">
+					<td class="text-left col-lg-5">
 						<a href="{$link_user_dashboard}?route=file_manager&folder_name={$data_user_attachments_folders.attachment_folder_id}" title="{$data_user_attachments_folders.attachment_folder_name}">
 							<span class="glyphicon glyphicon-folder-open"></span>&nbsp;
 							<small>{$data_user_attachments_folders.attachment_folder_name}</small>
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small>{$data_user_attachments_folders.attachment_folder_time|date_format:"%m/%d/%Y"}</small>
+						<small>{$data_user_attachments_folders.attachment_folder_time|date_format:"%m/%d/%Y %l:%m %p"}</small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small>{$lang_file_manager_116}</small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small></small>
 					</td>
 				</tr>
@@ -72,20 +72,20 @@
 					<td class="text-center col-lg-1">
 						<input name="checkbox_attachments" type="checkbox" value="{$data_user_attachments.attachment_id}"/>
 					</td>
-					<td class="text-left col-lg-7">
+					<td class="text-left col-lg-5">
 						<a href="{$download_link}{$data_user_attachments.attachment_uid}" target="_blank" title="{$data_user_attachments.attachment_uid}">
 							<img src="{$img_attachments_types}{$data_user_attachments.attachment_ext_name}.png" alt="{$data_user_attachments.attachment_uid}" title="{$data_user_attachments.attachment_uid}"/>
 							<small>{$data_user_attachments.attachment_uid}</small>
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small>{$data_user_attachments.attachment_time|date_format:"%m/%d/%Y"}</small>
+						<small>{$data_user_attachments.attachment_time|date_format:"%m/%d/%Y %l:%m %p"}</small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small>{$data_user_attachments.attachment_ext_name|upper}&nbsp;{$lang_file_manager_120}</small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
-						<small>{$data_user_attachments.attachment_size}</small>
+					<td class="text-center col-lg-2 text-muted">
+						<small>{$data_user_attachments.attachment_size|filesize}</small>
 					</td>
 				</tr>
 			{/foreach}

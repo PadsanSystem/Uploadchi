@@ -338,25 +338,6 @@ function censorwords($text){
 	return $text;
 }
 
-// Translate bytes into kb, mb, gb or tb
-function parsebytesize($size, $digits=2, $dir=false) {
-	$kb=1024; $mb=1024*$kb; $gb=1024*$mb; $tb=1024*$gb;
-	if (($size==0)&&($dir)) { return "Empty"; }
-	elseif ($size<$kb) { return $size." Byte"; }
-	elseif ($size<$mb) { return round($size/$kb,$digits)." KB"; }
-	elseif ($size<$gb) { return round($size/$mb,$digits)." MB"; }
-	elseif ($size<$tb) { return round($size/$gb,$digits)." GB"; }
-	else { return round($size/$tb,$digits)." TB"; }
-}
-
-// Translate bytes into kb, mb, gb or tb
-function parsesize($size, $digits=2, $dir=false) {
-	$gb=1024;
-	if (($size==0)&&($dir)) { return "Empty"; }
-	elseif ($size<$gb) { return round($size, $digits)." GB"; }
-	else { return round($size/$gb, $digits)." TB"; }
-}
-
 // Clean URL Function, prevents entities in server globals
 function cleanurl($url) {
 	$bad_entities = array("\"", "'", '\"', "\'", "<", ">", "*", "|");

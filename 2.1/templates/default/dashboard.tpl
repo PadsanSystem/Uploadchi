@@ -22,7 +22,7 @@
 							</div>
 							<ul class="list-group">
 								<li class="list-group-item">
-									<span class="badge"><small>{$user_allocate_attachments_size_display}&nbsp;{$lang_user_dashboard_104}&nbsp;{$user_define_attachment_percent_display}</small></span>
+									<span class="badge"><small>{$user_allocate_attachments_size|filesize}&nbsp;{$lang_user_dashboard_104}&nbsp;{$user_define_attachment_size|filesize}</small></span>
 									<small>{$lang_user_dashboard_103}</small>
 								</li>
 								

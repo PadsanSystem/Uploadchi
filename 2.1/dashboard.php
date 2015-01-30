@@ -36,14 +36,11 @@ $templates->assign('lang_user_dashboard_111', $locale['dashboard_111']);
 $templates->assign('lang_user_dashboard_112', $locale['dashboard_112']);
 
 // Assign Others
-$templates->assign('user_define_attachment_size_display', user_define_attachment_size());
-$templates->assign('user_define_attachment_percent_display', parsebytesize(user_define_attachment_size()));
-$templates->assign('user_allocate_attachments_size_display', parsebytesize(user_attachments_size(), 2));
-$templates->assign('user_allocate_attachments_percent_display', round((user_attachments_size()*100)/107374182400));
-$templates->assign('user_remaining_attachments_size_display', parsebytesize((107374182400-user_attachments_size()), 2));
-$templates->assign('user_remaining_attachments_percent_display', (107374182400-user_attachments_size()));
-$templates->assign('user_attachments_count', number_format(user_attachments_count()));
-$templates->assign('user_attachments_views', number_format(user_attachments_views()));
+$templates->assign('user_define_attachment_size', user_define_attachment_size());
+$templates->assign('user_allocate_attachments_size', user_attachments_size());
+$templates->assign('user_remaining_attachments_size', (107374182400-user_attachments_size()));
+$templates->assign('user_attachments_count', user_attachments_count());
+$templates->assign('user_attachments_views', user_attachments_views());
 
 // Dashboard Links
 $templates->assign('link_user_dashboard', BASEDIR.'dashboard.php');

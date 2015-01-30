@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 14:27:36
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 17:29:48
          compiled from "templates\default\file_manager.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2446354cb86c822c511-75367551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7f287a5616a7b7fe5924e4bdda95cc27d1bdbe34' => 
     array (
       0 => 'templates\\default\\file_manager.tpl',
-      1 => 1422623356,
+      1 => 1422635387,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_54cb86c8341ae0_24542077',
   'variables' => 
   array (
     'lang_commons_108' => 0,
@@ -45,10 +47,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'lang_file_manager_120' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_54cb86c8341ae0_24542077',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_54cb86c8341ae0_24542077')) {function content_54cb86c8341ae0_24542077($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.date_format.php';
+if (!is_callable('smarty_modifier_filesize')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.filesize.php';
 ?><div class="well well-sm">
 	<div class="btn-group">
 		<button type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_commons_108']->value;?>
@@ -103,13 +104,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<thead>
 			<tr>
 				<td class="text-center col-lg-1"></td>
-				<td class="text-left col-lg-7"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_110']->value;?>
+				<td class="text-left col-lg-5"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_110']->value;?>
 </small></a></td>
 				<td class="text-left col-lg-2"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_111']->value;?>
 </small></a></td>
 				<td class="text-left col-lg-2"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_112']->value;?>
 </small></a></td>
-				<td class="text-left col-lg-1"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_113']->value;?>
+				<td class="text-left col-lg-2"><a href="#"><small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_113']->value;?>
 </small></a></td>
 			</tr>
 		</thead>
@@ -123,7 +124,7 @@ $_smarty_tpl->tpl_vars['data_user_attachments_folders']->_loop = true;
 					<td class="text-center col-lg-1">
 						<input name="no[]" type="checkbox"/>
 					</td>
-					<td class="text-left col-lg-7">
+					<td class="text-left col-lg-5">
 						<a href="<?php echo $_smarty_tpl->tpl_vars['link_user_dashboard']->value;?>
 ?route=file_manager&folder_name=<?php echo $_smarty_tpl->tpl_vars['data_user_attachments_folders']->value['attachment_folder_id'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['data_user_attachments_folders']->value['attachment_folder_name'];?>
@@ -134,14 +135,14 @@ $_smarty_tpl->tpl_vars['data_user_attachments_folders']->_loop = true;
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data_user_attachments_folders']->value['attachment_folder_time'],"%m/%d/%Y");?>
+						<small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data_user_attachments_folders']->value['attachment_folder_time'],"%m/%d/%Y %l:%m %p");?>
 </small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small><?php echo $_smarty_tpl->tpl_vars['lang_file_manager_116']->value;?>
 </small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small></small>
 					</td>
 				</tr>
@@ -156,7 +157,7 @@ $_smarty_tpl->tpl_vars['data_user_attachments']->_loop = true;
 						<input name="checkbox_attachments" type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_id'];?>
 "/>
 					</td>
-					<td class="text-left col-lg-7">
+					<td class="text-left col-lg-5">
 						<a href="<?php echo $_smarty_tpl->tpl_vars['download_link']->value;
 echo $_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_uid'];?>
 " target="_blank" title="<?php echo $_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_uid'];?>
@@ -171,16 +172,16 @@ echo $_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_ext_name
 						</a>
 					</td>
 					<td class="text-center col-lg-2 text-muted">
-						<small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_time'],"%m/%d/%Y");?>
+						<small><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_time'],"%m/%d/%Y %l:%m %p");?>
 </small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
+					<td class="text-center col-lg-2 text-muted">
 						<small><?php echo mb_strtoupper($_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_ext_name'], 'UTF-8');?>
 &nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_file_manager_120']->value;?>
 </small>
 					</td>
-					<td class="text-center col-lg-1 text-muted">
-						<small><?php echo $_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_size'];?>
+					<td class="text-center col-lg-2 text-muted">
+						<small><?php echo smarty_modifier_filesize($_smarty_tpl->tpl_vars['data_user_attachments']->value['attachment_size']);?>
 </small>
 					</td>
 				</tr>

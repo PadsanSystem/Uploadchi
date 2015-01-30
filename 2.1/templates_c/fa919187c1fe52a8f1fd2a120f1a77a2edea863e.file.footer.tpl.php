@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 14:04:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-01-30 17:30:10
          compiled from "templates\default\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:852354caae9f2cb3b1-28352042%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fa919187c1fe52a8f1fd2a120f1a77a2edea863e' => 
     array (
       0 => 'templates\\default\\footer.tpl',
-      1 => 1422623044,
+      1 => 1422635408,
       2 => 'file',
     ),
   ),
@@ -34,7 +34,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_54caae9f318957_86287840')) {function content_54caae9f318957_86287840($_smarty_tpl) {?><div id="footer">
+<?php if ($_valid && !is_callable('content_54caae9f318957_86287840')) {function content_54caae9f318957_86287840($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_filesize')) include 'C:\\wamp\\www\\Projects\\Uploadchi\\2.1\\includes\\engines\\smarty\\plugins\\modifier.filesize.php';
+?><div id="footer">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -53,7 +54,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<?php if (($_smarty_tpl->tpl_vars['iADMIN']->value)) {?>
 					<h6 class="text-muted text-center">
 						<small><b><?php echo $_smarty_tpl->tpl_vars['lang_memory_usage']->value;?>
-</b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['memory_usage']->value;?>
+</b>&nbsp;<?php echo smarty_modifier_filesize($_smarty_tpl->tpl_vars['memory_usage']->value);?>
 &nbsp;&nbsp;<b><?php echo $_smarty_tpl->tpl_vars['lang_render_time']->value;?>
 </b>&nbsp;<?php echo $_smarty_tpl->tpl_vars['render_time']->value;?>
 &nbsp;<?php echo $_smarty_tpl->tpl_vars['lang_seconds']->value;?>

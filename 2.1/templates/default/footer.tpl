@@ -8,7 +8,7 @@
 				<h6 class="text-muted text-center"><small>{$lang_copyright}</small></h6>
 				{if ($iADMIN)}
 					<h6 class="text-muted text-center">
-						<small><b>{$lang_memory_usage}</b>&nbsp;{$memory_usage}&nbsp;&nbsp;<b>{$lang_render_time}</b>&nbsp;{$render_time}&nbsp;{$lang_seconds}</small>
+						<small><b>{$lang_memory_usage}</b>&nbsp;{$memory_usage|filesize}&nbsp;&nbsp;<b>{$lang_render_time}</b>&nbsp;{$render_time}&nbsp;{$lang_seconds}</small>
 					</h6>
 				{/if}
 			</div>

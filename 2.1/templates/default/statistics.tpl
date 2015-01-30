@@ -8,16 +8,16 @@
 		<div class="panel-body">
 			<ul class="list-group">
 				<li class="list-group-item">
-					<span class="badge">{$count_all_attachments}</span>{$lang_statistics_101}
+					<span class="badge">{$count_all_attachments|number_format}</span>{$lang_statistics_101}
 				</li>
 				<li class="list-group-item">
-					<span class="badge">{$count_all_attachments_views}</span>{$lang_statistics_102}
+					<span class="badge">{$count_all_attachments_views|number_format}</span>{$lang_statistics_102}
 				</li>
 				<li class="list-group-item">
-					<span class="badge">{$count_all_servers}</span>{$lang_statistics_103}
+					<span class="badge">{$count_all_servers|number_format}</span>{$lang_statistics_103}
 				</li>
 				<li class="list-group-item">
-					<span class="badge">{$count_all_users}</span>{$lang_statistics_104}
+					<span class="badge">{$count_all_users|number_format}</span>{$lang_statistics_104}
 				</li>
 			</ul>
 		</div>
